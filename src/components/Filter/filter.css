@@ -1,0 +1,30 @@
+.productlisting_sidebar {
+  width: 25%;
+  padding: 1rem 2rem 1rem 1rem;
+  margin-right: 2rem;
+}
+
+.products_filter_section {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--custom-pri-clr);
+  padding-bottom: 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.products_sidebar_title {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--custom-pri-clr);
+  padding-bottom: 1.2rem;
+}
+
+.products_sidebar_inputbox {
+  margin: 1.2rem 0;
+}
+
+.custom_clear_btn {
+  background-color: var(--plant-pri-light-clr);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  outline: none;
+}

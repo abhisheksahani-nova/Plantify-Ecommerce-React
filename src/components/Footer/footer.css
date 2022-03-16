@@ -1,0 +1,7 @@
+.footer_list_items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  margin: 3rem 0;
+}

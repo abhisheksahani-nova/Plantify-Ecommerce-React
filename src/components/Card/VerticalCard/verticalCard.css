@@ -1,0 +1,22 @@
+.card_container {
+  margin: 3rem 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+  row-gap: 7rem;
+  grid-template-areas:
+    "one two three four"
+    "five six seven eight";
+}
+
+.card_custom_width {
+  width: 18rem;
+}
+
+.custom_btn {
+  background-color: var(--plant-pri-clr);
+  width: 93%;
+}
+
+.pri_clr {
+  color: var(--plant-sec-clr);
+}
