@@ -10,13 +10,13 @@ import ProductCategory from "./ProductCategory/ProductCategory";
 
 function LandingPage() {
   return (
-    <div class="homepage_main_container">
+    <div className="homepage_main_container">
       <Navbar />
       <HeroBanner />
       <ProductCategory />
       <CategoryNavTab />
 
-      <section class="card_container">
+      <section className="card_container">
         <VerticalCard />
         <VerticalCard />
         <VerticalCard />
@@ -29,8 +29,8 @@ function LandingPage() {
 
       <PromotionBanner />
 
-      <div class="horizontal_rule_container">
-        <hr class="horizontal_rule" />
+      <div className="horizontal_rule_container">
+        <hr className="horizontal_rule" />
       </div>
 
       <Footer />

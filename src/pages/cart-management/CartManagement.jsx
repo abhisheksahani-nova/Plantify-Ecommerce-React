@@ -6,18 +6,18 @@ import "../product-listing/productListing.css";
 
 function CartManagement() {
   return (
-    <div class="homepage_main_container">
+    <div className="homepage_main_container">
       <Navbar />
 
       {/* <!-- hero banner image--> */}
-      <section class="productlisting_banner_container"></section>
+      <section className="productlisting_banner_container"></section>
 
-      <h2 class="cart_page_title">My Cart (3)</h2>
+      <h2 className="cart_page_title">My Cart (3)</h2>
 
-      <section class="cart_container d-flex productlisting_main_content_container">
+      <section className="cart_container d-flex productlisting_main_content_container">
         {/* <!-- Product items container --> */}
 
-        <div class="cart_products_container d-flex">
+        <div className="cart_products_container d-flex">
           <HorizontalCard />
           <HorizontalCard />
           <HorizontalCard />
@@ -27,8 +27,8 @@ function CartManagement() {
         <CartPayment />
       </section>
 
-      <div class="horizontal_rule_container">
-        <hr class="horizontal_rule" />
+      <div className="horizontal_rule_container">
+        <hr className="horizontal_rule" />
       </div>
 
       <Footer />

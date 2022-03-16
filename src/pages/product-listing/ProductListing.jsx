@@ -4,17 +4,17 @@ import "./productListing.css";
 
 function ProductListing() {
   return (
-    <div class="homepage_main_container">
+    <div className="homepage_main_container">
       <Navbar />
 
       {/* <!-- hero banner image--> */}
-      <section class="productlisting_banner_container"></section>
+      <section className="productlisting_banner_container"></section>
 
-      <section class="productlisting_main_content_container d-flex">
+      <section className="productlisting_main_content_container d-flex">
         {/* <!-- filter sidebar --> */}
         <Filter />
 
-        <div class="productlisting_products_container">
+        <div className="productlisting_products_container">
           <VerticalCard />
           <VerticalCard />
           <VerticalCard />
@@ -30,8 +30,8 @@ function ProductListing() {
         </div>
       </section>
 
-      <div class="horizontal_rule_container">
-        <hr class="horizontal_rule" />
+      <div className="horizontal_rule_container">
+        <hr className="horizontal_rule" />
       </div>
 
       <Footer />
