@@ -1,0 +1,25 @@
+.categories_navTab_container {
+  margin: 3rem 1.5rem;
+}
+
+.categories_navTabs_list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.8rem 0;
+}
+
+.categories_navLink {
+  text-decoration: none;
+  color: var(--ecommerce-btn-clr);
+  font-weight: 500;
+}
+
+.categories_navLink1 {
+  margin-right: 2rem;
+}
+
+.categories_navLink2 {
+  margin: 0rem 2rem;
+}

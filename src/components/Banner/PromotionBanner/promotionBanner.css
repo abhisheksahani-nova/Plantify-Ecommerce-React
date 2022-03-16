@@ -1,0 +1,9 @@
+.promotion_banner {
+  display: grid;
+  grid-template-areas: "one two";
+  margin: 7rem 1.5rem 3rem;
+}
+
+.plant_img {
+  width: 100%;
+}

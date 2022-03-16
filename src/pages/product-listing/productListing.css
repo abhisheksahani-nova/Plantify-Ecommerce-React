@@ -1,0 +1,24 @@
+.productlisting_banner_container {
+  height: 45vh;
+  background: url(https://cdn.shopify.com/s/files/1/0317/0687/3992/files/bg_about.jpg?v=1580377813);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 1rem 1.5rem;
+}
+
+.productlisting_main_content_container {
+  margin: 3rem 1.5rem;
+}
+
+.productlisting_products_container {
+  width: 75%;
+  margin: 3rem 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+  row-gap: 7rem;
+  grid-template-areas:
+    "one two three"
+    "four five six"
+    "seven eight nine";
+}

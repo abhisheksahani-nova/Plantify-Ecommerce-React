@@ -1,0 +1,12 @@
+.cart_page_title {
+  text-align: center;
+  margin: 4rem 0 5rem;
+}
+
+.cart_products_container {
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
