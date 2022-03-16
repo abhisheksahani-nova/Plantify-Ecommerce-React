@@ -6,16 +6,19 @@ import {
   Login,
   Signup,
 } from "./pages/index.js";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
-      {/* <ProductListing /> */}
-      {/* <CartManagement /> */}
-      {/* <Wishlist /> */}
-      {/* <Login /> */}
-      {/* <Signup /> */}
+      <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/products" element={<ProductListing />}></Route>
+        <Route path="/cart" element={<CartManagement />}></Route>
+        <Route path="/wishlist" element={<Wishlist />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+      </Routes>
     </div>
   );
 }
