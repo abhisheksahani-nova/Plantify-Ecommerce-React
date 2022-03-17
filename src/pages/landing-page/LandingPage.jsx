@@ -8,6 +8,7 @@ import {
 } from "../../components/index";
 import ProductCategory from "./ProductCategory/ProductCategory";
 
+
 function LandingPage() {
   return (
     <div className="homepage_main_container">
