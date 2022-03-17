@@ -1,8 +1,11 @@
 import { Navbar, Footer, Filter, VerticalCard } from "../../components/index";
 import "../landing-page/landingPage.css";
 import "./productListing.css";
+import { useProducts } from "../../context/products-context";
 
 function ProductListing() {
+  const { products } = useProducts();
+
   return (
     <div className="homepage_main_container">
       <Navbar />
@@ -15,18 +18,9 @@ function ProductListing() {
         <Filter />
 
         <div className="productlisting_products_container">
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
-          <VerticalCard />
+          {products.map((product) => {
+            return <VerticalCard key={product._id} product={product} />;
+          })}
         </div>
       </section>
 

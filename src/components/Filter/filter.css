@@ -28,3 +28,15 @@
   font-size: 0.8rem;
   outline: none;
 }
+
+.products_filter_labelsize {
+  font-size: 0.9rem;
+}
+
+.products_filter_hr_line {
+  border-bottom: 1px solid var(--custom-pri-clr);
+}
+
+.products_filter_icon_resize {
+  font-size: 0.8rem;
+}
