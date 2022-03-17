@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const ProductsContext = createContext();
@@ -15,7 +15,7 @@ const ProductsProvider = ({ children }) => {
         console.log(error);
       }
     })();
-  });
+  }, []);
 
   return (
     <ProductsContext.Provider value={{ products }}>

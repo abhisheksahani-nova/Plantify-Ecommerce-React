@@ -13,7 +13,7 @@ export const products = [
       "Jade plants (Crassula ovata) are an especially interesting succulent due to its unique bush-like structure that makes it suitable to trim as a bonsai. And under the right conditions, you might even see pink flower blossoms! These plants might develop red or yellowish tint with too much sunlight, but they require very little water in the summertime and even less in winter.",
     price: "699",
     categoryName: "Indoor Plant",
-    plantType: "succulent",
+    plantType: "Succulent",
     img: "https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg",
   },
   {
@@ -23,7 +23,7 @@ export const products = [
       "What a unique houseplant! Guests are sure to comment on the grace of your beautiful Senecio rowleyanus as its delicate tendrils of round beads overflow its planter. These are great for hanging or draping over a pedestal, preferably in a location just out of the reach of direct sunlight. Plant in loose cactus soil and be careful to avoid overwatering for best results.",
     price: "899",
     categoryName: "Indoor Plant",
-    plantType: "succulent",
+    plantType: "Succulent",
     img: "https://pyxis.nymag.com/v1/imgs/4a7/29b/4ef2f518834dd81d8ceb374caa54fd5171-22-plant-gifts.rsquare.w700.jpg",
   },
   {

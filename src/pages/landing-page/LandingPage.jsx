@@ -7,9 +7,11 @@ import {
   CategoryNavTab,
 } from "../../components/index";
 import ProductCategory from "./ProductCategory/ProductCategory";
-
+import { useProducts } from "../../context/products-context";
 
 function LandingPage() {
+  const { products } = useProducts();
+
   return (
     <div className="homepage_main_container">
       <Navbar />
@@ -18,14 +20,9 @@ function LandingPage() {
       <CategoryNavTab />
 
       <section className="card_container">
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
+        {products.map((product) => {
+          return <VerticalCard key={product._id} product={product} />;
+        })}
       </section>
 
       <PromotionBanner />
