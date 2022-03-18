@@ -11,42 +11,66 @@ function Filter({ state, dispatch }) {
       <div className="mb-2">
         <h4 className="products_sidebar_title">Category</h4>
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "INDOOR_PLANTS" })}
+            checked={state.indoorPlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Indoor Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "OUTDOOR_PLANTS" })}
+            checked={state.outdoorPlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Outdoor Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "OFFICE_PLANTS" })}
+            checked={state.officePlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Office Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "SUCCULENT_PLANTS" })}
+            checked={state.succulentPlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Succulent Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "FLOWERING_PLANTS" })}
+            checked={state.floweringPlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Flowering Plants
           </label>
         </div>
 
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "EVERGREEN_PLANTS" })}
+            checked={state.evergreenPlants}
+          />
           <label className="ml-1 products_filter_labelsize">
             Evergreen Plants
           </label>

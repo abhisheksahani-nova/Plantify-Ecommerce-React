@@ -10,6 +10,12 @@ function ProductListing() {
   const [state, dispatch] = useReducer(filterReducer, {
     priceLowToHigh: false,
     priceHighToLow: false,
+    indoorPlants: false,
+    outdoorPlants: false,
+    officePlants: false,
+    succulentPlants: false,
+    floweringPlants: false,
+    evergreenPlants: false,
   });
 
   function filterReducer(state, action) {
@@ -28,6 +34,24 @@ function ProductListing() {
           priceLowToHigh: false,
         };
 
+      case "INDOOR_PLANTS":
+        return { ...state, indoorPlants: !state.indoorPlants };
+
+      case "OUTDOOR_PLANTS":
+        return { ...state, outdoorPlants: !state.outdoorPlants };
+
+      case "OFFICE_PLANTS":
+        return { ...state, officePlants: !state.officePlants };
+
+      case "SUCCULENT_PLANTS":
+        return { ...state, succulentPlants: !state.succulentPlants };
+
+      case "FLOWERING_PLANTS":
+        return { ...state, floweringPlants: !state.floweringPlants };
+
+      case "EVERGREEN_PLANTS":
+        return { ...state, evergreenPlants: !state.evergreenPlants };
+
       default:
         return state;
     }
@@ -42,6 +66,42 @@ function ProductListing() {
 
     if (state.priceHighToLow) {
       filterProducts = filterProducts.sort((a, b) => b.price - a.price);
+    }
+
+    if (state.indoorPlants) {
+      filterProducts = filterProducts.filter(
+        ({ categoryName }) => categoryName.toUpperCase() == "INDOOR PLANT"
+      );
+    }
+
+    if (state.outdoorPlants) {
+      filterProducts = filterProducts.filter(
+        ({ categoryName }) => categoryName.toUpperCase() == "OUTDOOR PLANT"
+      );
+    }
+
+    if (state.officePlants) {
+      filterProducts = filterProducts.filter(
+        ({ categoryName }) => categoryName.toUpperCase() == "OFFICE PLANT"
+      );
+    }
+
+    if (state.succulentPlants) {
+      filterProducts = filterProducts.filter(
+        ({ plantType }) => plantType.toUpperCase() == "SUCCULENT"
+      );
+    }
+
+    if (state.evergreenPlants) {
+      filterProducts = filterProducts.filter(({ plantType }) =>
+        plantType.toUpperCase().includes("EVERGREEN")
+      );
+    }
+
+    if (state.floweringPlants) {
+      filterProducts = filterProducts.filter(({ plantType }) =>
+        plantType.toUpperCase().includes("FLOWERING")
+      );
     }
 
     return filterProducts;

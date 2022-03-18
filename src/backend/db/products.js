@@ -53,7 +53,7 @@ export const products = [
       "Sometimes flowering plants prove the most challenging to keep healthy, but certain lilies in the Spathiphyllum genus (the peace lily family) are on the more easygoing side. Peace lilies are forgiving plants but seem to do best in indirect sunlight with access to shade. Wait to water the plant until you notice a bit of drooping in the leaves for best results. These plants need reliable drainage. Consider planting in a simple pot to let the beautiful flowers take center stage.",
     price: "999",
     categoryName: "Outdoor Plant",
-    plantType: "Flowering tropical plant",
+    plantType: "Flowering tropical",
     img: "https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg",
   },
   {
@@ -72,7 +72,7 @@ export const products = [
     description:
       "Ficus lyrata, or the Fiddle Leaf Fig, is a hardy tree that can grow up to 50 feet tall in its native tropical rainforest environment, but makes a lovely indoor tree for home decorating purposes. Be prepared to upgrade the size of the planter if you want your Ficus to grow nice and tall, which they are happy to do! This plant does best in bright indirect light and water once the top of the soil is dry and the leaves soften.",
     price: "1099",
-    categoryName: "Indoor Plant",
+    categoryName: "Outdoor Plant",
     plantType: "Broadleaf evergreen",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmsWaw_vIJSZMcYul2VQS2zWeVdW-oJvijaOARcY8aoqBP1p-TIwBi6J_06bkQXJiL4E&usqp=CAU",
   },
@@ -83,7 +83,7 @@ export const products = [
       "Rubber plants love bright indirect sunlight, moist soil, and high humidity. The waxy leaves really catch the light for a beautiful presentation. These trees – also known by their proper name of Ficus elastica – tend to grow quite tall unless pruned so they’re a great candidate for beautiful spacious planters.",
     price: "1200",
     categoryName: "Indoor Plant",
-    plantType: "Flowering plant",
+    plantType: "Flowering",
     img: "https://cdn.shopify.com/s/files/1/0317/0687/3992/products/232-large_default.jpg?v=1580435931",
   },
 ];
