@@ -1,6 +1,6 @@
 import "./filter.css";
 
-function Filter() {
+function Filter({ state, dispatch }) {
   return (
     <div className="productlisting_sidebar">
       <div className="d-flex products_filter_section">
@@ -12,42 +12,42 @@ function Filter() {
         <h4 className="products_sidebar_title">Category</h4>
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Indoor Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Outdoor Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Office Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Succulent Plants
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Flowering Plants
           </label>
         </div>
 
         <div>
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <label className="ml-1 products_filter_labelsize">
             Evergreen Plants
           </label>
         </div>
@@ -57,53 +57,28 @@ function Filter() {
         <h4 className="products_sidebar_title">Price</h4>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <input type="range" min="1" max="2000" value="1000" />
+        </div>
+
+        <div className="products_sidebar_inputbox">
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
+            checked={state.priceHighToLow}
+          />
+          <label className="ml-1 products_filter_labelsize">
             Price - high to low
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
+            checked={state.priceLowToHigh}
+          />
+          <label className="ml-1 products_filter_labelsize">
             Price - low to high
-          </label>
-        </div>
-
-        <div className="products_filter_hr_line"></div>
-
-        <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            ₹200 - ₹400
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            ₹400 - ₹600
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            ₹600 - ₹800
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            ₹800 - ₹1000
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            Above ₹1000
           </label>
         </div>
       </div>
@@ -113,29 +88,33 @@ function Filter() {
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            4 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38; above
+          <label className="ml-1 products_filter_labelsize">
+            4 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
+            above
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            3 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38; above
+          <label className="ml-1 products_filter_labelsize">
+            3 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
+            above
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            2 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38; above
+          <label className="ml-1 products_filter_labelsize">
+            2 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
+            above
           </label>
         </div>
 
         <div className="products_sidebar_inputbox">
           <input type="checkbox" />
-          <label className="ml-1 products_filter_labelsize" for="">
-            1 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38; above
+          <label className="ml-1 products_filter_labelsize">
+            1 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
+            above
           </label>
         </div>
       </div>
