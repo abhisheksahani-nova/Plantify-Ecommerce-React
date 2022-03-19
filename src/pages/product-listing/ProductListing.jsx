@@ -10,6 +10,7 @@ function ProductListing() {
   const [state, dispatch] = useReducer(filterReducer, {
     priceLowToHigh: false,
     priceHighToLow: false,
+    priceRange: 0,
     indoorPlants: false,
     outdoorPlants: false,
     officePlants: false,
@@ -33,6 +34,9 @@ function ProductListing() {
           priceHighToLow: !state.priceHighToLow,
           priceLowToHigh: false,
         };
+
+      case "SORT_BY_PRICE":
+        return { ...state, priceRange: action.payload };
 
       case "INDOOR_PLANTS":
         return { ...state, indoorPlants: !state.indoorPlants };
@@ -66,6 +70,13 @@ function ProductListing() {
 
     if (state.priceHighToLow) {
       filterProducts = filterProducts.sort((a, b) => b.price - a.price);
+    }
+
+    if (state.priceRange) {
+      console.log(state.priceRange);
+      filterProducts = filterProducts.filter(
+        ({ price }) => Number(price) <= state.priceRange
+      );
     }
 
     if (state.indoorPlants) {

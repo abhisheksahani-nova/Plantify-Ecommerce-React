@@ -11,7 +11,7 @@ export const products = [
     title: "Jade Plant",
     description:
       "Jade plants (Crassula ovata) are an especially interesting succulent due to its unique bush-like structure that makes it suitable to trim as a bonsai. And under the right conditions, you might even see pink flower blossoms! These plants might develop red or yellowish tint with too much sunlight, but they require very little water in the summertime and even less in winter.",
-    price: "699",
+    price: "199",
     categoryName: "Indoor Plant",
     plantType: "Succulent",
     img: "https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg",
@@ -21,7 +21,7 @@ export const products = [
     title: "String Of Pearls",
     description:
       "What a unique houseplant! Guests are sure to comment on the grace of your beautiful Senecio rowleyanus as its delicate tendrils of round beads overflow its planter. These are great for hanging or draping over a pedestal, preferably in a location just out of the reach of direct sunlight. Plant in loose cactus soil and be careful to avoid overwatering for best results.",
-    price: "899",
+    price: "399",
     categoryName: "Indoor Plant",
     plantType: "Succulent",
     img: "https://pyxis.nymag.com/v1/imgs/4a7/29b/4ef2f518834dd81d8ceb374caa54fd5171-22-plant-gifts.rsquare.w700.jpg",
@@ -31,7 +31,7 @@ export const products = [
     title: "Pothos Plant",
     description:
       " Epipremnum aureum is an overwhelmingly popular houseplant for good reason. Supposedly, its other nickname of “devil’s ivy” comes from its hardiness and the perception that it is nearly impossible to kill. The vines can grow almost impossibly long, making them a great choice for suspension from tall ceilings. Consider this plant if you need something for low or indirect light conditions. Water when dry.",
-    price: "699",
+    price: "899",
     categoryName: "Outdoor Plant",
     plantType: "Evergreen",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmsWaw_vIJSZMcYul2VQS2zWeVdW-oJvijaOARcY8aoqBP1p-TIwBi6J_06bkQXJiL4E&usqp=CAU",
@@ -81,7 +81,7 @@ export const products = [
     title: "Rubber Plant",
     description:
       "Rubber plants love bright indirect sunlight, moist soil, and high humidity. The waxy leaves really catch the light for a beautiful presentation. These trees – also known by their proper name of Ficus elastica – tend to grow quite tall unless pruned so they’re a great candidate for beautiful spacious planters.",
-    price: "1200",
+    price: "1690",
     categoryName: "Indoor Plant",
     plantType: "Flowering",
     img: "https://cdn.shopify.com/s/files/1/0317/0687/3992/products/232-large_default.jpg?v=1580435931",

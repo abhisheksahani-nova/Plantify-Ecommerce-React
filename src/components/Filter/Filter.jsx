@@ -81,7 +81,15 @@ function Filter({ state, dispatch }) {
         <h4 className="products_sidebar_title">Price</h4>
 
         <div className="products_sidebar_inputbox">
-          <input type="range" min="1" max="2000" value="1000" />
+          <input
+            onChange={(e) =>
+              dispatch({ type: "SORT_BY_PRICE", payload: e.target.value })
+            }
+            type="range"
+            min="100"
+            max="2000"
+            value={state.priceRange}
+          />
         </div>
 
         <div className="products_sidebar_inputbox">
