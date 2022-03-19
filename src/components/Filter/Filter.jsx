@@ -5,7 +5,12 @@ function Filter({ state, dispatch }) {
     <div className="productlisting_sidebar">
       <div className="d-flex products_filter_section">
         <h2>Filters</h2>
-        <button className="btn custom_clear_btn">Clear</button>
+        <button
+          onClick={() => dispatch({ type: "CLEAR_FILTERS" })}
+          className="btn custom_clear_btn"
+        >
+          Clear
+        </button>
       </div>
 
       <div className="mb-2">
@@ -124,8 +129,8 @@ function Filter({ state, dispatch }) {
             onClick={() => dispatch({ type: "FOUR_RATING_PLUS" })}
           />
           <label className="ml-1 products_filter_labelsize">
-            4 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
-            above
+            4 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            &#38; above
           </label>
         </div>
 
@@ -135,8 +140,8 @@ function Filter({ state, dispatch }) {
             onClick={() => dispatch({ type: "THREE_RATING_PLUS" })}
           />
           <label className="ml-1 products_filter_labelsize">
-            3 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
-            above
+            3 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            &#38; above
           </label>
         </div>
 
@@ -146,8 +151,8 @@ function Filter({ state, dispatch }) {
             onClick={() => dispatch({ type: "TWO_RATING_PLUS" })}
           />
           <label className="ml-1 products_filter_labelsize">
-            2 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
-            above
+            2 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            &#38; above
           </label>
         </div>
 
@@ -157,8 +162,8 @@ function Filter({ state, dispatch }) {
             onClick={() => dispatch({ type: "ONE_RATING_PLUS" })}
           />
           <label className="ml-1 products_filter_labelsize">
-            1 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
-            above
+            1 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            &#38; above
           </label>
         </div>
       </div>

@@ -10,10 +10,7 @@ function Wishlist() {
       <h2 className="cart_page_title">My Wishlist (4)</h2>
 
       <section className="card_container">
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
-        <VerticalCard />
+        
       </section>
 
       <div className="horizontal_rule_container">

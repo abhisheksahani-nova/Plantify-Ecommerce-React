@@ -1,6 +1,6 @@
 import "./verticalCard.css";
 
-function VerticalCard({ product: { title, plantType, img, price , rating} }) {
+function VerticalCard({ product: { title, plantType, img, price, rating } }) {
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
@@ -9,7 +9,11 @@ function VerticalCard({ product: { title, plantType, img, price , rating} }) {
 
         <div className="">
           <h3 className="card-heading pri_clr"> {title} </h3>
-          <small className="card-subHeading"> {plantType}: {rating} </small>
+          <small className="card-subHeading">
+            {" "}
+            {plantType}: {rating}
+            <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+          </small>
         </div>
 
         <p className="card-description text-bold pri_clr">₹ {price}</p>
