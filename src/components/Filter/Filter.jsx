@@ -119,7 +119,10 @@ function Filter({ state, dispatch }) {
         <h4 className="products_sidebar_title">Rating</h4>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "FOUR_RATING_PLUS" })}
+          />
           <label className="ml-1 products_filter_labelsize">
             4 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
             above
@@ -127,7 +130,10 @@ function Filter({ state, dispatch }) {
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "THREE_RATING_PLUS" })}
+          />
           <label className="ml-1 products_filter_labelsize">
             3 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
             above
@@ -135,7 +141,10 @@ function Filter({ state, dispatch }) {
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "TWO_RATING_PLUS" })}
+          />
           <label className="ml-1 products_filter_labelsize">
             2 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
             above
@@ -143,7 +152,10 @@ function Filter({ state, dispatch }) {
         </div>
 
         <div className="products_sidebar_inputbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onClick={() => dispatch({ type: "ONE_RATING_PLUS" })}
+          />
           <label className="ml-1 products_filter_labelsize">
             1 <i class="fa-solid fa-star products_filter_icon_resize"></i> &#38;
             above

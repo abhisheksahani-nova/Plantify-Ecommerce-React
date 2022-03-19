@@ -14,6 +14,7 @@ export const products = [
     price: "199",
     categoryName: "Indoor Plant",
     plantType: "Succulent",
+    rating: 3.9,
     img: "https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg",
   },
   {
@@ -24,6 +25,7 @@ export const products = [
     price: "399",
     categoryName: "Indoor Plant",
     plantType: "Succulent",
+    rating: 1.8,
     img: "https://pyxis.nymag.com/v1/imgs/4a7/29b/4ef2f518834dd81d8ceb374caa54fd5171-22-plant-gifts.rsquare.w700.jpg",
   },
   {
@@ -34,6 +36,7 @@ export const products = [
     price: "899",
     categoryName: "Outdoor Plant",
     plantType: "Evergreen",
+    rating: 4.8,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmsWaw_vIJSZMcYul2VQS2zWeVdW-oJvijaOARcY8aoqBP1p-TIwBi6J_06bkQXJiL4E&usqp=CAU",
   },
   {
@@ -44,6 +47,7 @@ export const products = [
     price: "699",
     categoryName: "Office Plant",
     plantType: "Broadleaf evergreen",
+    rating: 4.4,
     img: "https://cdn.shopify.com/s/files/1/0317/0687/3992/products/232-large_default.jpg?v=1580435931",
   },
   {
@@ -54,6 +58,7 @@ export const products = [
     price: "999",
     categoryName: "Outdoor Plant",
     plantType: "Flowering tropical",
+    rating: 2.9,
     img: "https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg",
   },
   {
@@ -64,6 +69,7 @@ export const products = [
     price: "499",
     categoryName: "Indoor Plant",
     plantType: "Evergreen vine",
+    rating: 3.1,
     img: "https://pyxis.nymag.com/v1/imgs/4a7/29b/4ef2f518834dd81d8ceb374caa54fd5171-22-plant-gifts.rsquare.w700.jpg",
   },
   {
@@ -74,6 +80,7 @@ export const products = [
     price: "1099",
     categoryName: "Outdoor Plant",
     plantType: "Broadleaf evergreen",
+    rating: 3,
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCmsWaw_vIJSZMcYul2VQS2zWeVdW-oJvijaOARcY8aoqBP1p-TIwBi6J_06bkQXJiL4E&usqp=CAU",
   },
   {
@@ -84,6 +91,7 @@ export const products = [
     price: "1690",
     categoryName: "Indoor Plant",
     plantType: "Flowering",
+    rating: 4.5,
     img: "https://cdn.shopify.com/s/files/1/0317/0687/3992/products/232-large_default.jpg?v=1580435931",
   },
 ];

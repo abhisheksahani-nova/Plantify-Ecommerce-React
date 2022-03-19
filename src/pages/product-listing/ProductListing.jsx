@@ -10,13 +10,17 @@ function ProductListing() {
   const [state, dispatch] = useReducer(filterReducer, {
     priceLowToHigh: false,
     priceHighToLow: false,
-    priceRange: 0,
+    priceRange: 1800,
     indoorPlants: false,
     outdoorPlants: false,
     officePlants: false,
     succulentPlants: false,
     floweringPlants: false,
     evergreenPlants: false,
+    oneRatingPlus: 0,
+    twoRatingPlus: 0,
+    threeRatingPlus: 0,
+    fourRatingPlus: 0,
   });
 
   function filterReducer(state, action) {
@@ -55,6 +59,21 @@ function ProductListing() {
 
       case "EVERGREEN_PLANTS":
         return { ...state, evergreenPlants: !state.evergreenPlants };
+
+      case "ONE_RATING_PLUS":
+        return { ...state, oneRatingPlus: state.oneRatingPlus == 0 ? 1 : 0 };
+
+      case "TWO_RATING_PLUS":
+        return { ...state, twoRatingPlus: state.twoRatingPlus == 0 ? 2 : 0 };
+
+      case "THREE_RATING_PLUS":
+        return {
+          ...state,
+          threeRatingPlus: state.threeRatingPlus == 0 ? 3 : 0,
+        };
+
+      case "FOUR_RATING_PLUS":
+        return { ...state, fourRatingPlus: state.fourRatingPlus == 0 ? 4 : 0 };
 
       default:
         return state;
@@ -112,6 +131,24 @@ function ProductListing() {
     if (state.floweringPlants) {
       filterProducts = filterProducts.filter(({ plantType }) =>
         plantType.toUpperCase().includes("FLOWERING")
+      );
+    }
+
+    if (state.oneRatingPlus) {
+      filterProducts = filterProducts.filter(
+        ({ rating }) => rating >= state.oneRatingPlus
+      );
+    } else if (state.twoRatingPlus) {
+      filterProducts = filterProducts.filter(
+        ({ rating }) => rating >= state.twoRatingPlus
+      );
+    } else if (state.threeRatingPlus) {
+      filterProducts = filterProducts.filter(
+        ({ rating }) => rating >= state.threeRatingPlus
+      );
+    } else if (state.fourRatingPlus) {
+      filterProducts = filterProducts.filter(
+        ({ rating }) => rating >= state.fourRatingPlus
       );
     }
 
