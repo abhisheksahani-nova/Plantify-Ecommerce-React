@@ -28,3 +28,16 @@
   font-size: 0.8rem;
   outline: none;
 }
+
+.products_filter_labelsize {
+  font-size: 0.9rem;
+}
+
+.products_filter_hr_line {
+  border-bottom: 1px solid var(--custom-pri-clr);
+}
+
+.products_filter_staricon_style {
+  font-size: 0.8rem;
+  color: var(--dark-primary-clr);
+}

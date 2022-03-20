@@ -1,22 +1,22 @@
 import "./verticalCard.css";
 
-function VerticalCard() {
+function VerticalCard({ product: { title, plantType, img, price, rating } }) {
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
-        <img
-          className="card-img"
-          src="https://d3cif2hu95s88v.cloudfront.net/blog/wp-content/uploads/2021/05/04150624/Spider-plant.jpg"
-          alt="plant"
-        />
+        <img className="card-img" src={img} alt="plant" />
         <span className="card-withBadge">New</span>
 
         <div className="">
-          <h3 className="card-heading pri_clr">Aleovera Indoor Plant</h3>
-          <small className="card-subHeading">Outdoor</small>
+          <h3 className="card-heading pri_clr"> {title} </h3>
+          <small className="card-subHeading">
+            {" "}
+            {plantType}: {rating}
+            <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+          </small>
         </div>
 
-        <p className="card-description text-bold pri_clr">₹ 10,999</p>
+        <p className="card-description text-bold pri_clr">₹ {price}</p>
       </div>
 
       <div className="card-footer">
