@@ -1,3 +1,6 @@
+import { NavLink } from "react-router-dom";
+import "./navbar.css";
+
 function Navbar() {
   return (
     <nav className="nav-bar white mb-0">
@@ -12,27 +15,35 @@ function Navbar() {
         </span>
       </div>
 
-      <div className="nav-innerContainer nav-icon-container width-reset inherit-clr mr-1">
+      <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
+
         <div className="flex-col-center">
-          <a className="font-clr" href="./wishlist.html">
+          <NavLink className="font-clr" to="/wishlist" exact>
             <i className="fa-solid fa-heart"></i>
-          </a>
+          </NavLink>
+
           <small>Wishlist</small>
         </div>
 
         <div className="flex-col-center">
-          <a className="font-clr" href="./login.html">
-            <i className="fa-solid fa-user"></i>
-          </a>
-          <small>Profile</small>
+          <NavLink className="font-clr nav-icon" to="/cart" exact>
+            <i className="fa-solid fa-cart-shopping f-size-large"></i>
+          </NavLink>
+
+          <small>Cart</small>
         </div>
 
         <div className="flex-col-center">
-          <a className="font-clr nav-icon" href="./cartManagement.html">
-            <i className="fa-solid fa-cart-shopping"></i>
-          </a>
-          <small>Cart</small>
+          <NavLink className="font-clr" to="/login" exact>
+            <i className="fa-solid fa-user"></i>
+          </NavLink>
+
+          <small>Profile</small>
         </div>
+
+        <NavLink to="/login">
+          <button className="btn nav-auth-btn-style">Login</button>
+        </NavLink>
       </div>
     </nav>
   );

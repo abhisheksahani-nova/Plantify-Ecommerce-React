@@ -1,0 +1,15 @@
+.nav-width-reset{
+    width: 20rem;
+}
+
+.nav-auth-btn-style{
+    background-color: var(--secondary-clr);
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.f-size-large{
+    font-size: large;
+}
