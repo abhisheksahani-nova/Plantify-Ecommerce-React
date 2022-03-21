@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 function Signup() {
@@ -19,7 +20,8 @@ function Signup() {
     (async () => {
       try {
         const response = await axios.post("/api/auth/signup", userData);
-        console.log(response);
+        localStorage.setItem("token", response.data.encodedToken);
+
       } catch (error) {
         console.log(error);
       }
@@ -28,7 +30,6 @@ function Signup() {
 
   return (
     <section className="login_form_container d-flex">
-      {console.log(userSignupData)}
       <div className="card-basic login_form">
         <h2 className="t-align-center mt-2 mb-2">Signup</h2>
 
@@ -79,12 +80,12 @@ function Signup() {
             }
           />
 
-          {/* <div className="err-msg-container d-none">
+          <div className="err-msg-container d-none">
             <span>
               <i className="fa fa-exclamation-circle err-icon"></i>Enter your
               email address!
             </span>
-          </div> */}
+          </div>
         </div>
 
         <div className="inp-container mb-1">
@@ -101,12 +102,12 @@ function Signup() {
             }
           />
 
-          {/* <div className="err-msg-container d-none">
+          <div className="err-msg-container d-none">
             <span>
               <i className="fa fa-exclamation-circle err-icon"></i>Enter your
               password!
             </span>
-          </div> */}
+          </div>
         </div>
 
         <div className="inp-container mb-1">
@@ -135,12 +136,12 @@ function Signup() {
             </label>
           </div>
 
-          {/* <div className="err-msg-container d-none">
+          <div className="err-msg-container d-none">
             <span>
               <i className="fa fa-exclamation-circle err-icon"></i>Accept our
               terms & policy before going forward!
             </span>
-          </div> */}
+          </div>
         </div>
 
         <div className="inp-container ml-1 mb-1">
@@ -154,11 +155,9 @@ function Signup() {
         </div>
 
         <div className="inp-container t-align-center mb-2">
-          <small>
-            <a className="create_acc_link" href="./login.html">
-              Already have an account
-            </a>
-          </small>
+          <NavLink to="/login">
+            <small className="create_acc_link">Already have an account</small>
+          </NavLink>
         </div>
       </div>
     </section>
