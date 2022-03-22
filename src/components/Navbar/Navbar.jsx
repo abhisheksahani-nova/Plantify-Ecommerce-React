@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 import {useCart} from "../../context/cart-context";
+import {useWishlist} from "../../context/wishlist-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
+  const {wishlistProducts} = useWishlist;
   const token = localStorage.getItem("token");
 
   return (
@@ -25,7 +27,10 @@ function Navbar() {
         <div className="flex-col-center">
           {token ? (
             <NavLink className="font-clr" to="/wishlist" exact="true">
-              <i className="fa-solid fa-heart"></i>
+              <div class="badge-container">
+                <i className="fa-solid fa-heart f-size-large"></i>
+                <span class="badge notification-right-badge badge-lg"> {wishlistProducts?.length} </span>
+              </div>
             </NavLink>
           ) : (
             <NavLink className="font-clr" to="/login" exact="true">
@@ -41,7 +46,7 @@ function Navbar() {
             <NavLink className="font-clr nav-icon" to="/cart" exact="true">
               <div class="badge-container">
                 <i className="fa-solid fa-cart-shopping f-size-large"></i>
-                <span class="badge notification-right-badge badge-lg">{cartProducts.length}</span>
+                <span class="badge notification-right-badge badge-lg">{cartProducts?.length}</span>
               </div>
             </NavLink>
           ) : (

@@ -1,12 +1,15 @@
 import "./verticalCard.css";
 import { useCart } from "../../../context/cart-context";
+import { useWishlist } from "../../../context/wishlist-context";
 import axios from "axios";
 import { useState } from "react";
 
 function VerticalCard({ product }) {
   const { setCartProducts } = useCart();
-  const { title, plantType, img, price, rating } = product;
+  const { wishlistProducts, setWishlistProducts } = useWishlist();
+  const { _id, title, plantType, img, price, rating } = product;
   const [addToCart, setAddToCart] = useState(false);
+  const [moveToWishlist, setMoveToWishlist] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -30,6 +33,8 @@ function VerticalCard({ product }) {
 
   const handleMoveToWishlist = async (product) => {
     try {
+      console.log("move", moveToWishlist);
+      setMoveToWishlist(!moveToWishlist);
       const response = await axios.post(
         "/api/user/wishlist",
         { product },
@@ -39,9 +44,36 @@ function VerticalCard({ product }) {
           },
         }
       );
-      
+      setWishlistProducts(response.data.wishlist);
+      console.log(response);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleRemoveFromWishlist = async (id) => {
+    try {
+      console.log("remove", moveToWishlist);
+      setMoveToWishlist(!moveToWishlist);
+      const response = await axios.delete(`/api/user/wishlist/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log(response);
+      setWishlistProducts(response.data.wishlist);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleWishlistMoveRemove = async (product, _id) => {
+    if (!moveToWishlist) {
+      handleMoveToWishlist(product);
+      setMoveToWishlist(!moveToWishlist);
+    } else {
+      handleRemoveFromWishlist(_id);
+      setMoveToWishlist(!moveToWishlist);
     }
   };
 
@@ -50,9 +82,14 @@ function VerticalCard({ product }) {
       <div className="badge-container">
         <img className="card-img" src={img} alt="plant" />
         <span className="card-withBadge">New</span>
+
         <i
-          class="fa-regular fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
-          onClick={() => handleMoveToWishlist(product)}
+          className={`fa-solid fa-heart dismiss-card f-size-large ${
+            moveToWishlist
+              ? "verticalcard-wishlist-icon-select-clr"
+              : "verticalcard-wishlist-icon-clr"
+          }`}
+          onClick={() => handleWishlistMoveRemove(product, _id)}
         ></i>
 
         <div className="">
