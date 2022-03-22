@@ -1,10 +1,12 @@
 import "./verticalCard.css";
 import { useCart } from "../../../context/cart-context";
 import axios from "axios";
+import { useState } from "react";
 
 function VerticalCard({ product }) {
   const { setCartProducts } = useCart();
   const { title, plantType, img, price, rating } = product;
+  const [addToCart, setAddToCart] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -19,8 +21,8 @@ function VerticalCard({ product }) {
           },
         }
       );
-      setCartProducts(response.data.cart)
-      console.log(response);
+      setCartProducts(response.data.cart);
+      setAddToCart(true);
     } catch (error) {
       console.log(error);
     }
@@ -45,15 +47,24 @@ function VerticalCard({ product }) {
       </div>
 
       <div className="card-footer">
-        <button
-          className="btn custom_btn"
-          onClick={() => handleAddToCart(product, token)}
-        >
-          <span className="icon">
-            <i className="fa fa-shopping-cart"></i>
-          </span>
-          Add to Cart
-        </button>
+        {!addToCart ? (
+          <button
+            className="btn custom_btn"
+            onClick={() => handleAddToCart(product, token)}
+          >
+            <span className="icon">
+              <i className="fa fa-shopping-cart"></i>
+            </span>
+            Add to Cart
+          </button>
+        ) : (
+          <button className="btn custom_btn">
+            <span className="icon">
+              <i className="fa fa-shopping-cart"></i>
+            </span>
+            Go to Cart
+          </button>
+        )}
       </div>
     </div>
   );
