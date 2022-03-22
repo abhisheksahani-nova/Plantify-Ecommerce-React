@@ -1,6 +1,24 @@
-function HorizontalCard({product}) {
+import axios from "axios";
+import { useCart } from "../../../context/cart-context";
 
-  const { title, plantType, img, price, qty } = product;
+function HorizontalCard({ product }) {
+  const { _id, title, plantType, img, price, qty } = product;
+  const { setCartProducts } = useCart();
+
+  const token = localStorage.getItem("token");
+
+  const handleRemoveFromCart = async (id) => {
+    try {
+      const response = await axios.delete(`/api/user/cart/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      setCartProducts(response.data.cart);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
@@ -10,7 +28,10 @@ function HorizontalCard({product}) {
           src={img}
           alt="plant"
         />
-        <i className="fa-solid fa-xmark cart_card_closeicon"></i>
+        <i
+          className="fa-solid fa-xmark cart_card_closeicon"
+          onClick={() => handleRemoveFromCart(_id)}
+        ></i>
 
         <div className="ml-2 cart_card_content">
           <h3 className="card-heading">{title}</h3>
@@ -19,13 +40,20 @@ function HorizontalCard({product}) {
 
           <div className="d-flex cart_card_quantitycontainer">
             <small>Quantity :</small>
-            <button className="btn cart_card_outlinebtn customstyle_btn">+</button>
+            <button className="btn cart_card_outlinebtn customstyle_btn"  >
+              +
+            </button>
             <input className="cart_card_quantity_inp" type="text" value={qty} />
-            <button className="btn cart_card_outlinebtn customstyle_btn">-</button>
+            <button className="btn cart_card_outlinebtn customstyle_btn">
+              -
+            </button>
           </div>
 
           <div className="d-flex mt-2 cart_card_btncontainer mb-2">
-            <button className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1">
+            <button
+              className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1"
+              onClick={() => handleRemoveFromCart(_id)}
+            >
               Remove from Cart
             </button>
             <button className="btn btn-text-icon cart_card_outlinebtn">

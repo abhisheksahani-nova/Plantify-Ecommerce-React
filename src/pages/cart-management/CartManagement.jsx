@@ -4,8 +4,6 @@ import "./cartManagement.css";
 import "../landing-page/landingPage.css";
 import "../product-listing/productListing.css";
 import { useCart } from "../../context/cart-context";
-// import { useEffect } from "react";
-// import axios from "axios";
 
 function CartManagement() {
   const { cartProducts } = useCart();
