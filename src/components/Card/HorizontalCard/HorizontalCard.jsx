@@ -20,6 +20,42 @@ function HorizontalCard({ product }) {
     }
   };
 
+  const handleProductQtyIncrement = async (id) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${id}`,
+        { action: { type: "increment" } },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+      setCartProducts(response.data.cart);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleProductQtyDecrement = async (id) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${id}`,
+        { action: { type: "decrement" } },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+      setCartProducts(response.data.cart);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
       <div className="Card-horizontalImage-text">
@@ -40,11 +76,17 @@ function HorizontalCard({ product }) {
 
           <div className="d-flex cart_card_quantitycontainer">
             <small>Quantity :</small>
-            <button className="btn cart_card_outlinebtn customstyle_btn"  >
+            <button
+              className="btn cart_card_outlinebtn customstyle_btn"
+              onClick={() => handleProductQtyIncrement(_id)}
+            >
               +
             </button>
             <input className="cart_card_quantity_inp" type="text" value={qty} />
-            <button className="btn cart_card_outlinebtn customstyle_btn">
+            <button
+              className="btn cart_card_outlinebtn customstyle_btn"
+              onClick={() => handleProductQtyDecrement(_id)}
+            >
               -
             </button>
           </div>
