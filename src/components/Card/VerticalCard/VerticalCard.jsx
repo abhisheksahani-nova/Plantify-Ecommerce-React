@@ -1,6 +1,31 @@
 import "./verticalCard.css";
+import { useCart } from "../../../context/cart-context";
+import axios from "axios";
 
-function VerticalCard({ product: { title, plantType, img, price, rating } }) {
+function VerticalCard({ product }) {
+  const { setCartProducts } = useCart();
+  const { title, plantType, img, price, rating } = product;
+
+  const token = localStorage.getItem("token");
+
+  const handleAddToCart = async (product, token) => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart",
+        { product },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      setCartProducts(response.data.cart)
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
@@ -20,10 +45,13 @@ function VerticalCard({ product: { title, plantType, img, price, rating } }) {
       </div>
 
       <div className="card-footer">
-        <button className="btn custom_btn">
+        <button
+          className="btn custom_btn"
+          onClick={() => handleAddToCart(product, token)}
+        >
           <span className="icon">
             <i className="fa fa-shopping-cart"></i>
-          </span>{" "}
+          </span>
           Add to Cart
         </button>
       </div>

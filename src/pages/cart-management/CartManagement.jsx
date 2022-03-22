@@ -3,8 +3,13 @@ import CartPayment from "./CartPayment/CartPayment";
 import "./cartManagement.css";
 import "../landing-page/landingPage.css";
 import "../product-listing/productListing.css";
+import { useCart } from "../../context/cart-context";
+// import { useEffect } from "react";
+// import axios from "axios";
 
 function CartManagement() {
+  const { cartProducts } = useCart();
+
   return (
     <div className="homepage_main_container">
       <Navbar />
@@ -18,9 +23,9 @@ function CartManagement() {
         {/* <!-- Product items container --> */}
 
         <div className="cart_products_container d-flex">
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
+          {cartProducts.map((product) => {
+            return <HorizontalCard key={product._id} product={product} />;
+          })}
         </div>
 
         {/* <!-- Payment details card container --> */}
