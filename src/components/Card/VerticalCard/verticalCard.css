@@ -20,3 +20,11 @@
 .pri_clr {
   color: var(--plant-sec-clr);
 }
+
+.verticalcard-wishlist-icon-clr {
+  color: var(--custom-sec-clr);
+}
+
+.verticalcard-wishlist-icon-select-clr{
+ color: red; 
+}

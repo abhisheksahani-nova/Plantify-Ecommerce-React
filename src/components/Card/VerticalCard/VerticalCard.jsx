@@ -28,11 +28,32 @@ function VerticalCard({ product }) {
     }
   };
 
+  const handleMoveToWishlist = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        { product },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
         <img className="card-img" src={img} alt="plant" />
         <span className="card-withBadge">New</span>
+        <i
+          class="fa-regular fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
+          onClick={() => handleMoveToWishlist(product)}
+        ></i>
 
         <div className="">
           <h3 className="card-heading pri_clr"> {title} </h3>
