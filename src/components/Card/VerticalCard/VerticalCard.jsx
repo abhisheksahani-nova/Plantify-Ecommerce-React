@@ -9,7 +9,6 @@ function VerticalCard({ product }) {
   const { wishlistProducts, setWishlistProducts } = useWishlist();
   const { _id, title, plantType, img, price, rating } = product;
   const [addToCart, setAddToCart] = useState(false);
-  const [moveToWishlist, setMoveToWishlist] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -33,8 +32,6 @@ function VerticalCard({ product }) {
 
   const handleMoveToWishlist = async (product) => {
     try {
-      console.log("move", moveToWishlist);
-      setMoveToWishlist(!moveToWishlist);
       const response = await axios.post(
         "/api/user/wishlist",
         { product },
@@ -45,7 +42,6 @@ function VerticalCard({ product }) {
         }
       );
       setWishlistProducts(response.data.wishlist);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -53,27 +49,14 @@ function VerticalCard({ product }) {
 
   const handleRemoveFromWishlist = async (id) => {
     try {
-      console.log("remove", moveToWishlist);
-      setMoveToWishlist(!moveToWishlist);
       const response = await axios.delete(`/api/user/wishlist/${id}`, {
         headers: {
           authorization: token,
         },
       });
-      console.log(response);
       setWishlistProducts(response.data.wishlist);
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const handleWishlistMoveRemove = async (product, _id) => {
-    if (!moveToWishlist) {
-      handleMoveToWishlist(product);
-      setMoveToWishlist(!moveToWishlist);
-    } else {
-      handleRemoveFromWishlist(_id);
-      setMoveToWishlist(!moveToWishlist);
     }
   };
 
@@ -83,14 +66,17 @@ function VerticalCard({ product }) {
         <img className="card-img" src={img} alt="plant" />
         <span className="card-withBadge">New</span>
 
-        <i
-          className={`fa-solid fa-heart dismiss-card f-size-large ${
-            moveToWishlist
-              ? "verticalcard-wishlist-icon-select-clr"
-              : "verticalcard-wishlist-icon-clr"
-          }`}
-          onClick={() => handleWishlistMoveRemove(product, _id)}
-        ></i>
+        {wishlistProducts.find((item) => item._id == _id) ? (
+          <i
+            className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-select-clr"
+            onClick={() => handleRemoveFromWishlist(_id)}
+          ></i>
+        ) : (
+          <i
+            className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
+            onClick={() => handleMoveToWishlist(product)}
+          ></i>
+        )}
 
         <div className="">
           <h3 className="card-heading pri_clr"> {title} </h3>

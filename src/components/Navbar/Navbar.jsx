@@ -5,7 +5,7 @@ import {useWishlist} from "../../context/wishlist-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
-  const {wishlistProducts} = useWishlist;
+  const {wishlistProducts} = useWishlist();
   const token = localStorage.getItem("token");
 
   return (
