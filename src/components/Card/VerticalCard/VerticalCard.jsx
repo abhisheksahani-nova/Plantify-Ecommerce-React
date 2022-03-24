@@ -3,6 +3,7 @@ import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
 import axios from "axios";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 function VerticalCard({ product }) {
   const { setCartProducts } = useCart();
@@ -11,6 +12,7 @@ function VerticalCard({ product }) {
   const [addToCart, setAddToCart] = useState(false);
 
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const handleAddToCart = async (product, token) => {
     try {
@@ -102,7 +104,7 @@ function VerticalCard({ product }) {
             Add to Cart
           </button>
         ) : (
-          <button className="btn custom_btn">
+          <button className="btn custom_btn" onClick={() => navigate("/cart")} >
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
             </span>

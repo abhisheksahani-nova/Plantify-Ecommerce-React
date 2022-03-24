@@ -11,7 +11,7 @@ export const products = [
     title: "Jade Plant",
     description:
       "Jade plants (Crassula ovata) are an especially interesting succulent due to its unique bush-like structure that makes it suitable to trim as a bonsai. And under the right conditions, you might even see pink flower blossoms! These plants might develop red or yellowish tint with too much sunlight, but they require very little water in the summertime and even less in winter.",
-    price: "199",
+    price: 199,
     categoryName: "Indoor Plant",
     plantType: "Succulent",
     rating: 3.9,
@@ -22,7 +22,7 @@ export const products = [
     title: "String Of Pearls",
     description:
       "What a unique houseplant! Guests are sure to comment on the grace of your beautiful Senecio rowleyanus as its delicate tendrils of round beads overflow its planter. These are great for hanging or draping over a pedestal, preferably in a location just out of the reach of direct sunlight. Plant in loose cactus soil and be careful to avoid overwatering for best results.",
-    price: "399",
+    price: 399,
     categoryName: "Indoor Plant",
     plantType: "Succulent",
     rating: 1.8,
@@ -33,7 +33,7 @@ export const products = [
     title: "Pothos Plant",
     description:
       " Epipremnum aureum is an overwhelmingly popular houseplant for good reason. Supposedly, its other nickname of “devil’s ivy” comes from its hardiness and the perception that it is nearly impossible to kill. The vines can grow almost impossibly long, making them a great choice for suspension from tall ceilings. Consider this plant if you need something for low or indirect light conditions. Water when dry.",
-    price: "899",
+    price: 899,
     categoryName: "Outdoor Plant",
     plantType: "Evergreen",
     rating: 4.8,
@@ -44,7 +44,7 @@ export const products = [
     title: "Dragon Tree",
     description:
       "When it comes to tree-like houseplants, it’s hard to find low-maintenance options, but Dracaena marginata is the exception to the rule. You can often wait until the soil is dry to water it, so it’s great for offices and far-off corners of the house that might not get much attention from caregivers. Bright indirect light and constant temperature will help this plant grow its strongest. Be prepared with several sizes of planters to accommodate its fast-growing root system.",
-    price: "699",
+    price: 699,
     categoryName: "Office Plant",
     plantType: "Broadleaf evergreen",
     rating: 4.4,
@@ -55,7 +55,7 @@ export const products = [
     title: "Peace Lily",
     description:
       "Sometimes flowering plants prove the most challenging to keep healthy, but certain lilies in the Spathiphyllum genus (the peace lily family) are on the more easygoing side. Peace lilies are forgiving plants but seem to do best in indirect sunlight with access to shade. Wait to water the plant until you notice a bit of drooping in the leaves for best results. These plants need reliable drainage. Consider planting in a simple pot to let the beautiful flowers take center stage.",
-    price: "999",
+    price: 999,
     categoryName: "Outdoor Plant",
     plantType: "Flowering tropical",
     rating: 2.9,
@@ -66,7 +66,7 @@ export const products = [
     title: "Swiss Cheese Plant",
     description:
       "The scientific name Monstera deliciosa refers, in part, to the edible pineapple-like fruit this rainforest plant can provide – just make sure to read about how to ripen the fruits properly to avoid irritation upon consuming. These stunning large-leafed plants make a great statement piece and add warm, tropical appeal to any interior.",
-    price: "499",
+    price: 499,
     categoryName: "Indoor Plant",
     plantType: "Evergreen vine",
     rating: 3.1,
@@ -77,7 +77,7 @@ export const products = [
     title: "Fiddle Leaf Fig",
     description:
       "Ficus lyrata, or the Fiddle Leaf Fig, is a hardy tree that can grow up to 50 feet tall in its native tropical rainforest environment, but makes a lovely indoor tree for home decorating purposes. Be prepared to upgrade the size of the planter if you want your Ficus to grow nice and tall, which they are happy to do! This plant does best in bright indirect light and water once the top of the soil is dry and the leaves soften.",
-    price: "1099",
+    price: 1099,
     categoryName: "Outdoor Plant",
     plantType: "Broadleaf evergreen",
     rating: 3,
@@ -88,7 +88,7 @@ export const products = [
     title: "Rubber Plant",
     description:
       "Rubber plants love bright indirect sunlight, moist soil, and high humidity. The waxy leaves really catch the light for a beautiful presentation. These trees – also known by their proper name of Ficus elastica – tend to grow quite tall unless pruned so they’re a great candidate for beautiful spacious planters.",
-    price: "1690",
+    price: 1690,
     categoryName: "Indoor Plant",
     plantType: "Flowering",
     rating: 4.5,

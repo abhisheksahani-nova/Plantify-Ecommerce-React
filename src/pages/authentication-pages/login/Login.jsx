@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./login.css";
 
@@ -9,12 +9,17 @@ function Login() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   function handleUserLogin() {
     (async () => {
       try {
         const response = await axios.post("/api/auth/login", userLoginData);
-        localStorage.setItem("token", JSON.stringify(response.data.encodedToken));
-        
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.encodedToken)
+        );
+        navigate("/");
       } catch (error) {
         console.log(error);
       }

@@ -1,17 +1,17 @@
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
-import {useCart} from "../../context/cart-context";
-import {useWishlist} from "../../context/wishlist-context";
+import { useCart } from "../../context/cart-context";
+import { useWishlist } from "../../context/wishlist-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
-  const {wishlistProducts} = useWishlist();
+  const { wishlistProducts } = useWishlist();
   const token = localStorage.getItem("token");
 
   return (
     <nav className="nav-bar white mb-0">
       <div className="nav-innerContainer font-clr">
-        <NavLink to="/">
+        <NavLink className="navlink-custom-style" to="/">
           <h2 className="nav-heading mr-4 font-resize">Plant.</h2>
         </NavLink>
       </div>
@@ -25,11 +25,29 @@ function Navbar() {
 
       <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
         <div className="flex-col-center">
+          <NavLink className="font-clr" to="/" exact="true">
+            <i class="fa-solid fa-house-chimney"></i>
+          </NavLink>
+          <small>Home</small>
+        </div>
+
+        <div className="flex-col-center">
+          <NavLink className="font-clr" to="/login" exact="true">
+            <i className="fa-solid fa-user"></i>
+          </NavLink>
+
+          <small>Profile</small>
+        </div>
+
+        <div className="flex-col-center">
           {token ? (
             <NavLink className="font-clr" to="/wishlist" exact="true">
-              <div class="badge-container">
+              <div className="badge-container">
                 <i className="fa-solid fa-heart f-size-large"></i>
-                <span class="badge notification-right-badge badge-lg"> {wishlistProducts?.length} </span>
+                <span className="badge notification-right-badge badge-lg">
+                  {" "}
+                  {wishlistProducts?.length}{" "}
+                </span>
               </div>
             </NavLink>
           ) : (
@@ -46,7 +64,9 @@ function Navbar() {
             <NavLink className="font-clr nav-icon" to="/cart" exact="true">
               <div class="badge-container">
                 <i className="fa-solid fa-cart-shopping f-size-large"></i>
-                <span class="badge notification-right-badge badge-lg">{cartProducts?.length}</span>
+                <span class="badge notification-right-badge badge-lg">
+                  {cartProducts?.length}
+                </span>
               </div>
             </NavLink>
           ) : (
@@ -56,14 +76,6 @@ function Navbar() {
           )}
 
           <small>Cart</small>
-        </div>
-
-        <div className="flex-col-center">
-          <NavLink className="font-clr" to="/login" exact="true">
-            <i className="fa-solid fa-user"></i>
-          </NavLink>
-
-          <small>Profile</small>
         </div>
 
         <NavLink to="/login">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Navbar } from "../../../components/index";
 import axios from "axios";
 
@@ -11,6 +11,8 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   function handleSignup() {
     const userData = {
@@ -25,6 +27,7 @@ function Signup() {
           "token",
           JSON.stringify(response.data.encodedToken)
         );
+        navigate("/");
       } catch (error) {
         console.log(error);
       }
@@ -166,7 +169,7 @@ function Signup() {
           </div>
 
           <div className="inp-container t-align-center mb-2">
-            <NavLink to="/cart">
+            <NavLink to="/login">
               <small className="create_acc_link">Already have an account</small>
             </NavLink>
           </div>

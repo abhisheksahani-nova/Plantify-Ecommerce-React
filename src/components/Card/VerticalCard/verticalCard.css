@@ -25,6 +25,6 @@
   color: var(--custom-sec-clr);
 }
 
-.verticalcard-wishlist-icon-select-clr{
- color: red; 
+.verticalcard-wishlist-icon-select-clr {
+  color: var(--red);
 }
