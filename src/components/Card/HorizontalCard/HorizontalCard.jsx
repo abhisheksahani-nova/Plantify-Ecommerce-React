@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useCart } from "../../../context/cart-context";
+import { useWishlist } from "../../../context/wishlist-context";
 
 function HorizontalCard({ product }) {
   const { _id, title, plantType, img, price, qty } = product;
+  const { setWishlistProducts } = useWishlist();
   const { setCartProducts } = useCart();
 
   const token = localStorage.getItem("token");
@@ -56,6 +58,23 @@ function HorizontalCard({ product }) {
     }
   };
 
+  const handleMoveToWishlist = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        { product },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      setWishlistProducts(response.data.wishlist);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
       <div className="Card-horizontalImage-text">
@@ -98,7 +117,10 @@ function HorizontalCard({ product }) {
             >
               Remove from Cart
             </button>
-            <button className="btn btn-text-icon cart_card_outlinebtn">
+            <button
+              className="btn btn-text-icon cart_card_outlinebtn"
+              onClick={() => handleMoveToWishlist(product)}
+            >
               Move to Wishlist
             </button>
           </div>

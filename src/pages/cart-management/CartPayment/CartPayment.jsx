@@ -1,15 +1,13 @@
 import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
-import { useEffect } from "react";
 
 function CartPayment() {
   const { cartProducts } = useCart();
 
   const cartPrice = cartProducts.reduce(
-    (acc, product) => acc + product.price,
+    (acc, product) => acc + product.price * product.qty,
     0
   );
-  console.log(cartPrice);
   const discount = cartPrice - cartPrice / 2;
   const paymentPrice = cartPrice - discount;
   const savedPrice = cartPrice - paymentPrice;
@@ -26,12 +24,12 @@ function CartPayment() {
 
       <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex">
         <p>Discount</p>
-        <p>− ₹{discount ? discount : 0} </p>
+        <p> ₹{discount ? discount : 0} </p>
       </div>
 
       <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex">
         <p>Coupons for you</p>
-        <p>− ₹0</p>
+        <p> ₹0</p>
       </div>
 
       <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex b-bottom1">

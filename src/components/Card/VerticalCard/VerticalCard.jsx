@@ -14,7 +14,7 @@ function VerticalCard({ product }) {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const handleAddToCart = async (product, token) => {
+  const handleAddToCart = async (product) => {
     try {
       const response = await axios.post(
         "/api/user/cart",
@@ -96,7 +96,7 @@ function VerticalCard({ product }) {
         {!addToCart ? (
           <button
             className="btn custom_btn"
-            onClick={() => handleAddToCart(product, token)}
+            onClick={() => handleAddToCart(product)}
           >
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
