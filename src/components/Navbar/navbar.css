@@ -1,0 +1,20 @@
+.nav-width-reset {
+  width: 23rem;
+}
+
+.nav-auth-btn-style {
+  background-color: var(--secondary-clr);
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.f-size-large {
+  font-size: large;
+}
+
+.navlink-custom-style {
+  text-decoration: none;
+  color: var(--secondary-clr);
+}

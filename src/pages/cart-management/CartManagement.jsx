@@ -3,8 +3,11 @@ import CartPayment from "./CartPayment/CartPayment";
 import "./cartManagement.css";
 import "../landing-page/landingPage.css";
 import "../product-listing/productListing.css";
+import { useCart } from "../../context/cart-context";
 
 function CartManagement() {
+  const { cartProducts } = useCart();
+
   return (
     <div className="homepage_main_container">
       <Navbar />
@@ -12,15 +15,15 @@ function CartManagement() {
       {/* <!-- hero banner image--> */}
       <section className="productlisting_banner_container"></section>
 
-      <h2 className="cart_page_title">My Cart (3)</h2>
+      <h2 className="cart_page_title">My Cart ({cartProducts.length})</h2>
 
       <section className="cart_container d-flex productlisting_main_content_container">
         {/* <!-- Product items container --> */}
 
         <div className="cart_products_container d-flex">
-          <HorizontalCard />
-          <HorizontalCard />
-          <HorizontalCard />
+          {cartProducts.map((product) => {
+            return <HorizontalCard key={product._id} product={product} />;
+          })}
         </div>
 
         {/* <!-- Payment details card container --> */}
