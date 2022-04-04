@@ -3,10 +3,10 @@ import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
 import axios from "axios";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function VerticalCard({ product }) {
-  const { setCartProducts } = useCart();
+  const { cartProducts, setCartProducts } = useCart();
   const { wishlistProducts, setWishlistProducts } = useWishlist();
   const { _id, title, plantType, img, price, rating } = product;
   const [addToCart, setAddToCart] = useState(false);
@@ -14,7 +14,7 @@ function VerticalCard({ product }) {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const handleAddToCart = async (product) => {
+  const addProductToCart = async (product) => {
     try {
       const response = await axios.post(
         "/api/user/cart",
@@ -26,13 +26,12 @@ function VerticalCard({ product }) {
         }
       );
       setCartProducts(response.data.cart);
-      setAddToCart(true);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleMoveToWishlist = async (product) => {
+  const moveProductToWishlist = async (product) => {
     try {
       const response = await axios.post(
         "/api/user/wishlist",
@@ -49,7 +48,7 @@ function VerticalCard({ product }) {
     }
   };
 
-  const handleRemoveFromWishlist = async (id) => {
+  const removeProductFromWishlist = async (id) => {
     try {
       const response = await axios.delete(`/api/user/wishlist/${id}`, {
         headers: {
@@ -62,21 +61,31 @@ function VerticalCard({ product }) {
     }
   };
 
+  function handleAddToCart(product) {
+
+    if(cartProducts.find(product => product._id == _id )){
+      setAddToCart(true)
+    }else{
+      addProductToCart(product);
+      setAddToCart(true);
+    }
+  }
+
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
-        <img className="card-img" src={img} alt="plant" />
+        <img className="card-img" src={img} alt={title} />
         <span className="card-withBadge">New</span>
 
         {wishlistProducts.find((item) => item._id == _id) ? (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-select-clr"
-            onClick={() => handleRemoveFromWishlist(_id)}
+            onClick={() => removeProductFromWishlist(_id)}
           ></i>
         ) : (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
-            onClick={() => handleMoveToWishlist(product)}
+            onClick={() => moveProductToWishlist(product)}
           ></i>
         )}
 
@@ -104,7 +113,7 @@ function VerticalCard({ product }) {
             Add to Cart
           </button>
         ) : (
-          <button className="btn custom_btn" onClick={() => navigate("/cart")} >
+          <button className="btn custom_btn" onClick={() => navigate("/cart")}>
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
             </span>

@@ -16,10 +16,9 @@ function ProductListing() {
 
   useEffect(() => {
     if (category == "INDOOR_PLANTS") {
-      dispatch({ type: category });
-
+      dispatch({ type: "FILTER_BY_CATEGORY", payload: "Indoor Plant" });
     } else if (category == "OUTDOOR_PLANTS") {
-      dispatch({ type: category });
+      dispatch({ type: "FILTER_BY_CATEGORY", payload: "Outdoor Plant" });
     }
   }, []);
 

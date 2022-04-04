@@ -9,7 +9,7 @@ function HorizontalCard({ product }) {
 
   const token = localStorage.getItem("token");
 
-  const handleRemoveFromCart = async (id) => {
+  const removeProductFromCart = async (id) => {
     try {
       const response = await axios.delete(`/api/user/cart/${id}`, {
         headers: {
@@ -22,7 +22,7 @@ function HorizontalCard({ product }) {
     }
   };
 
-  const handleProductQtyIncrement = async (id) => {
+  const productQtyIncrement = async (id) => {
     try {
       const response = await axios.post(
         `/api/user/cart/${id}`,
@@ -40,7 +40,7 @@ function HorizontalCard({ product }) {
     }
   };
 
-  const handleProductQtyDecrement = async (id) => {
+  const productQtyDecrement = async (id) => {
     try {
       const response = await axios.post(
         `/api/user/cart/${id}`,
@@ -58,7 +58,7 @@ function HorizontalCard({ product }) {
     }
   };
 
-  const handleMoveToWishlist = async (product) => {
+  const moveProductToWishlist = async (product) => {
     try {
       const response = await axios.post(
         "/api/user/wishlist",
@@ -75,17 +75,23 @@ function HorizontalCard({ product }) {
     }
   };
 
+  function handleProductQtyDecrement(_id) {
+    if (qty >= 1) {
+      productQtyDecrement(_id);
+    }
+  }
+
   return (
     <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
       <div className="Card-horizontalImage-text">
         <img
           className="card-img Card-horizontalImage-text-img Card-horizontalImage-text-img-Ecommerce cart_card_imgresize"
           src={img}
-          alt="plant"
+          alt={title}
         />
         <i
           className="fa-solid fa-xmark cart_card_closeicon"
-          onClick={() => handleRemoveFromCart(_id)}
+          onClick={() => removeProductFromCart(_id)}
         ></i>
 
         <div className="ml-2 cart_card_content">
@@ -97,13 +103,14 @@ function HorizontalCard({ product }) {
             <small>Quantity :</small>
             <button
               className="btn cart_card_outlinebtn customstyle_btn"
-              onClick={() => handleProductQtyIncrement(_id)}
+              onClick={() => productQtyIncrement(_id)}
             >
               +
             </button>
             <input className="cart_card_quantity_inp" type="text" value={qty} />
             <button
               className="btn cart_card_outlinebtn customstyle_btn"
+              disabled={qty <= 1 ? true : false}
               onClick={() => handleProductQtyDecrement(_id)}
             >
               -
@@ -113,13 +120,13 @@ function HorizontalCard({ product }) {
           <div className="d-flex mt-2 cart_card_btncontainer mb-2">
             <button
               className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1"
-              onClick={() => handleRemoveFromCart(_id)}
+              onClick={() => removeProductFromCart(_id)}
             >
               Remove from Cart
             </button>
             <button
               className="btn btn-text-icon cart_card_outlinebtn"
-              onClick={() => handleMoveToWishlist(product)}
+              onClick={() => moveProductToWishlist(product)}
             >
               Move to Wishlist
             </button>
