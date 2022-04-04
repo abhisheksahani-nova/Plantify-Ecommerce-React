@@ -18,8 +18,10 @@ function Filter({ state, dispatch }) {
         <div className="products_sidebar_inputbox">
           <input
             type="checkbox"
-            onClick={() => dispatch({ type: "INDOOR_PLANTS" })}
-            checked={state.indoorPlants}
+            onClick={() =>
+              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Indoor Plant" })
+            }
+            checked={state.category.includes("Indoor Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
             Indoor Plants
@@ -29,8 +31,10 @@ function Filter({ state, dispatch }) {
         <div className="products_sidebar_inputbox">
           <input
             type="checkbox"
-            onClick={() => dispatch({ type: "OUTDOOR_PLANTS" })}
-            checked={state.outdoorPlants}
+            onClick={() =>
+              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Outdoor Plant" })
+            }
+            checked={state.category.includes("Outdoor Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
             Outdoor Plants
@@ -40,44 +44,13 @@ function Filter({ state, dispatch }) {
         <div className="products_sidebar_inputbox">
           <input
             type="checkbox"
-            onClick={() => dispatch({ type: "OFFICE_PLANTS" })}
-            checked={state.officePlants}
+            onClick={() =>
+              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Office Plant" })
+            }
+            checked={state.category.includes("Office Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
             Office Plants
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "SUCCULENT_PLANTS" })}
-            checked={state.succulentPlants}
-          />
-          <label className="ml-1 products_filter_labelsize">
-            Succulent Plants
-          </label>
-        </div>
-
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "FLOWERING_PLANTS" })}
-            checked={state.floweringPlants}
-          />
-          <label className="ml-1 products_filter_labelsize">
-            Flowering Plants
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "EVERGREEN_PLANTS" })}
-            checked={state.evergreenPlants}
-          />
-          <label className="ml-1 products_filter_labelsize">
-            Evergreen Plants
           </label>
         </div>
       </div>
