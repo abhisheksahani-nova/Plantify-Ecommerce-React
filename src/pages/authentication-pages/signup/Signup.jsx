@@ -10,6 +10,9 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+  const [passwordInputType, setPasswordInputType] = useState("password");
+  const [confirmPasswordInputType, setConfirmPasswordInputType] =
+    useState("password");
 
   const navigate = useNavigate();
 
@@ -94,11 +97,12 @@ function Signup() {
             </div>
           </div>
 
-          <div className="inp-container mb-1">
+          <div className="inp-container mb-1 p-relative">
             <label className="inp-label d-block inp-label-required login_inp_label_resize">
               Password
             </label>
             <input
+              type={passwordInputType}
               className="inp login_inp_resize"
               id="inp-password"
               placeholder="Enter password"
@@ -110,6 +114,18 @@ function Signup() {
                 })
               }
             />
+
+            {passwordInputType == "password" ? (
+              <i
+                className="fa-solid fa-eye login-inp-icon"
+                onClick={() => setPasswordInputType("text")}
+              ></i>
+            ) : (
+              <i
+                className="fa-solid fa-eye-slash login-inp-icon"
+                onClick={() => setPasswordInputType("password")}
+              ></i>
+            )}
 
             <div className="err-msg-container d-none">
               <span>
@@ -124,6 +140,7 @@ function Signup() {
               Confirm Password
             </label>
             <input
+              type={confirmPasswordInputType}
               className="inp login_inp_resize"
               id="inp-email"
               placeholder="Enter your password again"
@@ -135,6 +152,17 @@ function Signup() {
                 })
               }
             />
+            {confirmPasswordInputType == "password" ? (
+              <i
+                className="fa-solid fa-eye login-inp-icon"
+                onClick={() => setConfirmPasswordInputType("text")}
+              ></i>
+            ) : (
+              <i
+                className="fa-solid fa-eye-slash login-inp-icon"
+                onClick={() => setConfirmPasswordInputType("password")}
+              ></i>
+            )}
           </div>
 
           <div className="inp-container mb-1">

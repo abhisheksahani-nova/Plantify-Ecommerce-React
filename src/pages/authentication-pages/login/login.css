@@ -29,3 +29,9 @@
 .login_inp_label_resize {
   font-size: 0.95rem;
 }
+
+.login-inp-icon {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 3rem;
+}
