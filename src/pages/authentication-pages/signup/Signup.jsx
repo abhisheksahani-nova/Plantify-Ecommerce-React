@@ -22,10 +22,7 @@ function Signup() {
     (async () => {
       try {
         const response = await axios.post("/api/auth/signup", userData);
-        localStorage.setItem(
-          "token",
-          JSON.stringify(response.data.encodedToken)
-        );
+        localStorage.setItem("token", response.data.encodedToken);
         navigate("/");
       } catch (error) {
         console.log(error);

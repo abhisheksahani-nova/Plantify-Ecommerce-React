@@ -1,72 +1,24 @@
 import "./verticalCard.css";
 import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function VerticalCard({ product }) {
-  const { cartProducts, setCartProducts } = useCart();
-  const { wishlistProducts, setWishlistProducts } = useWishlist();
+  const { cartProducts, addProductToCart } = useCart();
+  const { wishlistProducts, moveProductToWishlist, removeProductFromWishlist } =
+    useWishlist();
   const { _id, title, plantType, img, price, rating } = product;
   const [addToCart, setAddToCart] = useState(false);
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const addProductToCart = async (product) => {
-    try {
-      const response = await axios.post(
-        "/api/user/cart",
-        { product },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setCartProducts(response.data.cart);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const moveProductToWishlist = async (product) => {
-    try {
-      const response = await axios.post(
-        "/api/user/wishlist",
-        { product },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setWishlistProducts(response.data.wishlist);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const removeProductFromWishlist = async (id) => {
-    try {
-      const response = await axios.delete(`/api/user/wishlist/${id}`, {
-        headers: {
-          authorization: token,
-        },
-      });
-      setWishlistProducts(response.data.wishlist);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  function handleAddToCart(product) {
-
-    if(cartProducts.find(product => product._id == _id )){
-      setAddToCart(true)
-    }else{
-      addProductToCart(product);
+  function handleAddToCart(product, token) {
+    if (cartProducts.find((product) => product._id == _id)) {
+      setAddToCart(true);
+    } else {
+      addProductToCart(product, token);
       setAddToCart(true);
     }
   }
@@ -80,12 +32,12 @@ function VerticalCard({ product }) {
         {wishlistProducts.find((item) => item._id == _id) ? (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-select-clr"
-            onClick={() => removeProductFromWishlist(_id)}
+            onClick={() => removeProductFromWishlist(_id, token)}
           ></i>
         ) : (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
-            onClick={() => moveProductToWishlist(product)}
+            onClick={() => moveProductToWishlist(product, token)}
           ></i>
         )}
 
@@ -105,7 +57,7 @@ function VerticalCard({ product }) {
         {!addToCart ? (
           <button
             className="btn custom_btn"
-            onClick={() => handleAddToCart(product)}
+            onClick={() => handleAddToCart(product, token)}
           >
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
