@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Navbar } from "../../../components/index";
 import axios from "axios";
 
 function Signup() {
@@ -36,7 +35,6 @@ function Signup() {
 
   return (
     <>
-      <Navbar />
       <section className="login_form_container d-flex">
         <div className="card-basic login_form">
           <h2 className="t-align-center mt-2 mb-2">Signup</h2>
