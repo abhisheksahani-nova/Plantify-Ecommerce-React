@@ -8,7 +8,7 @@ function VerticalCard({ product }) {
   const { cartProducts, addProductToCart } = useCart();
   const { wishlistProducts, moveProductToWishlist, removeProductFromWishlist } =
     useWishlist();
-  const { _id, title, plantType, img, price, rating } = product;
+  const { _id, title, plantType, img, price, rating, categoryName } = product;
   const [addToCart, setAddToCart] = useState(false);
 
   const token = localStorage.getItem("token");
@@ -41,14 +41,15 @@ function VerticalCard({ product }) {
           ></i>
         )}
 
-        <div className="">
+        <div>
           <h3 className="card-heading pri_clr"> {title} </h3>
           <small className="card-subHeading">
             {" "}
-            {plantType}: {rating}
+            {plantType} : {rating}
             <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
           </small>
         </div>
+        <small className="card-subHeading">{categoryName}</small>
 
         <p className="card-description text-bold pri_clr">₹ {price}</p>
       </div>
