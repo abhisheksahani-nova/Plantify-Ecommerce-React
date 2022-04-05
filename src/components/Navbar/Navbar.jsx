@@ -18,7 +18,7 @@ function Navbar() {
     <nav className="nav-bar white mb-0">
       <div className="nav-innerContainer font-clr">
         <NavLink className="navlink-custom-style" to="/">
-          <h2 className="nav-heading mr-4 font-resize">Plant.</h2>
+          <h2 className="nav-heading mr-1 font-resize">Plantify.</h2>
         </NavLink>
       </div>
 

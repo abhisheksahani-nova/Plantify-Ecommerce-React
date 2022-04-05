@@ -40,10 +40,6 @@ function ProductListing() {
         </div>
       </section>
 
-      <div className="horizontal_rule_container">
-        <hr className="horizontal_rule" />
-      </div>
-
       <Footer />
     </div>
   );

@@ -3,7 +3,7 @@ import { useWishlist } from "../../../context/wishlist-context";
 
 function HorizontalCard({ product }) {
   const { _id, title, plantType, img, price, qty } = product;
-  const { moveProductToWishlist } = useWishlist();
+  const { wishlistProducts, moveProductToWishlist } = useWishlist();
   const { removeProductFromCart, productQtyIncrement, productQtyDecrement } =
     useCart();
 
@@ -12,6 +12,12 @@ function HorizontalCard({ product }) {
   function handleProductQtyDecrement(_id, token) {
     if (qty >= 1) {
       productQtyDecrement(_id, token);
+    }
+  }
+
+  function handleMoveProductToWishlist(product, token) {
+    if (!wishlistProducts.find((product) => product._id == _id)) {
+      moveProductToWishlist(product, token);
     }
   }
 
@@ -60,7 +66,7 @@ function HorizontalCard({ product }) {
             </button>
             <button
               className="btn btn-text-icon cart_card_outlinebtn"
-              onClick={() => moveProductToWishlist(product, token)}
+              onClick={() => handleMoveProductToWishlist(product, token)}
             >
               Move to Wishlist
             </button>

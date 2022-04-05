@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function VerticalCard({ product }) {
-  const { cartProducts, addProductToCart } = useCart();
+  const { cartProducts, addProductToCart, productQtyIncrement } = useCart();
   const { wishlistProducts, moveProductToWishlist, removeProductFromWishlist } =
     useWishlist();
   const { _id, title, plantType, img, price, rating, categoryName } = product;
@@ -14,8 +14,9 @@ function VerticalCard({ product }) {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  function handleAddToCart(product, token) {
+  function handleAddToCart(product, id, token) {
     if (cartProducts.find((product) => product._id == _id)) {
+      productQtyIncrement(id, token);
       setAddToCart(true);
     } else {
       addProductToCart(product, token);
@@ -58,7 +59,7 @@ function VerticalCard({ product }) {
         {!addToCart ? (
           <button
             className="btn custom_btn"
-            onClick={() => handleAddToCart(product, token)}
+            onClick={() => handleAddToCart(product, _id, token)}
           >
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
