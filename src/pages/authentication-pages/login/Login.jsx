@@ -8,6 +8,7 @@ function Login() {
     email: "",
     password: "",
   });
+  const [passwordInputType, setPasswordInputType] = useState("password");
 
   const navigate = useNavigate();
 
@@ -15,10 +16,7 @@ function Login() {
     (async () => {
       try {
         const response = await axios.post("/api/auth/login", userLoginData);
-        localStorage.setItem(
-          "token",
-          JSON.stringify(response.data.encodedToken)
-        );
+        localStorage.setItem("token", response.data.encodedToken);
         navigate("/");
       } catch (error) {
         console.log(error);
@@ -57,6 +55,7 @@ function Login() {
             Password
           </label>
           <input
+            type={passwordInputType}
             className="inp login_inp_resize"
             id="inp-password"
             placeholder="Enter your password"
@@ -65,6 +64,18 @@ function Login() {
               setUserLoginData({ ...userLoginData, password: e.target.value })
             }
           />
+
+          {passwordInputType == "password" ? (
+            <i
+              className="fa-solid fa-eye login-inp-icon"
+              onClick={() => setPasswordInputType("text")}
+            ></i>
+          ) : (
+            <i
+              className="fa-solid fa-eye-slash login-inp-icon"
+              onClick={() => setPasswordInputType("password")}
+            ></i>
+          )}
 
           <div className="err-msg-container d-none">
             <span>

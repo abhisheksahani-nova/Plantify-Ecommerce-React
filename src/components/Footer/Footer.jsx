@@ -1,48 +1,29 @@
 import "./footer.css";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
     <footer>
       <ul className="footer_list_items">
         <li>
-          <a className="mr-1 footer_link inherit-clr" href="/about">
-            About Us
-          </a>
+          <NavLink className="mr-1 inherit-clr" to="/">
+            Home
+          </NavLink>
         </li>
         <li>
-          <a className="mr-1 ml-1 inherit-clr" href="/customer-service">
-            Customer Service
-          </a>
+          <NavLink className="mr-1 ml-1 inherit-clr" to="/products">
+            Products
+          </NavLink>
         </li>
         <li>
-          <a className="mr-1 ml-1 inherit-clr" href="/subscription">
-            Subscription
-          </a>
+          <NavLink className="mr-1 ml-1 inherit-clr" to="/cart">
+            Cart
+          </NavLink>
         </li>
         <li>
-          <a className="mr-1 ml-1 inherit-clr" href="/contact-us">
-            Contact Us
-          </a>
-        </li>
-        <li>
-          <a className="mr-1 ml-1 inherit-clr" href="/category">
-            Category
-          </a>
-        </li>
-        <li>
-          <a className="mr-1 ml-1 inherit-clr" href="./productListing.html">
-            All Product
-          </a>
-        </li>
-        <li>
-          <a className="mr-1 ml-1 inherit-clr" href="./cartManagement.html">
-            My Cart
-          </a>
-        </li>
-        <li>
-          <a className="mr-1 ml-1 inherit-clr" href="./wishlist.html">
-            My Wishlist
-          </a>
+          <NavLink className="mr-1 ml-1 inherit-clr" to="/wishlist">
+            Wishlist
+          </NavLink>
         </li>
       </ul>
     </footer>

@@ -1,93 +1,56 @@
 import "./verticalCard.css";
 import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
-import axios from "axios";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function VerticalCard({ product }) {
-  const { setCartProducts } = useCart();
-  const { wishlistProducts, setWishlistProducts } = useWishlist();
-  const { _id, title, plantType, img, price, rating } = product;
+  const { cartProducts, addProductToCart, productQtyIncrement } = useCart();
+  const { wishlistProducts, moveProductToWishlist, removeProductFromWishlist } =
+    useWishlist();
+  const { _id, title, plantType, img, price, rating, categoryName } = product;
   const [addToCart, setAddToCart] = useState(false);
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const handleAddToCart = async (product) => {
-    try {
-      const response = await axios.post(
-        "/api/user/cart",
-        { product },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setCartProducts(response.data.cart);
+  function handleAddToCart(product, id, token) {
+    if (cartProducts.find((product) => product._id == _id)) {
+      productQtyIncrement(id, token);
       setAddToCart(true);
-    } catch (error) {
-      console.log(error);
+    } else {
+      addProductToCart(product, token);
+      setAddToCart(true);
     }
-  };
-
-  const handleMoveToWishlist = async (product) => {
-    try {
-      const response = await axios.post(
-        "/api/user/wishlist",
-        { product },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setWishlistProducts(response.data.wishlist);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleRemoveFromWishlist = async (id) => {
-    try {
-      const response = await axios.delete(`/api/user/wishlist/${id}`, {
-        headers: {
-          authorization: token,
-        },
-      });
-      setWishlistProducts(response.data.wishlist);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }
 
   return (
     <div className="card-basic card_custom_width">
       <div className="badge-container">
-        <img className="card-img" src={img} alt="plant" />
+        <img className="card-img" src={img} alt={title} />
         <span className="card-withBadge">New</span>
 
         {wishlistProducts.find((item) => item._id == _id) ? (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-select-clr"
-            onClick={() => handleRemoveFromWishlist(_id)}
+            onClick={() => removeProductFromWishlist(_id, token)}
           ></i>
         ) : (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
-            onClick={() => handleMoveToWishlist(product)}
+            onClick={() => moveProductToWishlist(product, token)}
           ></i>
         )}
 
-        <div className="">
+        <div>
           <h3 className="card-heading pri_clr"> {title} </h3>
           <small className="card-subHeading">
             {" "}
-            {plantType}: {rating}
+            {plantType} : {rating}
             <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
           </small>
         </div>
+        <small className="card-subHeading">{categoryName}</small>
 
         <p className="card-description text-bold pri_clr">₹ {price}</p>
       </div>
@@ -96,7 +59,7 @@ function VerticalCard({ product }) {
         {!addToCart ? (
           <button
             className="btn custom_btn"
-            onClick={() => handleAddToCart(product)}
+            onClick={() => handleAddToCart(product, _id, token)}
           >
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
@@ -104,7 +67,7 @@ function VerticalCard({ product }) {
             Add to Cart
           </button>
         ) : (
-          <button className="btn custom_btn" onClick={() => navigate("/cart")} >
+          <button className="btn custom_btn" onClick={() => navigate("/cart")}>
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
             </span>

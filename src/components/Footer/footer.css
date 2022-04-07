@@ -3,5 +3,7 @@
   align-items: center;
   justify-content: center;
   list-style-type: none;
-  margin: 3rem 0;
+  padding: 4rem 0;
+  background-color: var(--plant-pri-clr);
+  color: var(--light-clr);
 }

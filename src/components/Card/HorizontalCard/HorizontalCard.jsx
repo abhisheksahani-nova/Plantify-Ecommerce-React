@@ -1,79 +1,25 @@
-import axios from "axios";
 import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
 
 function HorizontalCard({ product }) {
   const { _id, title, plantType, img, price, qty } = product;
-  const { setWishlistProducts } = useWishlist();
-  const { setCartProducts } = useCart();
+  const { wishlistProducts, moveProductToWishlist } = useWishlist();
+  const { removeProductFromCart, productQtyIncrement, productQtyDecrement } =
+    useCart();
 
   const token = localStorage.getItem("token");
 
-  const handleRemoveFromCart = async (id) => {
-    try {
-      const response = await axios.delete(`/api/user/cart/${id}`, {
-        headers: {
-          authorization: token,
-        },
-      });
-      setCartProducts(response.data.cart);
-    } catch (error) {
-      console.log(error);
+  function handleProductQtyDecrement(_id, token) {
+    if (qty >= 1) {
+      productQtyDecrement(_id, token);
     }
-  };
+  }
 
-  const handleProductQtyIncrement = async (id) => {
-    try {
-      const response = await axios.post(
-        `/api/user/cart/${id}`,
-        { action: { type: "increment" } },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-
-      setCartProducts(response.data.cart);
-    } catch (error) {
-      console.log(error);
+  function handleMoveProductToWishlist(product, token) {
+    if (!wishlistProducts.find((product) => product._id == _id)) {
+      moveProductToWishlist(product, token);
     }
-  };
-
-  const handleProductQtyDecrement = async (id) => {
-    try {
-      const response = await axios.post(
-        `/api/user/cart/${id}`,
-        { action: { type: "decrement" } },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-
-      setCartProducts(response.data.cart);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleMoveToWishlist = async (product) => {
-    try {
-      const response = await axios.post(
-        "/api/user/wishlist",
-        { product },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setWishlistProducts(response.data.wishlist);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }
 
   return (
     <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
@@ -81,11 +27,11 @@ function HorizontalCard({ product }) {
         <img
           className="card-img Card-horizontalImage-text-img Card-horizontalImage-text-img-Ecommerce cart_card_imgresize"
           src={img}
-          alt="plant"
+          alt={title}
         />
         <i
           className="fa-solid fa-xmark cart_card_closeicon"
-          onClick={() => handleRemoveFromCart(_id)}
+          onClick={() => removeProductFromCart(_id, token)}
         ></i>
 
         <div className="ml-2 cart_card_content">
@@ -97,14 +43,15 @@ function HorizontalCard({ product }) {
             <small>Quantity :</small>
             <button
               className="btn cart_card_outlinebtn customstyle_btn"
-              onClick={() => handleProductQtyIncrement(_id)}
+              onClick={() => productQtyIncrement(_id, token)}
             >
               +
             </button>
             <input className="cart_card_quantity_inp" type="text" value={qty} />
             <button
               className="btn cart_card_outlinebtn customstyle_btn"
-              onClick={() => handleProductQtyDecrement(_id)}
+              disabled={qty <= 1 ? true : false}
+              onClick={() => handleProductQtyDecrement(_id, token)}
             >
               -
             </button>
@@ -113,13 +60,13 @@ function HorizontalCard({ product }) {
           <div className="d-flex mt-2 cart_card_btncontainer mb-2">
             <button
               className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1"
-              onClick={() => handleRemoveFromCart(_id)}
+              onClick={() => removeProductFromCart(_id, token)}
             >
               Remove from Cart
             </button>
             <button
               className="btn btn-text-icon cart_card_outlinebtn"
-              onClick={() => handleMoveToWishlist(product)}
+              onClick={() => handleMoveProductToWishlist(product, token)}
             >
               Move to Wishlist
             </button>

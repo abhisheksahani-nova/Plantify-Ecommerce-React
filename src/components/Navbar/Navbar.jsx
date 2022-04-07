@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
@@ -7,12 +7,18 @@ function Navbar() {
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    navigate("/");
+  }
 
   return (
     <nav className="nav-bar white mb-0">
       <div className="nav-innerContainer font-clr">
         <NavLink className="navlink-custom-style" to="/">
-          <h2 className="nav-heading mr-4 font-resize">Plant.</h2>
+          <h2 className="nav-heading mr-1 font-resize">Plantify.</h2>
         </NavLink>
       </div>
 
@@ -32,21 +38,12 @@ function Navbar() {
         </div>
 
         <div className="flex-col-center">
-          <NavLink className="font-clr" to="/login" exact="true">
-            <i className="fa-solid fa-user"></i>
-          </NavLink>
-
-          <small>Profile</small>
-        </div>
-
-        <div className="flex-col-center">
           {token ? (
             <NavLink className="font-clr" to="/wishlist" exact="true">
               <div className="badge-container">
                 <i className="fa-solid fa-heart f-size-large"></i>
                 <span className="badge notification-right-badge badge-lg">
-                  {" "}
-                  {wishlistProducts?.length}{" "}
+                  {wishlistProducts?.length}
                 </span>
               </div>
             </NavLink>
@@ -78,9 +75,18 @@ function Navbar() {
           <small>Cart</small>
         </div>
 
-        <NavLink to="/login">
-          <button className="btn nav-auth-btn-style">Login</button>
-        </NavLink>
+        {token ? (
+          <button
+            className="btn nav-auth-btn-style"
+            onClick={() => handleLogout()}
+          >
+            Logout
+          </button>
+        ) : (
+          <NavLink to="/login">
+            <button className="btn nav-auth-btn-style">Login</button>
+          </NavLink>
+        )}
       </div>
     </nav>
   );
