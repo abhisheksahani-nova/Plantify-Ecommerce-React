@@ -8,6 +8,7 @@ import { ProductsProvider } from "./context/products-context";
 import { CartProvider } from "./context/cart-context";
 import { WishlistProvider } from "./context/wishlist-context";
 import { CategoryProvider } from "./context/category-context";
+import { ThemeProvider } from "./context/theme-context";
 
 // Call make Server
 makeServer();
@@ -15,15 +16,17 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CartProvider>
-        <WishlistProvider>
-          <ProductsProvider>
-            <CategoryProvider>
-              <App />
-            </CategoryProvider>
-          </ProductsProvider>
-        </WishlistProvider>
-      </CartProvider>
+      <ThemeProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <ProductsProvider>
+              <CategoryProvider>
+                <App />
+              </CategoryProvider>
+            </ProductsProvider>
+          </WishlistProvider>
+        </CartProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
