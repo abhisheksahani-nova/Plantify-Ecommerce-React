@@ -18,7 +18,11 @@
 }
 
 .pri_clr {
-  color: var(--plant-sec-clr);
+  color: var(--text-sec-dark);
+}
+
+.sec_clr {
+  color: var(--text-secondary);
 }
 
 .verticalcard-wishlist-icon-clr {

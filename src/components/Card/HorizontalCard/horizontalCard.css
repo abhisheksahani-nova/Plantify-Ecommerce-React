@@ -1,0 +1,5 @@
+.cart_card_outline_btn {
+  border: 1px solid var(--text-primary);
+  color: var(--text-primary);
+  background-color: var(--background);
+}

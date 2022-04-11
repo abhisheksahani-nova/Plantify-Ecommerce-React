@@ -40,7 +40,7 @@ function Navbar() {
           {theme == "light" ? (
             <div className="flex-col-center">
               <i
-                className="fa-solid fa-moon font-clr"
+                className="fa-solid fa-moon "
                 onClick={handleThemeChange}
               ></i>
               <small>Dark</small>
@@ -48,7 +48,7 @@ function Navbar() {
           ) : (
             <div className="flex-col-center">
               <i
-                className="fa-solid fa-sun font-clr"
+                className="fa-solid fa-sun nav-icon-clr"
                 onClick={handleThemeChange}
               ></i>
               <small>Light</small>
@@ -57,7 +57,7 @@ function Navbar() {
         </div>
 
         <div className="flex-col-center">
-          <NavLink className="font-clr" to="/" exact="true">
+          <NavLink className="nav-icon-clr" to="/" exact="true">
             <i class="fa-solid fa-house-chimney"></i>
           </NavLink>
           <small>Home</small>
@@ -65,7 +65,7 @@ function Navbar() {
 
         <div className="flex-col-center">
           {token ? (
-            <NavLink className="font-clr" to="/wishlist" exact="true">
+            <NavLink className="nav-icon-clr" to="/wishlist" exact="true">
               <div className="badge-container">
                 <i className="fa-solid fa-heart f-size-large"></i>
                 <span className="badge notification-right-badge badge-lg">
@@ -74,7 +74,7 @@ function Navbar() {
               </div>
             </NavLink>
           ) : (
-            <NavLink className="font-clr" to="/login" exact="true">
+            <NavLink className="nav-icon-clr" to="/login" exact="true">
               <i className="fa-solid fa-heart"></i>
             </NavLink>
           )}
@@ -84,7 +84,7 @@ function Navbar() {
 
         <div className="flex-col-center">
           {token ? (
-            <NavLink className="font-clr nav-icon" to="/cart" exact="true">
+            <NavLink className="nav-icon-clr nav-icon" to="/cart" exact="true">
               <div class="badge-container">
                 <i className="fa-solid fa-cart-shopping f-size-large"></i>
                 <span class="badge notification-right-badge badge-lg">
@@ -93,7 +93,7 @@ function Navbar() {
               </div>
             </NavLink>
           ) : (
-            <NavLink className="font-clr nav-icon" to="/login" exact="true">
+            <NavLink className="nav-icon-clr nav-icon" to="/login" exact="true">
               <i className="fa-solid fa-cart-shopping f-size-large"></i>
             </NavLink>
           )}

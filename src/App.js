@@ -9,14 +9,18 @@ import {
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 import { useEffect } from "react";
+import "./index.css";
+import { useTheme } from "./context/theme-context";
 
 function App() {
+  const { theme } = useTheme();
+
   useEffect(() => {
     localStorage.removeItem("token");
   }, []);
 
   return (
-    <div className="App">
+    <div className="app" data-theme={theme}>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/products" element={<ProductListing />}></Route>

@@ -16,5 +16,9 @@
 
 .navlink-custom-style {
   text-decoration: none;
-  color: var(--secondary-clr);
+  color: var(--plant-sec-light-clr);
+}
+
+.nav-icon-clr {
+  color: var(--plant-sec-light-clr);
 }
