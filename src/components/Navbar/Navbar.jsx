@@ -2,16 +2,22 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { useTheme } from "../../context/theme-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
+  const { theme, setTheme } = useTheme();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("token");
     navigate("/");
+  }
+
+  function handleThemeChange() {
+    setTheme((theme) => (theme == "light" ? "dark" : "light"));
   }
 
   return (
@@ -30,6 +36,26 @@ function Navbar() {
       </div>
 
       <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
+        <div className="flex-col-center">
+          {theme == "light" ? (
+            <div className="flex-col-center">
+              <i
+                className="fa-solid fa-moon font-clr"
+                onClick={handleThemeChange}
+              ></i>
+              <small>Dark</small>
+            </div>
+          ) : (
+            <div className="flex-col-center">
+              <i
+                className="fa-solid fa-sun font-clr"
+                onClick={handleThemeChange}
+              ></i>
+              <small>Light</small>
+            </div>
+          )}
+        </div>
+
         <div className="flex-col-center">
           <NavLink className="font-clr" to="/" exact="true">
             <i class="fa-solid fa-house-chimney"></i>
