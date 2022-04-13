@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTheme } from "../../../context/theme-context";
 import axios from "axios";
 import "./login.css";
 
@@ -11,6 +12,7 @@ function Login() {
   const [passwordInputType, setPasswordInputType] = useState("password");
 
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   function handleUserLogin() {
     (async () => {
@@ -26,14 +28,16 @@ function Login() {
 
   return (
     <section className="login_form_container d-flex">
-      <div className="card-basic login_form">
+      <div className="card-basic login_form app">
         <h2 className="t-align-center mt-2 mb-2">Login</h2>
         <div className="inp-container mb-1">
-          <label className="inp-label d-block inp-label-required login_inp_label_resize">
+          <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
             Email
           </label>
           <input
-            className="inp login_inp_resize"
+            className={`inp login_inp_resize ${
+              theme == "dark" && "cart_card_outline_btn"
+            }`}
             id="inp-email"
             placeholder="Enter your email"
             value={userLoginData.email}
@@ -51,12 +55,14 @@ function Login() {
         </div>
 
         <div className="inp-container mb-1">
-          <label className="inp-label d-block inp-label-required login_inp_label_resize">
+          <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
             Password
           </label>
           <input
             type={passwordInputType}
-            className="inp login_inp_resize"
+            className={`inp login_inp_resize ${
+              theme == "dark" && "cart_card_outline_btn"
+            }`}
             id="inp-password"
             placeholder="Enter your password"
             value={userLoginData.password}
@@ -87,8 +93,14 @@ function Login() {
 
         <div className="inp-container mb-1">
           <div className="d-flex login_checkbox_inp_container">
-            <input type="checkbox" id="checkbox-termsPolicy" />
-            <label className="inp-label font-small">Remember Me</label>
+            <input
+              type="checkbox"
+              id="checkbox-termsPolicy"
+              className={`${theme == "dark" && "cart_card_outline_btn"}`}
+            />
+            <label className="inp-label font-small inherit-clr">
+              Remember Me
+            </label>
           </div>
 
           <div className="err-msg-container d-none">
@@ -110,7 +122,7 @@ function Login() {
         </div>
 
         <div className="inp-container t-align-center mb-2">
-          <NavLink to="/signup">
+          <NavLink className="t-decoration-none" to="/signup">
             <small className="create_acc_link">Create New Account</small>
           </NavLink>
         </div>

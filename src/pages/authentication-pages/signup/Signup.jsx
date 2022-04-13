@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTheme } from "../../../context/theme-context";
 import axios from "axios";
 
 function Signup() {
@@ -15,6 +16,7 @@ function Signup() {
     useState("password");
 
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   function handleSignup() {
     const userData = {
@@ -36,15 +38,17 @@ function Signup() {
   return (
     <>
       <section className="login_form_container d-flex">
-        <div className="card-basic login_form">
+        <div className="card-basic login_form app">
           <h2 className="t-align-center mt-2 mb-2">Signup</h2>
 
           <div className="inp-container mb-1">
-            <label className="inp-label d-block inp-label-required login_inp_label_resize">
+            <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
               First name
             </label>
             <input
-              className="inp login_inp_resize"
+              className={`inp login_inp_resize ${
+                theme == "dark" && "cart_card_outline_btn"
+              }`}
               id="inp-email"
               placeholder="Enter your first name"
               value={userSignupData.firstName}
@@ -58,11 +62,13 @@ function Signup() {
           </div>
 
           <div className="inp-container mb-1">
-            <label className="inp-label d-block inp-label-required login_inp_label_resize">
+            <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
               Last name
             </label>
             <input
-              className="inp login_inp_resize"
+              className={`inp login_inp_resize ${
+                theme == "dark" && "cart_card_outline_btn"
+              }`}
               id="inp-email"
               placeholder="Enter your last name"
               value={userSignupData.lastName}
@@ -76,11 +82,13 @@ function Signup() {
           </div>
 
           <div className="inp-container mb-1">
-            <label className="inp-label d-block inp-label-required login_inp_label_resize">
+            <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
               Email address
             </label>
             <input
-              className="inp login_inp_resize"
+              className={`inp login_inp_resize ${
+                theme == "dark" && "cart_card_outline_btn"
+              }`}
               id="inp-email"
               placeholder="Enter your email address"
               value={userSignupData.email}
@@ -98,12 +106,14 @@ function Signup() {
           </div>
 
           <div className="inp-container mb-1 p-relative">
-            <label className="inp-label d-block inp-label-required login_inp_label_resize">
+            <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
               Password
             </label>
             <input
               type={passwordInputType}
-              className="inp login_inp_resize"
+              className={`inp login_inp_resize ${
+                theme == "dark" && "cart_card_outline_btn"
+              }`}
               id="inp-password"
               placeholder="Enter password"
               value={userSignupData.password}
@@ -136,12 +146,14 @@ function Signup() {
           </div>
 
           <div className="inp-container mb-1">
-            <label className="inp-label d-block inp-label-required login_inp_label_resize">
+            <label className="inp-label d-block inp-label-required login_inp_label_resize inherit-clr">
               Confirm Password
             </label>
             <input
               type={confirmPasswordInputType}
-              className="inp login_inp_resize"
+              className={`inp login_inp_resize ${
+                theme == "dark" && "cart_card_outline_btn"
+              }`}
               id="inp-email"
               placeholder="Enter your password again"
               value={userSignupData.confirmPassword}
@@ -167,8 +179,12 @@ function Signup() {
 
           <div className="inp-container mb-1">
             <div className="d-flex login_checkbox_inp_container">
-              <input type="checkbox" id="checkbox-termsPolicy" />
-              <label className="inp-label inp-label-required font-small">
+              <input
+                type="checkbox"
+                id="checkbox-termsPolicy"
+                className={`${theme == "dark" && "cart_card_outline_btn"}`}
+              />
+              <label className="inp-label inp-label-required font-small inherit-clr">
                 I accept all Terms & Conditions
               </label>
             </div>
@@ -192,7 +208,7 @@ function Signup() {
           </div>
 
           <div className="inp-container t-align-center mb-2">
-            <NavLink to="/login">
+            <NavLink to="/login" className="t-decoration-none">
               <small className="create_acc_link">Already have an account</small>
             </NavLink>
           </div>
