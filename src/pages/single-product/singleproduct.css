@@ -1,0 +1,18 @@
+.singleproductpage-container {
+  width: 100%;
+  padding: 4rem;
+}
+
+.singleproductpage-img-container {
+    width: 37%;
+}
+
+.singleproductpage-info-container {
+    width: 63%;
+}
+
+.singleProduct-img {
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+}

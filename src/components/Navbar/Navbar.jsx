@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./navbar.css";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
@@ -10,6 +10,7 @@ function Navbar() {
   const { theme, setTheme } = useTheme();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const location = useLocation();
 
   function handleLogout() {
     localStorage.removeItem("token");
@@ -21,7 +22,11 @@ function Navbar() {
   }
 
   return (
-    <nav className="nav-bar white mb-0">
+    <nav
+      className={`nav-bar white mb-0 ${
+        location.pathname == "/singleproduct" && "nav-border"
+      }`}
+    >
       <div className="nav-innerContainer font-clr">
         <NavLink className="navlink-custom-style" to="/">
           <h2 className="nav-heading mr-1 font-resize">Plantify.</h2>
@@ -39,10 +44,7 @@ function Navbar() {
         <div className="flex-col-center">
           {theme == "light" ? (
             <div className="flex-col-center">
-              <i
-                className="fa-solid fa-moon "
-                onClick={handleThemeChange}
-              ></i>
+              <i className="fa-solid fa-moon " onClick={handleThemeChange}></i>
               <small>Dark</small>
             </div>
           ) : (
