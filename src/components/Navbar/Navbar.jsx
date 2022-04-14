@@ -2,16 +2,22 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { useTheme } from "../../context/theme-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
+  const { theme, setTheme } = useTheme();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("token");
     navigate("/");
+  }
+
+  function handleThemeChange() {
+    setTheme((theme) => (theme == "light" ? "dark" : "light"));
   }
 
   return (
@@ -31,7 +37,27 @@ function Navbar() {
 
       <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
         <div className="flex-col-center">
-          <NavLink className="font-clr" to="/" exact="true">
+          {theme == "light" ? (
+            <div className="flex-col-center">
+              <i
+                className="fa-solid fa-moon "
+                onClick={handleThemeChange}
+              ></i>
+              <small>Dark</small>
+            </div>
+          ) : (
+            <div className="flex-col-center">
+              <i
+                className="fa-solid fa-sun nav-icon-clr"
+                onClick={handleThemeChange}
+              ></i>
+              <small>Light</small>
+            </div>
+          )}
+        </div>
+
+        <div className="flex-col-center">
+          <NavLink className="nav-icon-clr" to="/" exact="true">
             <i class="fa-solid fa-house-chimney"></i>
           </NavLink>
           <small>Home</small>
@@ -39,7 +65,7 @@ function Navbar() {
 
         <div className="flex-col-center">
           {token ? (
-            <NavLink className="font-clr" to="/wishlist" exact="true">
+            <NavLink className="nav-icon-clr" to="/wishlist" exact="true">
               <div className="badge-container">
                 <i className="fa-solid fa-heart f-size-large"></i>
                 <span className="badge notification-right-badge badge-lg">
@@ -48,7 +74,7 @@ function Navbar() {
               </div>
             </NavLink>
           ) : (
-            <NavLink className="font-clr" to="/login" exact="true">
+            <NavLink className="nav-icon-clr" to="/login" exact="true">
               <i className="fa-solid fa-heart"></i>
             </NavLink>
           )}
@@ -58,7 +84,7 @@ function Navbar() {
 
         <div className="flex-col-center">
           {token ? (
-            <NavLink className="font-clr nav-icon" to="/cart" exact="true">
+            <NavLink className="nav-icon-clr nav-icon" to="/cart" exact="true">
               <div class="badge-container">
                 <i className="fa-solid fa-cart-shopping f-size-large"></i>
                 <span class="badge notification-right-badge badge-lg">
@@ -67,7 +93,7 @@ function Navbar() {
               </div>
             </NavLink>
           ) : (
-            <NavLink className="font-clr nav-icon" to="/login" exact="true">
+            <NavLink className="nav-icon-clr nav-icon" to="/login" exact="true">
               <i className="fa-solid fa-cart-shopping f-size-large"></i>
             </NavLink>
           )}

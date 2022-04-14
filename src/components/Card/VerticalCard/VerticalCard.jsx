@@ -25,7 +25,7 @@ function VerticalCard({ product }) {
   }
 
   return (
-    <div className="card-basic card_custom_width">
+    <div className="card-basic card_custom_width app">
       <div className="badge-container">
         <img className="card-img" src={img} alt={title} />
         <span className="card-withBadge">New</span>
@@ -44,13 +44,13 @@ function VerticalCard({ product }) {
 
         <div>
           <h3 className="card-heading pri_clr"> {title} </h3>
-          <small className="card-subHeading">
+          <small className="card-subHeading sec_clr">
             {" "}
             {plantType} : {rating}
             <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
           </small>
         </div>
-        <small className="card-subHeading">{categoryName}</small>
+        <small className="card-subHeading sec_clr">{categoryName}</small>
 
         <p className="card-description text-bold pri_clr">₹ {price}</p>
       </div>

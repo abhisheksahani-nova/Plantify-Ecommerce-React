@@ -5,4 +5,23 @@
   --plant-sec-clr: #556052;
 
   --black-clr: black;
+
+  --background: white;
+  --text-primary: var(--gray-shade2);
+  --text-secondary: var(--gray-shade3);
+  --text-sec-dark: var(--plant-sec-clr);
+  --plant-sec-light-clr: var(--secondary-clr);
+}
+
+[data-theme="dark"] {
+  --background: var(--ecommerce-btn-clr);
+  --text-primary: white;
+  --plant-sec-light-clr: white;
+  --text-secondary: white;
+  --text-sec-dark: white;
+}
+
+.app {
+  background-color: var(--background);
+  color: var(--text-primary);
 }

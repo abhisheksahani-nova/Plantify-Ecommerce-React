@@ -1,5 +1,7 @@
 import { useCart } from "../../../context/cart-context";
 import { useWishlist } from "../../../context/wishlist-context";
+import { useTheme } from "../../../context/theme-context";
+import "./horizontalCard.css";
 
 function HorizontalCard({ product }) {
   const { _id, title, plantType, img, price, qty } = product;
@@ -8,6 +10,7 @@ function HorizontalCard({ product }) {
     useCart();
 
   const token = localStorage.getItem("token");
+  const { theme } = useTheme();
 
   function handleProductQtyDecrement(_id, token) {
     if (qty >= 1) {
@@ -22,7 +25,7 @@ function HorizontalCard({ product }) {
   }
 
   return (
-    <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative">
+    <div className="card-basic Card-horizontalImage-textContainer cart_card_resize p-relative app">
       <div className="Card-horizontalImage-text">
         <img
           className="card-img Card-horizontalImage-text-img Card-horizontalImage-text-img-Ecommerce cart_card_imgresize"
@@ -35,21 +38,31 @@ function HorizontalCard({ product }) {
         ></i>
 
         <div className="ml-2 cart_card_content">
-          <h3 className="card-heading">{title}</h3>
-          <small className="card-subHeading">{plantType}</small>
-          <p className="card-description text-bold">₹ {price}</p>
+          <h3 className="card-heading pri_clr">{title}</h3>
+          <small className="card-subHeading sec_clr">{plantType}</small>
+          <p className="card-description text-bold pri_clr">₹ {price}</p>
 
           <div className="d-flex cart_card_quantitycontainer">
-            <small>Quantity :</small>
+            <small className="sec_clr">Quantity :</small>
             <button
-              className="btn cart_card_outlinebtn customstyle_btn"
+              className={`btn cart_card_outlinebtn customstyle_btn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
               onClick={() => productQtyIncrement(_id, token)}
             >
               +
             </button>
-            <input className="cart_card_quantity_inp" type="text" value={qty} />
+            <input
+              className={`cart_card_quantity_inp ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
+              type="text"
+              value={qty}
+            />
             <button
-              className="btn cart_card_outlinebtn customstyle_btn"
+              className={`btn cart_card_outlinebtn customstyle_btn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
               disabled={qty <= 1 ? true : false}
               onClick={() => handleProductQtyDecrement(_id, token)}
             >
@@ -65,7 +78,9 @@ function HorizontalCard({ product }) {
               Remove from Cart
             </button>
             <button
-              className="btn btn-text-icon cart_card_outlinebtn"
+              className={`btn btn-text-icon cart_card_outlinebtn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
               onClick={() => handleMoveProductToWishlist(product, token)}
             >
               Move to Wishlist

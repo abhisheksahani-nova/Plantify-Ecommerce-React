@@ -13,7 +13,7 @@ function CartPayment() {
   const savedPrice = cartPrice - paymentPrice;
 
   return (
-    <div className="cart_payment_receipt card-basic">
+    <div className="cart_payment_receipt card-basic app">
       <div className="b-bottom1 cart_pricedetails_section_gap">
         <h4>PRICE DETAILS</h4>
       </div>
