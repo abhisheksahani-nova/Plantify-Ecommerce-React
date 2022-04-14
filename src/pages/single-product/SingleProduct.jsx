@@ -1,7 +1,19 @@
 import "./singleproduct.css";
 import { Navbar, Footer } from "../../components/index";
+import { useCart } from "../../context/cart-context";
+import { useTheme } from "../../context/theme-context";
 
 function SingleProduct() {
+  const { theme } = useTheme();
+  const { removeProductFromCart, productQtyIncrement, productQtyDecrement } =
+    useCart();
+
+  function handleProductQtyDecrement(_id, token) {
+    if (qty >= 1) {
+      productQtyDecrement(_id, token);
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -13,7 +25,66 @@ function SingleProduct() {
           />
         </div>
         <div className="singleproductpage-info-container">
-            <h1>Aleovera Succulent</h1>
+          <h1 className="card-heading pri_clr">Aleovera Succulent</h1>
+          <p className="card-description text-bold pri_clr">₹ 500</p>
+
+          <div className="d-flex cart_card_quantitycontainer">
+            <small className="sec_clr">Quantity :</small>
+            <button
+              className={`btn cart_card_outlinebtn customstyle_btn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
+              onClick={() => productQtyIncrement(_id, token)}
+            >
+              +
+            </button>
+            <input
+              className={`cart_card_quantity_inp ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
+              type="text"
+              //   value={qty}
+            />
+            <button
+              className={`btn cart_card_outlinebtn customstyle_btn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
+              //   disabled={qty <= 1 ? true : false}
+              //   onClick={() => handleProductQtyDecrement(_id, token)}
+            >
+              -
+            </button>
+          </div>
+          <p className="card-description pri_clr">
+            Sometimes flowering plants prove the most challenging to keep
+            healthy, but certain lilies in the Spathiphyllum genus (the peace
+            lily family) are on the more easygoing side. Peace lilies are
+            forgiving plants but seem to do best in indirect sunlight with
+            access to shade. Wait to water the plant until you notice a bit of
+            drooping in the leaves for best results. These plants need reliable
+            drainage. Consider planting in a simple pot to let the beautiful
+            flowers take center stage.,
+          </p>
+
+          <div className="d-flex mt-2 cart_card_btncontainer mb-2">
+            <button
+              className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1"
+              onClick={() => handleAddToCart(product, _id, token)}
+            >
+              <span className="icon">
+                <i className="fa fa-shopping-cart"></i>
+              </span>
+              Add to Cart
+            </button>
+            <button
+              className={`btn btn-text-icon cart_card_outlinebtn ${
+                theme == "dark" ? "cart_card_outline_btn" : ""
+              }`}
+              //   onClick={() => handleMoveProductToWishlist(product, token)}
+            >
+              Move to Wishlist
+            </button>
+          </div>
         </div>
       </section>
     </div>
