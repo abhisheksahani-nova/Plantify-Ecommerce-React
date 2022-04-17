@@ -2,9 +2,13 @@ import "./singleproduct.css";
 import { Navbar, Footer } from "../../components/index";
 import { useCart } from "../../context/cart-context";
 import { useTheme } from "../../context/theme-context";
+import { useProducts } from "../../context/products-context";
+import { useParams } from "react-router-dom";
 
 function SingleProduct() {
   const { theme } = useTheme();
+  const { products } = useProducts();
+  let { id } = useParams();
   const { removeProductFromCart, productQtyIncrement, productQtyDecrement } =
     useCart();
 
@@ -13,6 +17,14 @@ function SingleProduct() {
       productQtyDecrement(_id, token);
     }
   }
+
+  function getProductById() {
+    let singleProduct = products.find((item) => item._id == id);
+
+    return singleProduct;
+  }
+
+  getProductById();
 
   return (
     <div>

@@ -30,7 +30,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/singleProduct" element={<SingleProduct />}></Route>
+        <Route path="/singleProduct/:id" element={<SingleProduct />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/mock" element={<Mockman />}></Route>
       </Routes>
