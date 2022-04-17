@@ -24,7 +24,9 @@ function Navbar() {
   return (
     <nav
       className={`nav-bar white mb-0 ${
-        location.pathname == "/singleproduct" && "nav-border"
+        (location.pathname == "/singleproduct" ||
+          location.pathname == "/profile") &&
+        "nav-border"
       }`}
     >
       <div className="nav-innerContainer font-clr">

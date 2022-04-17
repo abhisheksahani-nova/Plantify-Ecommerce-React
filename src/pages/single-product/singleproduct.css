@@ -4,15 +4,20 @@
 }
 
 .singleproductpage-img-container {
-    width: 30%;
+  width: 29%;
 }
 
 .singleproductpage-info-container {
-    width: 70%;
+  width: 71%;
 }
 
 .singleProduct-img {
   width: 20rem;
   height: 20rem;
   object-fit: cover;
+}
+
+.para-price {
+  font-size: 1.2rem;
+  color: var(--plant-pri-clr);
 }

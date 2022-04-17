@@ -26,7 +26,7 @@ function SingleProduct() {
         </div>
         <div className="singleproductpage-info-container">
           <h1 className="card-heading pri_clr">Aleovera Succulent</h1>
-          <p className="card-description text-bold pri_clr">₹ 500</p>
+          <p className="card-description text-bold para-price">₹ 500</p>
 
           <div className="d-flex cart_card_quantitycontainer">
             <small className="sec_clr">Quantity :</small>
@@ -68,7 +68,7 @@ function SingleProduct() {
 
           <div className="d-flex mt-2 cart_card_btncontainer mb-2">
             <button
-              className="btn btn-text-icon cart_card_solidbtn cta-btn mr-1"
+              className="btn cart_card_solidbtn cta-btn mr-1"
               onClick={() => handleAddToCart(product, _id, token)}
             >
               <span className="icon">
@@ -77,7 +77,7 @@ function SingleProduct() {
               Add to Cart
             </button>
             <button
-              className={`btn btn-text-icon cart_card_outlinebtn ${
+              className={`btn cart_card_outlinebtn ${
                 theme == "dark" ? "cart_card_outline_btn" : ""
               }`}
               //   onClick={() => handleMoveProductToWishlist(product, token)}

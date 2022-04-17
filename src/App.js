@@ -6,6 +6,7 @@ import {
   Login,
   Signup,
   SingleProduct,
+  Profile,
 } from "./pages/index.js";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/singleProduct" element={<SingleProduct />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/mock" element={<Mockman />}></Route>
       </Routes>
     </div>
