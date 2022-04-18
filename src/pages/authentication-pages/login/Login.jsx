@@ -19,6 +19,7 @@ function Login() {
       try {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("email", userLoginData.email);
         navigate("/");
       } catch (error) {
         console.log(error);

@@ -3,14 +3,16 @@ import { Navbar, Footer } from "../../components/index";
 import { useCart } from "../../context/cart-context";
 import { useTheme } from "../../context/theme-context";
 import { useProducts } from "../../context/products-context";
+import { useWishlist } from "../../context/wishlist-context";
 import { useParams } from "react-router-dom";
 
 function SingleProduct() {
   const { theme } = useTheme();
   const { products } = useProducts();
   let { id } = useParams();
-  const { removeProductFromCart, productQtyIncrement, productQtyDecrement } =
-    useCart();
+  const token = localStorage.getItem("token");
+  const { cartProducts, addProductToCart } = useCart();
+  const { wishlistProducts, moveProductToWishlist } = useWishlist();
 
   function getProductById() {
     let singleProduct = products.find((item) => item._id == id);
@@ -18,12 +20,20 @@ function SingleProduct() {
     return singleProduct;
   }
 
-  const { title, plantType, img, price, rating, categoryName, description } =
-    getProductById();
+  const product = getProductById();
+  const { title, img, price, description, plantType, categoryName } = product;
 
-  function handleProductQtyDecrement(_id, token) {
-    if (qty >= 1) {
-      productQtyDecrement(_id, token);
+  function handleAddToCart(product, id, token) {
+    if (cartProducts.find((product) => product._id == _id)) {
+      productQtyIncrement(id, token);
+    } else {
+      addProductToCart(product, token);
+    }
+  }
+
+  function handleMoveProductToWishlist(product, token) {
+    if (!wishlistProducts.find((product) => product._id == _id)) {
+      moveProductToWishlist(product, token);
     }
   }
 
@@ -39,38 +49,19 @@ function SingleProduct() {
           <p className="card-description text-bold para-price">₹ {price}</p>
 
           <div className="d-flex cart_card_quantitycontainer">
-            <small className="sec_clr">Quantity :</small>
-            <button
-              className={`btn cart_card_outlinebtn customstyle_btn ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
-              }`}
-              onClick={() => productQtyIncrement(_id, token)}
-            >
-              +
-            </button>
-            <input
-              className={`cart_card_quantity_inp ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
-              }`}
-              type="text"
-              //   value={qty}
-            />
-            <button
-              className={`btn cart_card_outlinebtn customstyle_btn ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
-              }`}
-              //   disabled={qty <= 1 ? true : false}
-              //   onClick={() => handleProductQtyDecrement(_id, token)}
-            >
-              -
-            </button>
+            <small className="sec_clr">PlantType :-  {plantType} </small>
           </div>
+
+          <div className="d-flex cart_card_quantitycontainer">
+            <small className="sec_clr">Category :-  {categoryName} </small>
+          </div>
+
           <p className="card-description pri_clr">{description}</p>
 
           <div className="d-flex mt-2 cart_card_btncontainer mb-2">
             <button
               className="btn cart_card_solidbtn cta-btn mr-1"
-              onClick={() => handleAddToCart(product, _id, token)}
+              onClick={() => handleAddToCart(product, id, token)}
             >
               <span className="icon">
                 <i className="fa fa-shopping-cart"></i>
@@ -81,7 +72,7 @@ function SingleProduct() {
               className={`btn cart_card_outlinebtn ${
                 theme == "dark" ? "cart_card_outline_btn" : ""
               }`}
-              //   onClick={() => handleMoveProductToWishlist(product, token)}
+              onClick={() => handleMoveProductToWishlist(product, token)}
             >
               Move to Wishlist
             </button>

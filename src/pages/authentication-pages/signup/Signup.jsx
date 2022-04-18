@@ -28,6 +28,11 @@ function Signup() {
       try {
         const response = await axios.post("/api/auth/signup", userData);
         localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem(
+          "username",
+          `${userSignupData.firstName} ${userSignupData.lastName}`
+        );
+        localStorage.setItem("email", userSignupData.email);
         navigate("/");
       } catch (error) {
         console.log(error);

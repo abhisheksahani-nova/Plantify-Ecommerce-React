@@ -4,6 +4,9 @@ import "./profile.css";
 import { NavLink } from "react-router-dom";
 
 function Profile() {
+  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
+
   return (
     <div>
       <Navbar />
@@ -55,10 +58,10 @@ function Profile() {
             />
           </div>
           <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
-            Name : Abhishek Sahani
+            Name : {username ? username : "Abhishek Sahani"}
           </label>
           <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
-            Email : abhisheksahani653@gmail.com
+            Email : {email}
           </label>
           <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
             Password : *************

@@ -69,6 +69,20 @@ function Navbar() {
 
         <div className="flex-col-center">
           {token ? (
+            <NavLink className="nav-icon-clr" to="/profile" exact="true">
+              <i class="fa-solid fa-user"></i>
+            </NavLink>
+          ) : (
+            <NavLink className="nav-icon-clr" to="/login" exact="true">
+              <i class="fa-solid fa-user"></i>
+            </NavLink>
+          )}
+
+          <small>Profile</small>
+        </div>
+
+        <div className="flex-col-center">
+          {token ? (
             <NavLink className="nav-icon-clr" to="/wishlist" exact="true">
               <div className="badge-container">
                 <i className="fa-solid fa-heart f-size-large"></i>
