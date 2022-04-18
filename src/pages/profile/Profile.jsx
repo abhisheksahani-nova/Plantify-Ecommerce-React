@@ -3,6 +3,8 @@ import { Navbar } from "../../components/index";
 import "./profile.css";
 import { NavLink } from "react-router-dom";
 
+const userProfileLinks = ["Profile", " Addresses", "Orders", "Setting"];
+
 function Profile() {
   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
@@ -12,41 +14,18 @@ function Profile() {
       <Navbar />
 
       <ul className="categories_navTabs_list mb-2">
-        <li>
-          <NavLink
-            to="/profile"
-            className="categories_navLink categories_navLink1"
-          >
-            Profile
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/profile"
-            className="categories_navLink categories_navLink1"
-          >
-            Addresses
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/profile"
-            className="categories_navLink categories_navLink1"
-          >
-            Orders
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/profile"
-            className="categories_navLink categories_navLink1"
-          >
-            Setting
-          </NavLink>
-        </li>
+        {userProfileLinks.map((link, index) => {
+          return (
+            <li key={index}>
+              <NavLink
+                to="/profile"
+                className="categories_navLink categories_navLink1"
+              >
+                {link}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
 
       <section className="d-flex justify-cont-center">
@@ -55,6 +34,7 @@ function Profile() {
             <img
               className="avatar md"
               src="https://semantic-ui.com/images/avatar2/large/matthew.png"
+              alt="user avatar"
             />
           </div>
           <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
@@ -64,7 +44,7 @@ function Profile() {
             Email : {email}
           </label>
           <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
-            Password : *************
+            Password : *******************
           </label>
         </div>
       </section>
