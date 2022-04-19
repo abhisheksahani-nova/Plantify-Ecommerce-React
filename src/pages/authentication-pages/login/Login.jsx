@@ -36,7 +36,7 @@ function Login() {
             Email
           </label>
           <input
-            className={`inp login_inp_resize ${
+            className={`inp login_inp_resize ecommerce-login-inp ${
               theme == "dark" && "cart_card_outline_btn"
             }`}
             id="inp-email"
@@ -61,7 +61,7 @@ function Login() {
           </label>
           <input
             type={passwordInputType}
-            className={`inp login_inp_resize ${
+            className={`inp login_inp_resize ecommerce-login-inp ${
               theme == "dark" && "cart_card_outline_btn"
             }`}
             id="inp-password"
@@ -99,7 +99,7 @@ function Login() {
               id="checkbox-termsPolicy"
               className={`${theme == "dark" && "cart_card_outline_btn"}`}
             />
-            <label className="inp-label font-small inherit-clr">
+            <label className="inp-label login-checkbox-label-size inherit-clr">
               Remember Me
             </label>
           </div>

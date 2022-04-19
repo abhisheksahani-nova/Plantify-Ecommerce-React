@@ -51,7 +51,7 @@ function Signup() {
               First name
             </label>
             <input
-              className={`inp login_inp_resize ${
+              className={`inp login_inp_resize ecommerce-login-inp ${
                 theme == "dark" && "cart_card_outline_btn"
               }`}
               id="inp-email"
@@ -71,7 +71,7 @@ function Signup() {
               Last name
             </label>
             <input
-              className={`inp login_inp_resize ${
+              className={`inp login_inp_resize ecommerce-login-inp ${
                 theme == "dark" && "cart_card_outline_btn"
               }`}
               id="inp-email"
@@ -91,7 +91,7 @@ function Signup() {
               Email address
             </label>
             <input
-              className={`inp login_inp_resize ${
+              className={`inp login_inp_resize ecommerce-login-inp ${
                 theme == "dark" && "cart_card_outline_btn"
               }`}
               id="inp-email"
@@ -116,7 +116,7 @@ function Signup() {
             </label>
             <input
               type={passwordInputType}
-              className={`inp login_inp_resize ${
+              className={`inp login_inp_resize ecommerce-login-inp ${
                 theme == "dark" && "cart_card_outline_btn"
               }`}
               id="inp-password"
@@ -156,7 +156,7 @@ function Signup() {
             </label>
             <input
               type={confirmPasswordInputType}
-              className={`inp login_inp_resize ${
+              className={`inp login_inp_resize ecommerce-login-inp ${
                 theme == "dark" && "cart_card_outline_btn"
               }`}
               id="inp-email"
@@ -189,7 +189,7 @@ function Signup() {
                 id="checkbox-termsPolicy"
                 className={`${theme == "dark" && "cart_card_outline_btn"}`}
               />
-              <label className="inp-label inp-label-required font-small inherit-clr">
+              <label className="inp-label inp-label-required login-checkbox-label-size inherit-clr">
                 I accept all Terms & Conditions
               </label>
             </div>
