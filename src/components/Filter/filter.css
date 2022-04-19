@@ -1,7 +1,6 @@
 .productlisting_sidebar {
   width: 25%;
   padding: 1rem 2rem 1rem 1rem;
-  margin-right: 2rem;
 }
 
 .products_filter_section {
@@ -40,4 +39,16 @@
 .products_filter_staricon_style {
   font-size: 0.8rem;
   color: var(--dark-primary-clr);
+}
+
+@media screen and (max-width: 600px) {
+  .productlisting_sidebar {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .price-range-inp {
+    width: 12rem;
+  }
 }

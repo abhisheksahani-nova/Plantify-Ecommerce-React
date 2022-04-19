@@ -1,5 +1,5 @@
 .homepage_banner_container {
-  height: 85vh;
+  height: 34rem;
   background: url(https://cdn.shopify.com/s/files/1/1485/6894/files/home5_bg1.jpg?v=1514625150);
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,4 +9,22 @@
 .banner_content_container {
   text-align: center;
   padding-top: 6rem;
+}
+
+@media screen and (max-width: 900px) {
+  .homepage_banner_container {
+    height: 28rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .homepage_banner_container {
+    height: 23rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .homepage_banner_container {
+    height: 16rem;
+  }
 }

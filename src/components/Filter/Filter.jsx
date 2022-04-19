@@ -60,6 +60,7 @@ function Filter({ state, dispatch }) {
 
         <div className="products_sidebar_inputbox">
           <input
+            className="price-range-inp"
             onChange={(e) =>
               dispatch({ type: "SORT_BY_PRICE", payload: e.target.value })
             }
