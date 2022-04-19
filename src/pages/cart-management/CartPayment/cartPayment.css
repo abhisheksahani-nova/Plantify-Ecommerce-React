@@ -11,3 +11,9 @@
 .cart_pricedetails_section_gap {
   padding: 1rem 1.6rem 1rem;
 }
+
+@media screen and (max-width: 900px) {
+  .cart_payment_receipt {
+    width: 50%;
+  }
+}

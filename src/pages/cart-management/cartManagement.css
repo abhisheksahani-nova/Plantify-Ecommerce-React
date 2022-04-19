@@ -10,3 +10,16 @@
   align-items: center;
   gap: 2.5rem;
 }
+
+@media screen and (max-width: 900px) {
+  .cart_page_main_container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+  }
+
+  .cart_products_container {
+    width: 100%;
+  }
+}
