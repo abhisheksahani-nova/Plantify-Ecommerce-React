@@ -48,19 +48,19 @@ function SingleProduct() {
           <h1 className="card-heading pri_clr">{title}</h1>
           <p className="card-description text-bold para-price">₹ {price}</p>
 
-          <div className="d-flex cart_card_quantitycontainer">
+          <div className="d-flex card-heading">
             <small className="sec_clr">PlantType :-  {plantType} </small>
           </div>
 
-          <div className="d-flex cart_card_quantitycontainer">
+          <div className="d-flex card-heading">
             <small className="sec_clr">Category :-  {categoryName} </small>
           </div>
 
           <p className="card-description pri_clr">{description}</p>
 
-          <div className="d-flex mt-2 cart_card_btncontainer mb-2">
+          <div className="d-flex cart_card_btncontainer card-heading">
             <button
-              className="btn cart_card_solidbtn cta-btn mr-1"
+              className="btn cta-btn mr-1"
               onClick={() => handleAddToCart(product, id, token)}
             >
               <span className="icon">
