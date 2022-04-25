@@ -24,6 +24,7 @@ function Navbar() {
       toastMesaage: "Successfully logout done ",
     });
     navigate("/");
+    window.location.reload();
   }
 
   function handleThemeChange() {

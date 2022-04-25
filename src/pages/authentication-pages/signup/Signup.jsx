@@ -39,7 +39,7 @@ function Signup() {
         setToastData({
           showToast: true,
           toastType: "success",
-          toastMesaage: "Successfully signUp done",
+          toastMesaage: "Successfully signup done",
         });
         navigate("/");
       } catch (error) {
@@ -47,7 +47,7 @@ function Signup() {
         setToastData({
           showToast: true,
           toastType: "error",
-          toastMesaage: "Sorry, failed to signUp you",
+          toastMesaage: "Sorry, failed to signup you",
         });
       }
     })();
