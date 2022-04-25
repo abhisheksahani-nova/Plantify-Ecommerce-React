@@ -1,10 +1,12 @@
 import { useState, createContext, useContext } from "react";
 import axios from "axios";
+import { useToast } from "./toast-context";
 
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const [wishlistProducts, setWishlistProducts] = useState([]);
+  const { toastData, setToastData } = useToast();
 
   const moveProductToWishlist = async (product, token) => {
     try {
@@ -18,8 +20,18 @@ const WishlistProvider = ({ children }) => {
         }
       );
       setWishlistProducts(response.data.wishlist);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully move to wishlist",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error in adding to wishlist",
+      });
     }
   };
 
@@ -31,8 +43,18 @@ const WishlistProvider = ({ children }) => {
         },
       });
       setWishlistProducts(response.data.wishlist);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully remove from wishlist",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error in removing product from wishlist",
+      });
     }
   };
 

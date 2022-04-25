@@ -1,10 +1,12 @@
 import { useState, createContext, useContext } from "react";
+import { useToast } from "./toast-context";
 import axios from "axios";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
+  const { toastData, setToastData } = useToast();
 
   const addProductToCart = async (product, token) => {
     try {
@@ -18,8 +20,18 @@ const CartProvider = ({ children }) => {
         }
       );
       setCartProducts(response.data.cart);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully added to the cart",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error while adding product to the cart",
+      });
     }
   };
 
@@ -31,8 +43,18 @@ const CartProvider = ({ children }) => {
         },
       });
       setCartProducts(response.data.cart);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully removed from the cart",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error while removing product from cart",
+      });
     }
   };
 
@@ -47,10 +69,19 @@ const CartProvider = ({ children }) => {
           },
         }
       );
-
       setCartProducts(response.data.cart);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully incremented the qty",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error while incrementing qty",
+      });
     }
   };
 
@@ -65,10 +96,19 @@ const CartProvider = ({ children }) => {
           },
         }
       );
-
       setCartProducts(response.data.cart);
+      setToastData({
+        showToast: true,
+        toastType: "success",
+        toastMesaage: "Successfully decremented the qty",
+      });
     } catch (error) {
       console.log(error);
+      setToastData({
+        showToast: true,
+        toastType: "error",
+        toastMesaage: "Error while decrementing qty",
+      });
     }
   };
 

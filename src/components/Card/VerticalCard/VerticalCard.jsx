@@ -27,7 +27,7 @@ function VerticalCard({ product }) {
   return (
     <div
       className="card-basic card_custom_width app"
-      onClick={() => navigate(`/singleProduct/${_id}`)}
+      // onClick={() => navigate(`/singleProduct/${_id}`)}
     >
       <div className="badge-container">
         <img className="card-img" src={img} alt={title} />
