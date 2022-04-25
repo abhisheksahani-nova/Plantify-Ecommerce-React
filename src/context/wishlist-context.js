@@ -6,7 +6,7 @@ const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const [wishlistProducts, setWishlistProducts] = useState([]);
-  const { toastData, setToastData } = useToast();
+  const { setToastData } = useToast();
 
   const moveProductToWishlist = async (product, token) => {
     try {

@@ -9,7 +9,11 @@ const ToastProvider = ({ children }) => {
     toastMesaage: "",
   });
 
-  return <ToastContext.Provider value={{toastData, setToastData}}>{children}</ToastContext.Provider>;
+  return (
+    <ToastContext.Provider value={{ toastData, setToastData }}>
+      {children}
+    </ToastContext.Provider>
+  );
 };
 
 const useToast = () => useContext(ToastContext);

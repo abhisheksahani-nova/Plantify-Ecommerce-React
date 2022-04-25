@@ -3,11 +3,13 @@ import "./navbar.css";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { useTheme } from "../../context/theme-context";
+import { useToast } from "../../context/toast-context";
 
 function Navbar() {
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
   const { theme, setTheme } = useTheme();
+  const { setToastData } = useToast();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,6 +18,11 @@ function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("email");
+    setToastData({
+      showToast: true,
+      toastType: "success",
+      toastMesaage: "Successfully logout done ",
+    });
     navigate("/");
   }
 
@@ -33,7 +40,9 @@ function Navbar() {
     >
       <div className="nav-innerContainer nav-brand-container font-clr">
         <NavLink className="navlink-custom-style" to="/">
-          <h2 className="nav-heading nav-brand-title mr-1 font-resize">Plantify.</h2>
+          <h2 className="nav-heading nav-brand-title mr-1 font-resize">
+            Plantify.
+          </h2>
         </NavLink>
       </div>
 

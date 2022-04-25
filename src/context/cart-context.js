@@ -6,7 +6,7 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
-  const { toastData, setToastData } = useToast();
+  const { setToastData } = useToast();
 
   const addProductToCart = async (product, token) => {
     try {

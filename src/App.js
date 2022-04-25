@@ -37,7 +37,7 @@ function App() {
 
       return () => clearTimeout(timer);
     }
-  },[toastData]);
+  }, [toastData]);
 
   return (
     <div className="app" data-theme={theme}>
