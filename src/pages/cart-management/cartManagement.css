@@ -11,6 +11,22 @@
   gap: 2.5rem;
 }
 
+.empty-shooping-cart-icon {
+  font-size: 9rem;
+}
+
+.empty-shooping-cart-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.f-direction-col {
+  flex-direction: column;
+}
+
 @media screen and (max-width: 900px) {
   .cart_page_main_container {
     flex-direction: column;

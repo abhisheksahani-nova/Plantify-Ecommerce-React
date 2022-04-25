@@ -4,9 +4,11 @@ import "./cartManagement.css";
 import "../landing-page/landingPage.css";
 import "../product-listing/productListing.css";
 import { useCart } from "../../context/cart-context";
+import { useNavigate } from "react-router-dom";
 
 function CartManagement() {
   const { cartProducts } = useCart();
+  const navigate = useNavigate();
 
   return (
     <div className="homepage_main_container">
@@ -16,6 +18,15 @@ function CartManagement() {
       <section className="productlisting_banner_container"></section>
 
       <h2 className="cart_page_title">My Cart ({cartProducts.length})</h2>
+
+      {cartProducts.length <= 0 && (
+        <div className="empty-shooping-cart-icon-container">
+          <i className="fa-solid fa-basket-shopping empty-shooping-cart-icon"></i>
+          <button className="btn cta-btn" onClick={() => navigate("/products")}>
+            Browse Products
+          </button>
+        </div>
+      )}
 
       <section className="cart_container d-flex productlisting_main_content_container cart_page_main_container">
         {/* <!-- Product items container --> */}
@@ -27,7 +38,7 @@ function CartManagement() {
         </div>
 
         {/* <!-- Payment details card container --> */}
-        <CartPayment />
+        {cartProducts.length > 0 && <CartPayment />}
       </section>
 
       <Footer />
