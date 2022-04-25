@@ -1,14 +1,15 @@
 .singleproductpage-container {
   width: 100%;
   padding: 4rem;
+  gap: 1rem;
 }
 
 .singleproductpage-img-container {
-  width: 29%;
+  width: 40rem;
 }
 
 .singleproductpage-info-container {
-  width: 71%;
+  width: 100rem;
 }
 
 .singleProduct-img {
@@ -20,4 +21,47 @@
 .para-price {
   font-size: 1.2rem;
   color: var(--plant-pri-clr);
+}
+
+@media screen and (max-width: 1200px) {
+  .singleproductpage-img-container {
+    width: 20rem;
+  }
+
+  .singleproductpage-info-container {
+    width: 42rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .singleproductpage-container {
+    flex-direction: column;
+  }
+
+  .singleproductpage-img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .singleproductpage-info-container {
+    width: 39rem;
+  }
+
+  .singleProduct-img {
+    width: 40rem;
+    height: 30rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .singleproductpage-info-container {
+    width: 100%;
+  }
+
+  .singleProduct-img {
+    width: 50rem;
+    height: 30rem;
+  }
 }

@@ -1,5 +1,5 @@
 .productlisting_banner_container {
-  height: 45vh;
+  height: 17.3rem;
   background: url(https://cdn.shopify.com/s/files/1/0317/0687/3992/files/bg_about.jpg?v=1580377813);
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,11 +14,36 @@
 .productlisting_products_container {
   width: 75%;
   margin: 3rem 1.5rem;
-  display: grid;
-  gap: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5rem;
   row-gap: 7rem;
-  grid-template-areas:
-    "one two three"
-    "four five six"
-    "seven eight nine";
+}
+
+@media screen and (max-width: 900px) {
+  .productlisting_banner_container {
+    height: 15rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .productlisting_banner_container {
+    height: 10rem;
+  }
+
+  .productlisting_products_container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .productlisting_banner_container {
+    height: 8rem;
+  }
+
+  .productlisting_products_container {
+    flex-direction: column;
+  }
 }

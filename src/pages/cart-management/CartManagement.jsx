@@ -17,7 +17,7 @@ function CartManagement() {
 
       <h2 className="cart_page_title">My Cart ({cartProducts.length})</h2>
 
-      <section className="cart_container d-flex productlisting_main_content_container">
+      <section className="cart_container d-flex productlisting_main_content_container cart_page_main_container">
         {/* <!-- Product items container --> */}
 
         <div className="cart_products_container d-flex">

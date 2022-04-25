@@ -36,6 +36,30 @@
   right: 3rem;
 }
 
-.t-decoration-none{
+.t-decoration-none {
   text-decoration: none;
+}
+
+.login-checkbox-label-size {
+  font-size: 0.8rem;
+}
+
+.ecommerce-login-inp::placeholder {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 500px) {
+  .ecommerce-login-inp::placeholder {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .login-checkbox-label-size {
+    font-size: 1.1rem;
+  }
+
+  .login_inp_label_resize {
+    font-size: 1.2rem;
+  }
 }

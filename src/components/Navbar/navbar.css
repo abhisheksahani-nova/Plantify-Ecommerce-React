@@ -1,3 +1,7 @@
+.nav-brand-container {
+  width: 13rem;
+}
+
 .nav-width-reset {
   width: 23rem;
 }
@@ -10,8 +14,8 @@
   align-items: center;
 }
 
-.f-size-large {
-  font-size: large;
+.f-size-icon {
+  font-size: 1.2rem;
 }
 
 .navlink-custom-style {
@@ -26,4 +30,34 @@
 .nav-border {
   border-bottom: 1px solid var(--custom-pri-clr);
   box-shadow: 0px 1px 10px 2px rgb(0 0 0 / 3%);
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-searchbar-cont {
+    width: 25rem;
+  }
+
+  .nav-searchbar-input {
+    width: 32rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav-searchbar-input {
+    width: 30rem;
+  }
+}
+
+.j-content-start{
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 650px) {
+  .nav-searchbar-input {
+    width: 14rem;
+  }
+
+  .nav-brand-title {
+    font-size: 1.8rem;
+  }
 }
