@@ -13,18 +13,32 @@ import Mockman from "mockman-js";
 import { useEffect } from "react";
 import "./index.css";
 import { useTheme } from "./context/theme-context";
+import { Toast } from "./components/index";
+import { useToast } from "./context/toast-context";
 
 function App() {
   const { theme } = useTheme();
+  const { toastData, setToastData } = useToast();
 
   useEffect(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
+    localStorage.clear() ;
   }, []);
+
+  useEffect(() => {
+    if (toastData.show) {
+      const timer = setTimeout(
+        () =>
+          setToastData({ show: false, type: "", message: "" }),
+        3000
+      );
+
+      return () => clearTimeout(timer);
+    }
+  }, [toastData]);
 
   return (
     <div className="app" data-theme={theme}>
+      {toastData.show && <Toast />}
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/products" element={<ProductListing />}></Route>

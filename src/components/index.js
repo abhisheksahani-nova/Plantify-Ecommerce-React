@@ -5,6 +5,7 @@ import HorizontalCard from "./Card/HorizontalCard/HorizontalCard.jsx";
 import HeroBanner from "./Banner/HeroBanner/HeroBanner.jsx";
 import PromotionBanner from "./Banner/PromotionBanner/PromotionBanner.jsx";
 import CategoryNavTab from "./CategoryNavTabs/CategoryNavTabs.jsx";
+import Toast from "./Toast/Toast";
 import Filter from "./Filter/Filter";
 
-export {Navbar, Footer, VerticalCard, HorizontalCard, HeroBanner, PromotionBanner, CategoryNavTab, Filter};
+export {Navbar, Footer, VerticalCard, HorizontalCard, HeroBanner, PromotionBanner, CategoryNavTab, Filter, Toast};

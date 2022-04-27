@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/theme-context";
+import { useToast } from "../../../context/toast-context";
 import axios from "axios";
 import "./login.css";
 
@@ -10,6 +11,7 @@ function Login() {
     password: "",
   });
   const [passwordInputType, setPasswordInputType] = useState("password");
+  const { setToastData } = useToast();
 
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -20,9 +22,19 @@ function Login() {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Successful login start shopping",
+        });
         navigate("/");
       } catch (error) {
         console.log(error);
+        setToastData({
+          show: true,
+          type: "error",
+          message: "Oops failed to login you",
+        });
       }
     })();
   }

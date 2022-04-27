@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/theme-context";
+import { useToast } from "../../../context/toast-context";
 import axios from "axios";
 
 function Signup() {
@@ -14,6 +15,8 @@ function Signup() {
   const [passwordInputType, setPasswordInputType] = useState("password");
   const [confirmPasswordInputType, setConfirmPasswordInputType] =
     useState("password");
+
+  const { setToastData } = useToast();
 
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -33,9 +36,19 @@ function Signup() {
           `${userSignupData.firstName} ${userSignupData.lastName}`
         );
         localStorage.setItem("email", userSignupData.email);
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Successful signup start shopping",
+        });
         navigate("/");
       } catch (error) {
         console.log(error);
+        setToastData({
+          show: true,
+          type: "error",
+          message: "Oops failed to signup you",
+        });
       }
     })();
   }
