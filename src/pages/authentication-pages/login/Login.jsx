@@ -23,17 +23,17 @@ function Login() {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
         setToastData({
-          showToast: true,
-          toastType: "success",
-          toastMesaage: "Successfully login done",
+          show: true,
+          type: "success",
+          message: "Successful login start shopping",
         });
         navigate("/");
       } catch (error) {
         console.log(error);
         setToastData({
-          showToast: true,
-          toastType: "error",
-          toastMesaage: "Sorry, failed to login you",
+          show: true,
+          type: "error",
+          message: "Oops failed to login you",
         });
       }
     })();

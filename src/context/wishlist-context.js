@@ -21,16 +21,16 @@ const WishlistProvider = ({ children }) => {
       );
       setWishlistProducts(response.data.wishlist);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully move to wishlist",
+        show: true,
+        type: "success",
+        message: "Successfully move to wishlist",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error in adding to wishlist",
+        show: true,
+        type: "error",
+        message: "Error in adding to wishlist",
       });
     }
   };
@@ -44,16 +44,16 @@ const WishlistProvider = ({ children }) => {
       });
       setWishlistProducts(response.data.wishlist);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully remove from wishlist",
+        show: true,
+        type: "success",
+        message: "Successfully remove from wishlist",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error in removing product from wishlist",
+        show: true,
+        type: "error",
+        message: "Error in removing product from wishlist",
       });
     }
   };

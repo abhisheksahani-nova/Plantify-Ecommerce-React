@@ -37,17 +37,17 @@ function Signup() {
         );
         localStorage.setItem("email", userSignupData.email);
         setToastData({
-          showToast: true,
-          toastType: "success",
-          toastMesaage: "Successfully signup done",
+          show: true,
+          type: "success",
+          message: "Successful signup start shopping",
         });
         navigate("/");
       } catch (error) {
         console.log(error);
         setToastData({
-          showToast: true,
-          toastType: "error",
-          toastMesaage: "Sorry, failed to signup you",
+          show: true,
+          type: "error",
+          message: "Oops failed to signup you",
         });
       }
     })();

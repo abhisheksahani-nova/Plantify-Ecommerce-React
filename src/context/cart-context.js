@@ -21,16 +21,16 @@ const CartProvider = ({ children }) => {
       );
       setCartProducts(response.data.cart);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully added to the cart",
+        show: true,
+        type: "success",
+        message: "Successfully added to the cart",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error while adding product to the cart",
+        show: true,
+        type: "error",
+        message: "Error while adding product to the cart",
       });
     }
   };
@@ -44,16 +44,16 @@ const CartProvider = ({ children }) => {
       });
       setCartProducts(response.data.cart);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully removed from the cart",
+        show: true,
+        type: "success",
+        message: "Successfully removed from the cart",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error while removing product from cart",
+        show: true,
+        type: "error",
+        message: "Error while removing product from cart",
       });
     }
   };
@@ -71,16 +71,16 @@ const CartProvider = ({ children }) => {
       );
       setCartProducts(response.data.cart);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully incremented the qty",
+        show: true,
+        type: "success",
+        message: "Successfully incremented the qty",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error while incrementing qty",
+        show: true,
+        type: "error",
+        message: "Error while incrementing qty",
       });
     }
   };
@@ -98,16 +98,16 @@ const CartProvider = ({ children }) => {
       );
       setCartProducts(response.data.cart);
       setToastData({
-        showToast: true,
-        toastType: "success",
-        toastMesaage: "Successfully decremented the qty",
+        show: true,
+        type: "success",
+        message: "Successfully decremented the qty",
       });
     } catch (error) {
       console.log(error);
       setToastData({
-        showToast: true,
-        toastType: "error",
-        toastMesaage: "Error while decrementing qty",
+        show: true,
+        type: "error",
+        message: "Error while decrementing qty",
       });
     }
   };

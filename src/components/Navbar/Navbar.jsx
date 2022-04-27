@@ -15,14 +15,12 @@ function Navbar() {
   const location = useLocation();
 
   function handleLogout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
     setToastData({
-      showToast: true,
-      toastType: "success",
-      toastMesaage: "Successfully logout done ",
+      show: true,
+      type: "success",
+      message: "Successful logout , see you soon",
     });
+    localStorage.clear();  
     navigate("/");
     window.location.reload();
   }

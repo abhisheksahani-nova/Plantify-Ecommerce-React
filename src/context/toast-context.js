@@ -4,9 +4,9 @@ const ToastContext = createContext();
 
 const ToastProvider = ({ children }) => {
   const [toastData, setToastData] = useState({
-    showToast: false,
-    toastType: "",
-    toastMesaage: "",
+    show: false,
+    type: "",
+    message: "",
   });
 
   return (

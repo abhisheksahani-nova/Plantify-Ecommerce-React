@@ -7,7 +7,7 @@ function Toast() {
 
   let color, icon;
 
-  switch (toastData.toastType) {
+  switch (toastData.type) {
     case "success":
       color = "alert-success";
       icon = "fa-solid fa-circle-check alert-icon";
@@ -26,7 +26,7 @@ function Toast() {
     <div className={`alert alert-custom-style ${color}`}>
       <div className="alert-content">
         <i className={icon} />
-        <h3 className="bold-normal"> {toastData.toastMesaage} </h3>
+        <h4 className="bold-normal"> {toastData.message} </h4>
       </div>
     </div>
   );
