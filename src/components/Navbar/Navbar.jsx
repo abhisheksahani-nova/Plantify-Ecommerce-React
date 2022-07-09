@@ -20,7 +20,7 @@ function Navbar() {
       type: "success",
       message: "Successful logout , see you soon",
     });
-    localStorage.clear();  
+    localStorage.clear();
     navigate("/");
     window.location.reload();
   }
@@ -33,7 +33,8 @@ function Navbar() {
     <nav
       className={`nav-bar white mb-0 ${
         (location.pathname == "/singleproduct" ||
-          location.pathname == "/profile") &&
+          location.pathname == "/profile" ||
+          location.pathname == "/address") &&
         "nav-border"
       }`}
     >
