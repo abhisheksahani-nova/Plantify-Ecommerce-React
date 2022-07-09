@@ -39,6 +39,24 @@ function Login() {
     })();
   }
 
+  function handleGuestLogin() {
+    const userLoginData = {
+      email: "abhishekSahani@gmail.com",
+      password: "abhishekSahani",
+    };
+
+    (async () => {
+      try {
+        const response = await axios.post("/api/auth/login", userLoginData);
+        localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("email", userLoginData.email);
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }
+
   return (
     <section className="login_form_container d-flex">
       <div className="card-basic login_form app">
@@ -125,6 +143,14 @@ function Login() {
         </div>
 
         <div className="inp-container ml-1 mb-1">
+          <button
+            className="btn cta-btn cart_card_outline_btn guest-btn"
+            type="button"
+            onClick={() => handleGuestLogin()}
+          >
+            Guest login
+          </button>
+
           <button
             className="btn cta-btn login_custom_btn"
             type="button"
