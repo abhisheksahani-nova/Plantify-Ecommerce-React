@@ -1,8 +1,11 @@
 import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CartPayment() {
   const { cartProducts } = useCart();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const cartPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.qty,
@@ -42,12 +45,11 @@ function CartPayment() {
     const options = {
       key: "rzp_test_0RjEvAbIKnq7cU",
       currency: "INR",
-      amount: 100 * 100,
+      amount: paymentPrice * 100,
       name: "Plantify",
       description: "Thanks for purchasing",
 
       handler: function (response) {
-        alert(response.razorpay_payment_id);
         alert("Payment successful ", "alert-success");
       },
       prefill: {
@@ -58,6 +60,16 @@ function CartPayment() {
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  }
+
+  function handlePlaceOrder() {
+    if (location.pathname == "/checkout") {
+      handlePay();
+      localStorage.setItem("isPlaceOrder", false);
+    } else {
+      navigate("/address");
+      localStorage.setItem("isPlaceOrder", true);
+    }
   }
 
   return (
@@ -97,7 +109,7 @@ function CartPayment() {
       <div className="cart_pricedetails_section_gap mb-1">
         <button
           className="btn cta-btn cart_pricedetails_section_gap width-100p"
-          onClick={() => handlePay()}
+          onClick={() => handlePlaceOrder()}
         >
           PLACE ORDER
         </button>

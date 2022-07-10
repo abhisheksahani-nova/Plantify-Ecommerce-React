@@ -34,7 +34,8 @@ function Navbar() {
       className={`nav-bar white mb-0 ${
         (location.pathname == "/singleproduct" ||
           location.pathname == "/profile" ||
-          location.pathname == "/address") &&
+          location.pathname == "/address" ||
+          location.pathname == "/checkout") &&
         "nav-border"
       }`}
     >

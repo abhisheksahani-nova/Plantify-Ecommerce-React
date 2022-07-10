@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "../../components";
 import "./address.css";
 import { useTheme } from "../../context/theme-context";
+import { useNavigate } from "react-router-dom";
 
 function Address() {
   const { addressInfo, setAddressInfo } = useTheme();
@@ -17,6 +18,8 @@ function Address() {
     city: "",
     state: "",
   });
+
+  const navigate = useNavigate();
 
   function handleSaveAddress() {
     const {
@@ -44,6 +47,11 @@ function Address() {
     ) {
       setAddressInfo({ ...addressData });
       setIsDisabled(true);
+      const isPlaceOrder = localStorage.getItem("isPlaceOrder");
+
+      if (isPlaceOrder) {
+        navigate("/checkout");
+      }
     }
   }
 
@@ -193,7 +201,7 @@ function Address() {
             className="btn cta-btn mb-2"
             onClick={() => handleSaveAddress()}
           >
-            Save address
+            Use this address
           </button>
         </div>
       </section>

@@ -7,6 +7,7 @@ import Signup from "./authentication-pages/signup/Signup.jsx";
 import SingleProduct from "./single-product/SingleProduct.jsx";
 import Profile from "./profile/Profile.jsx";
 import Address from "./address/Address.jsx";
+import CheckoutPage from "./CheckoutPage/CheckoutPage.jsx";
 
 export {
   LandingPage,
@@ -18,4 +19,5 @@ export {
   SingleProduct,
   Profile,
   Address,
+  CheckoutPage,
 };
