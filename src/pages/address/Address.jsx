@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Navbar } from "../../components";
 import "./address.css";
+import { useTheme } from "../../context/theme-context";
 
 function Address() {
+  const { addressInfo, setAddressInfo } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
   const [addressData, setAddressData] = useState({
     country: "",
@@ -15,6 +17,35 @@ function Address() {
     city: "",
     state: "",
   });
+
+  function handleSaveAddress() {
+    const {
+      country,
+      name,
+      mobileNo,
+      pincode,
+      address1,
+      address2,
+      landmark,
+      city,
+      state,
+    } = addressData;
+
+    if (
+      country &&
+      name &&
+      mobileNo &&
+      pincode &&
+      address1 &&
+      address2 &&
+      landmark &&
+      city &&
+      state
+    ) {
+      setAddressInfo({ ...addressData });
+      setIsDisabled(true);
+    }
+  }
 
   return (
     <div>
@@ -41,6 +72,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.country : addressData.country}
               onChange={(e) =>
                 setAddressData({ ...addressData, country: e.target.value })
               }
@@ -53,6 +85,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.name : addressData.name}
               onChange={(e) =>
                 setAddressData({ ...addressData, name: e.target.value })
               }
@@ -65,6 +98,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.mobileNo : addressData.mobileNo}
               onChange={(e) =>
                 setAddressData({ ...addressData, mobileNo: e.target.value })
               }
@@ -77,6 +111,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.pincode : addressData.pincode}
               onChange={(e) =>
                 setAddressData({ ...addressData, pincode: e.target.value })
               }
@@ -91,6 +126,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.address1 : addressData.address1}
               onChange={(e) =>
                 setAddressData({ ...addressData, address1: e.target.value })
               }
@@ -105,6 +141,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.address2 : addressData.address2}
               onChange={(e) =>
                 setAddressData({ ...addressData, address2: e.target.value })
               }
@@ -117,6 +154,7 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              value={isDisabled ? addressInfo.landmark : addressData.landmark}
               onChange={(e) =>
                 setAddressData({ ...addressData, landmark: e.target.value })
               }
@@ -130,6 +168,7 @@ function Address() {
                 className="address-input"
                 type="text"
                 disabled={isDisabled}
+                value={isDisabled ? addressInfo.city : addressData.city}
                 onChange={(e) =>
                   setAddressData({ ...addressData, city: e.target.value })
                 }
@@ -142,6 +181,7 @@ function Address() {
                 className="address-input"
                 type="text"
                 disabled={isDisabled}
+                value={isDisabled ? addressInfo.state : addressData.state}
                 onChange={(e) =>
                   setAddressData({ ...addressData, state: e.target.value })
                 }
@@ -151,7 +191,7 @@ function Address() {
 
           <button
             className="btn cta-btn mb-2"
-            onClick={() => handleSaveAddress}
+            onClick={() => handleSaveAddress()}
           >
             Save address
           </button>
