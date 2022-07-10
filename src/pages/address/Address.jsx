@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { Navbar } from "../../components";
 import "./address.css";
 
-const userProfileLinks = ["Profile", " Addresses", "Orders", "Setting"];
-
 function Address() {
   const [isDisabled, setIsDisabled] = useState(true);
+  const [addressData, setAddressData] = useState({
+    country: "",
+    name: "",
+    mobileNo: "",
+    pincode: "",
+    address1: "",
+    address2: "",
+    landmark: "",
+    city: "",
+    state: "",
+  });
 
   return (
     <div>
@@ -32,6 +41,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, country: e.target.value })
+              }
             />
           </div>
 
@@ -41,6 +53,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, name: e.target.value })
+              }
             />
           </div>
 
@@ -50,6 +65,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, mobileNo: e.target.value })
+              }
             />
           </div>
 
@@ -59,6 +77,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, pincode: e.target.value })
+              }
             />
           </div>
 
@@ -70,6 +91,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, address1: e.target.value })
+              }
             />
           </div>
 
@@ -81,6 +105,9 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, address2: e.target.value })
+              }
             />
           </div>
 
@@ -90,16 +117,22 @@ function Address() {
               className="address-input"
               type="text"
               disabled={isDisabled}
+              onChange={(e) =>
+                setAddressData({ ...addressData, landmark: e.target.value })
+              }
             />
           </div>
 
-          <div className="d-flex gap-3">
+          <div className="d-flex gap-3 mb-2">
             <div className="d-flex f-direction-col">
               <label className="address-label">Town/City</label>
               <input
                 className="address-input"
                 type="text"
                 disabled={isDisabled}
+                onChange={(e) =>
+                  setAddressData({ ...addressData, city: e.target.value })
+                }
               />
             </div>
 
@@ -109,6 +142,9 @@ function Address() {
                 className="address-input"
                 type="text"
                 disabled={isDisabled}
+                onChange={(e) =>
+                  setAddressData({ ...addressData, state: e.target.value })
+                }
               />
             </div>
           </div>
