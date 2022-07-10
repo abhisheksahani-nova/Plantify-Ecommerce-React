@@ -1,5 +1,6 @@
 .address-form-container {
   min-height: 100vh;
+  margin-top: 3rem;
 }
 
 .address-input-container {
@@ -32,7 +33,7 @@
 
 .address-title {
   color: var(--custom-dark-clr);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .justify-content-between {
@@ -41,4 +42,17 @@
 
 .gap-3 {
   gap: 3rem;
+}
+
+.location-icon {
+  color: var(--dark-blue);
+  margin-left: 5px;
+}
+
+.align-items-top {
+  align-items: flex-start;
+}
+
+.pencil-icon {
+  margin-right: 4px;
 }

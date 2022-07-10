@@ -4,4 +4,11 @@
 
 .profile-page-container {
   padding: 2rem;
+  margin-top: 4rem;
+}
+
+.btn-small {
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  outline: none;
 }
