@@ -50,7 +50,7 @@ function VerticalCard({ product }) {
           <small className="card-subHeading sec_clr">
             {" "}
             {plantType} : {rating}
-            <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
           </small>
         </div>
         <small className="card-subHeading sec_clr">{categoryName}</small>

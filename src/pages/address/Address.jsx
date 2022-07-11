@@ -63,14 +63,15 @@ function Address() {
         <div className="address-form-child-container">
           <div className="d-flex justify-content-between align-items-top">
             <h2 className="address-title">
-              Add address <i class="fa-solid fa-location-dot location-icon"></i>
+              Add address{" "}
+              <i className="fa-solid fa-location-dot location-icon"></i>
             </h2>
 
             <button
               className="btn cta-btn btn-small"
               onClick={() => setIsDisabled(false)}
             >
-              <i class="fa-solid fa-pencil pencil-icon"></i> Edit
+              <i className="fa-solid fa-pencil pencil-icon"></i> Edit
             </button>
           </div>
 

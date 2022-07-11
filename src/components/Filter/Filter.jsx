@@ -104,7 +104,8 @@ function Filter({ state, dispatch }) {
             checked={state.fourRatingPlus}
           />
           <label className="ml-1 products_filter_labelsize">
-            4 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            4{" "}
+            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
             &#38; above
           </label>
         </div>
@@ -116,7 +117,8 @@ function Filter({ state, dispatch }) {
             checked={state.threeRatingPlus}
           />
           <label className="ml-1 products_filter_labelsize">
-            3 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            3{" "}
+            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
             &#38; above
           </label>
         </div>
@@ -128,7 +130,8 @@ function Filter({ state, dispatch }) {
             checked={state.twoRatingPlus}
           />
           <label className="ml-1 products_filter_labelsize">
-            2 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            2{" "}
+            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
             &#38; above
           </label>
         </div>
@@ -140,7 +143,8 @@ function Filter({ state, dispatch }) {
             checked={state.oneRatingPlus}
           />
           <label className="ml-1 products_filter_labelsize">
-            1 <i class="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            1{" "}
+            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
             &#38; above
           </label>
         </div>
