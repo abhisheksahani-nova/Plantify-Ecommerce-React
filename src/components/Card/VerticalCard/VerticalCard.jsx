@@ -46,14 +46,18 @@ function VerticalCard({ product }) {
         )}
 
         <div>
-          <h3 className="card-heading pri_clr"> {title} </h3>
+          <div className="d-flex justify-content-between align-items-center ">
+            <h3 className="card-heading pri_clr"> {title} </h3>
+            <div>
+              <i className="fa-solid fa-star products_filter_staricon_style"></i>
+              <small className="sec_clr rating-num"> {rating} </small>
+            </div>
+          </div>
+
           <small className="card-subHeading sec_clr">
-            {" "}
-            {plantType} : {rating}
-            <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
+            {plantType} ({categoryName})
           </small>
         </div>
-        <small className="card-subHeading sec_clr">{categoryName}</small>
 
         <p className="card-description text-bold pri_clr">₹ {price}</p>
       </div>

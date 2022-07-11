@@ -78,7 +78,9 @@ function Address() {
           <div className="address-input-container">
             <label className="address-label">Country/Region</label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.country : addressData.country}
@@ -91,7 +93,9 @@ function Address() {
           <div className="address-input-container">
             <label className="address-label">Full name</label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.name : addressData.name}
@@ -104,7 +108,9 @@ function Address() {
           <div className="address-input-container">
             <label className="address-label">Mobile number</label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.mobileNo : addressData.mobileNo}
@@ -117,7 +123,9 @@ function Address() {
           <div className="address-input-container">
             <label className="address-label">Pincode</label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.pincode : addressData.pincode}
@@ -132,7 +140,9 @@ function Address() {
               Flat, House no., Building, Company, Apartment
             </label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.address1 : addressData.address1}
@@ -147,7 +157,9 @@ function Address() {
               Area, Street, Sector, Village
             </label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.address2 : addressData.address2}
@@ -160,7 +172,9 @@ function Address() {
           <div className="address-input-container">
             <label className="address-label">Landmark</label>
             <input
-              className="address-input"
+              className={`address-input ${
+                isDisabled ? "address-input-disabled" : "address-input-enabled"
+              }`}
               type="text"
               disabled={isDisabled}
               value={isDisabled ? addressInfo.landmark : addressData.landmark}
@@ -174,7 +188,11 @@ function Address() {
             <div className="d-flex f-direction-col">
               <label className="address-label">Town/City</label>
               <input
-                className="address-input"
+                className={`address-input ${
+                  isDisabled
+                    ? "address-input-disabled"
+                    : "address-input-enabled"
+                }`}
                 type="text"
                 disabled={isDisabled}
                 value={isDisabled ? addressInfo.city : addressData.city}
@@ -187,7 +205,11 @@ function Address() {
             <div className="d-flex f-direction-col">
               <label className="address-label">State</label>
               <input
-                className="address-input"
+                className={`address-input ${
+                  isDisabled
+                    ? "address-input-disabled"
+                    : "address-input-enabled"
+                }`}
                 type="text"
                 disabled={isDisabled}
                 value={isDisabled ? addressInfo.state : addressData.state}

@@ -25,7 +25,6 @@ function LandingPage() {
         })}
       </section>
 
-      <PromotionBanner />
       <Footer />
     </div>
   );

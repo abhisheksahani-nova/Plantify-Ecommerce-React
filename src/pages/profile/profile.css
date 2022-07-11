@@ -5,6 +5,7 @@
 .profile-page-container {
   padding: 2rem;
   margin-top: 4rem;
+  border: 1px solid var(--custom-pri-clr);
 }
 
 .btn-small {

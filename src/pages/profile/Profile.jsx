@@ -17,7 +17,7 @@ function Profile() {
           <div className="d-flex justify-cont-center mb-2 mt-2">
             <img
               className="avatar md"
-              src="https://semantic-ui.com/images/avatar2/large/matthew.png"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
               alt="user avatar"
             />
           </div>
