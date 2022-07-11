@@ -4,7 +4,7 @@ const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [addressInfo, setAddressInfo] = useState({});
+  const [addressInfo, setAddressInfo] = useState({ isAddress: false });
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

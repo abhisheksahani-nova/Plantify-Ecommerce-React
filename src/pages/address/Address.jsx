@@ -4,20 +4,22 @@ import "./address.css";
 import { useTheme } from "../../context/theme-context";
 import { useNavigate } from "react-router-dom";
 
+const addressInitialState = {
+  country: "",
+  name: "",
+  mobileNo: "",
+  pincode: "",
+  address1: "",
+  address2: "",
+  landmark: "",
+  city: "",
+  state: "",
+};
+
 function Address() {
   const { addressInfo, setAddressInfo } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [addressData, setAddressData] = useState({
-    country: "",
-    name: "",
-    mobileNo: "",
-    pincode: "",
-    address1: "",
-    address2: "",
-    landmark: "",
-    city: "",
-    state: "",
-  });
+  const [addressData, setAddressData] = useState(addressInitialState);
 
   const navigate = useNavigate();
 
@@ -34,6 +36,8 @@ function Address() {
       state,
     } = addressData;
 
+    const isPlaceOrder = localStorage.getItem("isPlaceOrder");
+
     if (
       country &&
       name &&
@@ -45,14 +49,34 @@ function Address() {
       city &&
       state
     ) {
-      setAddressInfo({ ...addressData });
+      setAddressInfo({ ...addressData, isAddress: true });
       setIsDisabled(true);
-      const isPlaceOrder = localStorage.getItem("isPlaceOrder");
 
       if (isPlaceOrder) {
         navigate("/checkout");
       }
+    } else if (
+      addressInfo.country &&
+      addressInfo.name &&
+      addressInfo.mobileNo &&
+      addressInfo.pincode &&
+      addressInfo.address1 &&
+      addressInfo.address2 &&
+      addressInfo.landmark &&
+      addressInfo.city &&
+      addressInfo.state
+    ) {
+      if (isPlaceOrder) {
+        navigate("/checkout");
+      }
     }
+  }
+
+  function handleDeleteAddress() {
+    setAddressData(addressInitialState);
+
+    setAddressInfo({ ...addressInitialState, isAddress: false });
+    setIsDisabled(true);
   }
 
   return (
@@ -67,12 +91,23 @@ function Address() {
               <i className="fa-solid fa-location-dot location-icon"></i>
             </h2>
 
-            <button
-              className="btn cta-btn btn-small"
-              onClick={() => setIsDisabled(false)}
-            >
-              <i className="fa-solid fa-pencil pencil-icon"></i> Edit
-            </button>
+            <div>
+              {addressInfo.isAddress && (
+                <button
+                  className="btn cta-btn btn-small"
+                  onClick={() => handleDeleteAddress()}
+                >
+                  <i className="fa-solid fa-trash pencil-icon"></i> Delete
+                </button>
+              )}
+
+              <button
+                className="btn cta-btn btn-small ml-1"
+                onClick={() => setIsDisabled(false)}
+              >
+                <i className="fa-solid fa-pencil pencil-icon"></i> Edit
+              </button>
+            </div>
           </div>
 
           <div className="address-input-container">
