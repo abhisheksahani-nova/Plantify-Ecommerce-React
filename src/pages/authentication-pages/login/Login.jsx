@@ -25,7 +25,7 @@ function Login() {
         setToastData({
           show: true,
           type: "success",
-          message: "Successful login start shopping",
+          message: "Lets start shopping",
         });
         navigate("/");
       } catch (error) {
@@ -51,6 +51,11 @@ function Login() {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
         navigate("/");
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Lets start shopping",
+        });
       } catch (error) {
         console.log(error);
       }

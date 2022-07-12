@@ -1,11 +1,13 @@
 import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "../../../context/toast-context";
 
 function CartPayment() {
   const { cartProducts } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
+  const { setToastData } = useToast();
 
   const cartPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.qty,
@@ -50,7 +52,12 @@ function CartPayment() {
       description: "Thanks for purchasing",
 
       handler: function (response) {
-        alert("Payment successful ", "alert-success");
+        navigate("/");
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Successful payment",
+        });
       },
       prefill: {
         name: "Abhishek Sahani",

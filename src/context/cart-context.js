@@ -30,7 +30,7 @@ const CartProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "error",
-        message: "Error while adding product to the cart",
+        message: "Fail to add to the cart",
       });
     }
   };
@@ -46,14 +46,14 @@ const CartProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "success",
-        message: "Successfully removed from the cart",
+        message: "Successfully removed from cart",
       });
     } catch (error) {
       console.log(error);
       setToastData({
         show: true,
         type: "error",
-        message: "Error while removing product from cart",
+        message: "Fail to remove from cart",
       });
     }
   };
@@ -73,14 +73,14 @@ const CartProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "success",
-        message: "Successfully incremented the qty",
+        message: "Successfully incremented qty",
       });
     } catch (error) {
       console.log(error);
       setToastData({
         show: true,
         type: "error",
-        message: "Error while incrementing qty",
+        message: "Fail to increment qty",
       });
     }
   };
@@ -100,14 +100,14 @@ const CartProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "success",
-        message: "Successfully decremented the qty",
+        message: "Successfully decremented qty",
       });
     } catch (error) {
       console.log(error);
       setToastData({
         show: true,
         type: "error",
-        message: "Error while decrementing qty",
+        message: "Fail to decrement qty",
       });
     }
   };

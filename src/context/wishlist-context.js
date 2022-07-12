@@ -30,7 +30,7 @@ const WishlistProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "error",
-        message: "Error in adding to wishlist",
+        message: "Failure in adding to wishlist",
       });
     }
   };
@@ -53,7 +53,7 @@ const WishlistProvider = ({ children }) => {
       setToastData({
         show: true,
         type: "error",
-        message: "Error in removing product from wishlist",
+        message: "Failure in removing from wishlist",
       });
     }
   };

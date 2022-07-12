@@ -18,7 +18,7 @@ function Navbar() {
     setToastData({
       show: true,
       type: "success",
-      message: "Successful logout , see you soon",
+      message: "Successful logout",
     });
     localStorage.clear();
     navigate("/");
