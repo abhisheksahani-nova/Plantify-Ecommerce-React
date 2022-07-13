@@ -99,7 +99,7 @@ function Address() {
         {userProfileLinks.map((link, index) => {
           return (
             <li
-              className="categories_navLink categories_navLink1"
+              className="categories_navLink categories_navLink1 cursor-pointer"
               key={index}
               onClick={() => handleTabClick(link)}
             >

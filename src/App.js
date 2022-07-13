@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     localStorage.clear();
-    navigate("/");
+    // navigate("/");
   }, []);
 
   useEffect(() => {
