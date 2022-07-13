@@ -9,6 +9,7 @@ import {
   Profile,
   Address,
   CheckoutPage,
+  Orders,
 } from "./pages/index.js";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -53,6 +54,7 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/address" element={<Address />}></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
         <Route path="/mock" element={<Mockman />}></Route>
       </Routes>
     </div>
