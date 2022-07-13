@@ -4,6 +4,8 @@ import "./address.css";
 import { useTheme } from "../../context/theme-context";
 import { useNavigate } from "react-router-dom";
 
+const userProfileLinks = ["Profile", "Address", "Orders"];
+
 const addressInitialState = {
   country: "",
   name: "",
@@ -79,9 +81,33 @@ function Address() {
     setIsDisabled(true);
   }
 
+  function handleTabClick(link) {
+    if (link == "Profile") {
+      navigate("/profile");
+    } else if (link == "Address") {
+      navigate("/address");
+    } else if (link == "Orders") {
+      navigate("/orders");
+    }
+  }
+
   return (
     <div>
       <Navbar />
+
+      <ul className="categories_navTabs_list mb-1 mt-1">
+        {userProfileLinks.map((link, index) => {
+          return (
+            <li
+              className="categories_navLink categories_navLink1"
+              key={index}
+              onClick={() => handleTabClick(link)}
+            >
+              {link}
+            </li>
+          );
+        })}
+      </ul>
 
       <section className="d-flex justify-cont-center address-form-container">
         <div className="address-form-child-container">
