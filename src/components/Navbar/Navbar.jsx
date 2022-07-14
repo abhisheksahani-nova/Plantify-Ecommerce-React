@@ -35,7 +35,8 @@ function Navbar() {
         (location.pathname == "/singleproduct" ||
           location.pathname == "/profile" ||
           location.pathname == "/address" ||
-          location.pathname == "/checkout") &&
+          location.pathname == "/checkout" ||
+          location.pathname == "/orders") &&
         "nav-border"
       }`}
     >

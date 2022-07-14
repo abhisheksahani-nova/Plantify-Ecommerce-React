@@ -2,12 +2,16 @@ import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "../../../context/toast-context";
+import { useProducts } from "../../../context/products-context";
+import { v4 as uuid } from "uuid";
+import { formatDate } from "../../../backend/utils/authUtils";
 
 function CartPayment() {
   const { cartProducts } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
   const { setToastData } = useToast();
+  const { orders, setOrders } = useProducts();
 
   const cartPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.qty,
@@ -74,6 +78,24 @@ function CartPayment() {
       handlePay();
       localStorage.setItem("isPlaceOrder", false);
     } else {
+      let userEmail = localStorage.getItem("email");
+      let userName = "";
+
+      if (userEmail == "abhishekSahani@gmail.com") {
+        userName = "Abhishek Sahani";
+      }
+
+      const orderData = {
+        _id: uuid(),
+        createdAt: formatDate(),
+        payment_amount: paymentPrice,
+        email: userEmail,
+        username: userName,
+        products: cartProducts,
+      };
+
+      setOrders([...orders, orderData]);
+
       navigate("/address");
       localStorage.setItem("isPlaceOrder", true);
     }
