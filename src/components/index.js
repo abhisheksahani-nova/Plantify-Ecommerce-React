@@ -8,6 +8,7 @@ import CategoryNavTab from "./CategoryNavTabs/CategoryNavTabs.jsx";
 import Toast from "./Toast/Toast";
 import Filter from "./Filter/Filter";
 import Order from "./Order/Order";
+import OrderProductBox from "./OrderProductBox/OrderProductBox";
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   Filter,
   Toast,
   Order,
+  OrderProductBox,
 };

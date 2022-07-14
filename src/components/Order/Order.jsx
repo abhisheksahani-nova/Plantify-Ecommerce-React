@@ -1,4 +1,5 @@
 import React from "react";
+import { OrderProductBox } from "../../components/index";
 
 function Order({ orderData }) {
   const { createdAt, payment_amount, email, username, products } = orderData;
@@ -21,7 +22,9 @@ function Order({ orderData }) {
       </div>
 
       <div className="d-flex gap-3 mt-1 p-1">
-        
+        {products.map((product) => {
+          return <OrderProductBox key={product._id} product={product} />;
+        })}
       </div>
     </div>
   );
