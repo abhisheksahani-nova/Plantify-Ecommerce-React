@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 import { formatDate } from "../../../backend/utils/authUtils";
 
 function CartPayment() {
-  const { cartProducts } = useCart();
+  const { cartProducts, setCartProducts } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
   const { setToastData } = useToast();
@@ -56,7 +56,7 @@ function CartPayment() {
       description: "Thanks for purchasing",
 
       handler: function (response) {
-        navigate("/");
+        navigate("/orders");
         setToastData({
           show: true,
           type: "success",
@@ -94,6 +94,7 @@ function CartPayment() {
       };
 
       setOrders([...orders, orderData]);
+      setCartProducts([]);
 
       localStorage.setItem("isPlaceOrder", false);
     } else {

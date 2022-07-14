@@ -39,7 +39,7 @@ function Orders() {
       </ul>
 
       {orders.length > 0 ? (
-        <div className="d-flex gap-3 f-direction-col align-items-center justify-cont-center mb-2">
+        <div className="d-flex gap-3 f-direction-col align-items-center j-content-start order-card-main-container mb-2">
           {orders.map((orderData) => {
             return <Order key={orderData._id} orderData={orderData} />;
           })}

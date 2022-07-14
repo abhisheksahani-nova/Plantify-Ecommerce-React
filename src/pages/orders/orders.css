@@ -74,5 +74,9 @@
 }
 
 .empty-shopping-cart-height {
-  height: 70vh;
+  min-height: 75vh;
+}
+
+.order-card-main-container {
+  min-height: 90vh;
 }

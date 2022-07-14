@@ -21,8 +21,7 @@ function Navbar() {
       message: "Successful logout",
     });
     localStorage.clear();
-    navigate("/");
-    window.location.reload();
+    window.location.href = "/";
   }
 
   function handleThemeChange() {
