@@ -72,3 +72,7 @@
   height: 5rem;
   object-fit: contain;
 }
+
+.empty-shopping-cart-height {
+  height: 70vh;
+}
