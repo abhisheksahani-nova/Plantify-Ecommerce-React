@@ -21,7 +21,7 @@ function Order({ orderData }) {
         </div>
       </div>
 
-      <div className="d-flex gap-3 mt-1 p-1">
+      <div className="d-flex f-direction-col gap-1 mt-1 mb-1">
         {products.map((product) => {
           return <OrderProductBox key={product._id} product={product} />;
         })}

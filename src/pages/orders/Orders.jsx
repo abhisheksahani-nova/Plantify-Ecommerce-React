@@ -1,6 +1,6 @@
 import React from "react";
 import "./orders.css";
-import { Navbar, Order } from "../../components/index";
+import { Navbar, Order, Footer } from "../../components/index";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../context/products-context";
 
@@ -38,11 +38,13 @@ function Orders() {
         })}
       </ul>
 
-      <div className="d-flex align-items-center justify-cont-center">
+      <div className="d-flex gap-3 f-direction-col align-items-center justify-cont-center mb-2">
         {orders.map((orderData) => {
           return <Order key={orderData._id} orderData={orderData} />;
         })}
       </div>
+
+      <Footer />
     </div>
   );
 }

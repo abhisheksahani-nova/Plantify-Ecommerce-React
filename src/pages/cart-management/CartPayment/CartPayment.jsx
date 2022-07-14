@@ -76,8 +76,7 @@ function CartPayment() {
   function handlePlaceOrder() {
     if (location.pathname == "/checkout") {
       handlePay();
-      localStorage.setItem("isPlaceOrder", false);
-    } else {
+
       let userEmail = localStorage.getItem("email");
       let userName = "";
 
@@ -96,6 +95,8 @@ function CartPayment() {
 
       setOrders([...orders, orderData]);
 
+      localStorage.setItem("isPlaceOrder", false);
+    } else {
       navigate("/address");
       localStorage.setItem("isPlaceOrder", true);
     }
