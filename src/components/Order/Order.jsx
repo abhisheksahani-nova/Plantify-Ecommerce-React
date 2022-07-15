@@ -6,7 +6,7 @@ function Order({ orderData }) {
 
   return (
     <div className="order-card-container">
-      <div className="d-flex gap-3 p-1 order-card-header border-bottom">
+      <div className="d-flex gap-3 p-1 order-card-header order-card-header-bg border-bottom">
         <div className="d-flex f-direction-col">
           <small className="mb-small">ORDER PLACED</small>
           <small> {createdAt} </small>

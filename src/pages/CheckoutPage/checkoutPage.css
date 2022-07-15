@@ -1,0 +1,29 @@
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.checkout-details-container {
+  width: 50%;
+}
+
+.light-border {
+  border: 1px solid var(--gray-shade5);
+}
+
+.font-bold {
+  font-weight: 900;
+}
+
+.gap-small {
+  gap: 6px;
+}
+
+.coupon-code-input {
+  padding: 6px;
+  border-radius: 3px;
+  width: 10rem;
+}
+
+.bg-pri-clr {
+  background-color: var(--plant-pri-clr);
+}
