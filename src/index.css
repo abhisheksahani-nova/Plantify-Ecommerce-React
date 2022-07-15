@@ -12,6 +12,7 @@
   --text-secondary: var(--gray-shade3);
   --text-sec-dark: var(--plant-sec-clr);
   --plant-sec-light-clr: var(--secondary-clr);
+  --light-gray-border-clr: #dfdfde;
 }
 
 html {

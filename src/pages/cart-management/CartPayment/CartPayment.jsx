@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 import { formatDate } from "../../../backend/utils/authUtils";
 
 function CartPayment() {
-  const { cartProducts, setCartProducts } = useCart();
+  const { cartProducts, removeProductFromCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
   const { setToastData } = useToast();
@@ -17,7 +17,7 @@ function CartPayment() {
     (acc, product) => acc + product.price * product.qty,
     0
   );
-  const discount = cartPrice - cartPrice / 2;
+  const discount = cartPrice - cartPrice / 2 - 50;
   const paymentPrice = cartPrice - discount;
   const savedPrice = cartPrice - paymentPrice;
 
@@ -62,6 +62,7 @@ function CartPayment() {
           type: "success",
           message: "Successful payment",
         });
+        clearCart();
       },
       prefill: {
         name: "Abhishek Sahani",
@@ -71,6 +72,15 @@ function CartPayment() {
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  }
+
+  function clearCart() {
+    for (let product of cartProducts) {
+      const { _id } = product;
+      const token = localStorage.getItem("token");
+
+      removeProductFromCart(_id, token);
+    }
   }
 
   function handlePlaceOrder() {
@@ -94,7 +104,6 @@ function CartPayment() {
       };
 
       setOrders([...orders, orderData]);
-      setCartProducts([]);
 
       localStorage.setItem("isPlaceOrder", false);
     } else {

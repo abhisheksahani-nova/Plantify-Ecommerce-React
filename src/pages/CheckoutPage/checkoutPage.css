@@ -10,8 +10,12 @@
   border: 1px solid var(--gray-shade5);
 }
 
+.lightest-border {
+  border: 1px solid var(--light-gray-border-clr);
+}
+
 .font-bold {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .gap-small {
@@ -22,6 +26,10 @@
   padding: 6px;
   border-radius: 3px;
   width: 10rem;
+}
+
+.border-radius {
+  border-radius: 4px;
 }
 
 .bg-pri-clr {
