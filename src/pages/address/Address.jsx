@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "../../components";
 import "./address.css";
 import { useTheme } from "../../context/theme-context";
@@ -18,10 +18,26 @@ const addressInitialState = {
   state: "",
 };
 
+const addressDefaultState = {
+  country: "India",
+  name: "Abhishek Sahani",
+  mobileNo: "9000000000",
+  pincode: "567890",
+  address1: "Near Ramsen hotel, Mall Rd",
+  address2: "Siyal chowk, Manali, Himachal Pradesh",
+  landmark: "Old manali mall road",
+  city: "Manali",
+  state: "Himachal Pradesh",
+};
+
 function Address() {
   const { addressInfo, setAddressInfo } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [addressData, setAddressData] = useState(addressInitialState);
+  const [addressData, setAddressData] = useState(
+    localStorage.getItem("email") == "abhishekSahani@gmail.com"
+      ? addressDefaultState
+      : addressInitialState
+  );
 
   const navigate = useNavigate();
 
