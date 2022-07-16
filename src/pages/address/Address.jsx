@@ -31,15 +31,22 @@ const addressDefaultState = {
 };
 
 function Address() {
-  const { addressInfo, setAddressInfo } = useTheme();
+  const { addressInfo, setAddressInfo, guestAddress } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [addressData, setAddressData] = useState(
-    localStorage.getItem("email") == "abhishekSahani@gmail.com"
-      ? addressDefaultState
-      : addressInitialState
-  );
+  const [addressData, setAddressData] = useState({ ...addressInfo });
 
   const navigate = useNavigate();
+  const isGuest = localStorage.getItem("isGuest");
+
+  useEffect(() => {
+    if (isGuest == "abhi") {
+      guestAddress();
+    }
+  }, []);
+
+  useEffect(() => {
+    setAddressData({ ...addressInfo });
+  }, [addressInfo]);
 
   function handleSaveAddress() {
     const {

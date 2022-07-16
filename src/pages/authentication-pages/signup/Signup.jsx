@@ -36,6 +36,13 @@ function Signup() {
           `${userSignupData.firstName} ${userSignupData.lastName}`
         );
         localStorage.setItem("email", userSignupData.email);
+
+        if (userSignupData.email == "abhishekSahani@gmail.com") {
+          localStorage.setItem("isGuest", "abhi");
+        } else {
+          localStorage.setItem("isGuest", "unknown");
+        }
+
         setToastData({
           show: true,
           type: "success",

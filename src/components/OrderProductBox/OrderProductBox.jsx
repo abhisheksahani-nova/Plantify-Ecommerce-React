@@ -34,7 +34,7 @@ function OrderProductBox({ product, isCheckoutPage }) {
 
         {!isCheckoutPage && (
           <button className="btn custom_btn btn-resize mt-1 btn-small">
-            <i class="fa-solid fa-rotate-left mr-small"></i>
+            <i className="fa-solid fa-rotate-left mr-small"></i>
             Buy it again
           </button>
         )}

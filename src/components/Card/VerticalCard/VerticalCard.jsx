@@ -76,7 +76,7 @@ function VerticalCard({ product }) {
         ) : (
           <button className="btn custom_btn" onClick={() => navigate("/cart")}>
             <span className="icon">
-              <i class="fa-solid fa-arrow-right"></i>
+              <i className="fa-solid fa-arrow-right"></i>
             </span>
             Go to Cart
           </button>

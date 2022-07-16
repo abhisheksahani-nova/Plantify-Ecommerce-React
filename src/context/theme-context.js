@@ -16,19 +16,31 @@ const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [addressInfo, setAddressInfo] = useState({ isAddress: false });
+  const [addressInfo, setAddressInfo] = useState({
+    country: "",
+    name: "",
+    mobileNo: "",
+    pincode: "",
+    address1: "",
+    address2: "",
+    landmark: "",
+    city: "",
+    state: "",
+    isAddress: false,
+  });
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  useEffect(() => {
+  function guestAddress() {
     setAddressInfo({ ...addressInfo, ...addressDefaultState });
-  }, []);
+    localStorage.setItem("isGuest", "unknown");
+  }
 
   return (
     <ThemeContext.Provider
-      value={{ theme, setTheme, addressInfo, setAddressInfo }}
+      value={{ theme, setTheme, addressInfo, setAddressInfo, guestAddress }}
     >
       {children}
     </ThemeContext.Provider>
