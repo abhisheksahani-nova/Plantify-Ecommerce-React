@@ -1,11 +1,13 @@
-import React from "react";
-import { Navbar } from "../../components/index";
+import React, { useState } from "react";
+import { Navbar, ProfileEditModal } from "../../components/index";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
 
 const userProfileLinks = ["Profile", "Address", "Orders"];
 
 function Profile() {
+  const [openProfileEditModal, setProfileEditModal] = useState(false);
+
   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
   const navigate = useNavigate();
@@ -23,6 +25,10 @@ function Profile() {
   return (
     <div>
       <Navbar />
+
+      {openProfileEditModal && (
+        <ProfileEditModal setProfileEditModal={setProfileEditModal} />
+      )}
 
       <ul className="categories_navTabs_list mb-1 mt-1">
         {userProfileLinks.map((link, index) => {
@@ -59,9 +65,9 @@ function Profile() {
 
           <button
             className="btn cta-btn btn-small"
-            onClick={() => navigate("/address")}
+            onClick={() => setProfileEditModal((prev) => !prev)}
           >
-            Add address
+            Edit profile
           </button>
         </div>
       </section>
