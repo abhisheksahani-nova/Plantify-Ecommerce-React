@@ -22,6 +22,13 @@ function Login() {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
+
+        if (userLoginData.email == "abhishekSahani@gmail.com") {
+          localStorage.setItem("isGuest", "abhi");
+        } else {
+          localStorage.setItem("isGuest", "unknown");
+        }
+
         setToastData({
           show: true,
           type: "success",
@@ -50,6 +57,8 @@ function Login() {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
+        localStorage.setItem("isGuest", "abhi");
+
         navigate("/");
         setToastData({
           show: true,

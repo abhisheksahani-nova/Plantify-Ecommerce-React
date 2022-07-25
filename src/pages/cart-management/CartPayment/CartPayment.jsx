@@ -2,18 +2,22 @@ import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "../../../context/toast-context";
+import { useProducts } from "../../../context/products-context";
+import { v4 as uuid } from "uuid";
+import { formatDate } from "../../../backend/utils/authUtils";
 
 function CartPayment() {
-  const { cartProducts } = useCart();
+  const { cartProducts, removeProductFromCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
   const { setToastData } = useToast();
+  const { orders, setOrders } = useProducts();
 
   const cartPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.qty,
     0
   );
-  const discount = cartPrice - cartPrice / 2;
+  const discount = cartPrice - cartPrice / 2 - 50;
   const paymentPrice = cartPrice - discount;
   const savedPrice = cartPrice - paymentPrice;
 
@@ -52,12 +56,13 @@ function CartPayment() {
       description: "Thanks for purchasing",
 
       handler: function (response) {
-        navigate("/");
+        navigate("/orders");
         setToastData({
           show: true,
           type: "success",
           message: "Successful payment",
         });
+        clearCart();
       },
       prefill: {
         name: "Abhishek Sahani",
@@ -69,9 +74,37 @@ function CartPayment() {
     paymentObject.open();
   }
 
+  function clearCart() {
+    for (let product of cartProducts) {
+      const { _id } = product;
+      const token = localStorage.getItem("token");
+
+      removeProductFromCart(_id, token);
+    }
+  }
+
   function handlePlaceOrder() {
     if (location.pathname == "/checkout") {
       handlePay();
+
+      let userEmail = localStorage.getItem("email");
+      let userName = "";
+
+      if (userEmail == "abhishekSahani@gmail.com") {
+        userName = "Abhishek Sahani";
+      }
+
+      const orderData = {
+        _id: uuid(),
+        createdAt: formatDate(),
+        payment_amount: paymentPrice,
+        email: userEmail,
+        username: userName,
+        products: cartProducts,
+      };
+
+      setOrders([...orders, orderData]);
+
       localStorage.setItem("isPlaceOrder", false);
     } else {
       navigate("/address");

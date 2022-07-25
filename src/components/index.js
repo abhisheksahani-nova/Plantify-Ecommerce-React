@@ -7,5 +7,19 @@ import PromotionBanner from "./Banner/PromotionBanner/PromotionBanner.jsx";
 import CategoryNavTab from "./CategoryNavTabs/CategoryNavTabs.jsx";
 import Toast from "./Toast/Toast";
 import Filter from "./Filter/Filter";
+import Order from "./Order/Order";
+import OrderProductBox from "./OrderProductBox/OrderProductBox";
 
-export {Navbar, Footer, VerticalCard, HorizontalCard, HeroBanner, PromotionBanner, CategoryNavTab, Filter, Toast};
+export {
+  Navbar,
+  Footer,
+  VerticalCard,
+  HorizontalCard,
+  HeroBanner,
+  PromotionBanner,
+  CategoryNavTab,
+  Filter,
+  Toast,
+  Order,
+  OrderProductBox,
+};
