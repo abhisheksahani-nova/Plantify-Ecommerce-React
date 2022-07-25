@@ -25,7 +25,7 @@ function Login() {
         setToastData({
           show: true,
           type: "success",
-          message: "Successful login start shopping",
+          message: "Lets start shopping",
         });
         navigate("/");
       } catch (error) {
@@ -35,6 +35,29 @@ function Login() {
           type: "error",
           message: "Oops failed to login you",
         });
+      }
+    })();
+  }
+
+  function handleGuestLogin() {
+    const userLoginData = {
+      email: "abhishekSahani@gmail.com",
+      password: "abhishekSahani",
+    };
+
+    (async () => {
+      try {
+        const response = await axios.post("/api/auth/login", userLoginData);
+        localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("email", userLoginData.email);
+        navigate("/");
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Lets start shopping",
+        });
+      } catch (error) {
+        console.log(error);
       }
     })();
   }
@@ -125,6 +148,14 @@ function Login() {
         </div>
 
         <div className="inp-container ml-1 mb-1">
+          <button
+            className="btn cta-btn cart_card_outline_btn guest-btn"
+            type="button"
+            onClick={() => handleGuestLogin()}
+          >
+            Guest login
+          </button>
+
           <button
             className="btn cta-btn login_custom_btn"
             type="button"

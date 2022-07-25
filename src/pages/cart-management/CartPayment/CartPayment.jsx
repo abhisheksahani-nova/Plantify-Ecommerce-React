@@ -1,8 +1,13 @@
 import "./cartPayment.css";
 import { useCart } from "../../../context/cart-context";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useToast } from "../../../context/toast-context";
 
 function CartPayment() {
   const { cartProducts } = useCart();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { setToastData } = useToast();
 
   const cartPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * product.qty,
@@ -11,6 +16,68 @@ function CartPayment() {
   const discount = cartPrice - cartPrice / 2;
   const paymentPrice = cartPrice - discount;
   const savedPrice = cartPrice - paymentPrice;
+
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+
+      script.onload = () => {
+        resolve(true);
+      };
+
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  async function handlePay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("You are offline... Failed to load Razorpay SDK");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_0RjEvAbIKnq7cU",
+      currency: "INR",
+      amount: paymentPrice * 100,
+      name: "Plantify",
+      description: "Thanks for purchasing",
+
+      handler: function (response) {
+        navigate("/");
+        setToastData({
+          show: true,
+          type: "success",
+          message: "Successful payment",
+        });
+      },
+      prefill: {
+        name: "Abhishek Sahani",
+        email: "abhishekSahani@gmail.com",
+        contact: "9909999099",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
+
+  function handlePlaceOrder() {
+    if (location.pathname == "/checkout") {
+      handlePay();
+      localStorage.setItem("isPlaceOrder", false);
+    } else {
+      navigate("/address");
+      localStorage.setItem("isPlaceOrder", true);
+    }
+  }
 
   return (
     <div className="cart_payment_receipt card-basic app">
@@ -47,7 +114,10 @@ function CartPayment() {
       </p>
 
       <div className="cart_pricedetails_section_gap mb-1">
-        <button className="btn cta-btn cart_pricedetails_section_gap width-100p">
+        <button
+          className="btn cta-btn cart_pricedetails_section_gap width-100p"
+          onClick={() => handlePlaceOrder()}
+        >
           PLACE ORDER
         </button>
       </div>

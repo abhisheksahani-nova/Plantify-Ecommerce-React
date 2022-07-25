@@ -1,5 +1,10 @@
 .cart_card_outline_btn {
-  border: 1px solid var(--text-primary);
-  color: var(--text-primary);
+  border: 1px solid var(--plant-pri-clr);
+  color: var(--plant-pri-clr);
   background-color: var(--background);
+}
+
+.cart_card_outline_btn:hover {
+  background-color: var(--plant-pri-clr);
+  color: var(--background);
 }

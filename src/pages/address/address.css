@@ -1,0 +1,66 @@
+.address-form-container {
+  min-height: 100vh;
+  margin-top: 3rem;
+}
+
+.address-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 1.5rem 0;
+}
+
+.address-input-row-container {
+  margin: 1.5rem 0;
+  gap: 6px;
+}
+
+.address-input {
+  padding: 6px;
+  outline: none;
+  border: 1px solid var(--gray-shade5);
+  border-radius: 4px;
+}
+
+.address-label {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.address-form-child-container {
+  width: 40%;
+}
+
+.address-title {
+  color: var(--custom-dark-clr);
+  margin-bottom: 1rem;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.location-icon {
+  color: var(--plant-pri-clr);
+  margin-left: 5px;
+}
+
+.align-items-top {
+  align-items: flex-start;
+}
+
+.pencil-icon {
+  margin-right: 4px;
+}
+
+.address-input-disabled {
+  background-color: var(--custom-pri-clr);
+}
+
+.address-input-enabled {
+  background-color: var(--light-clr);
+}

@@ -18,9 +18,9 @@ function Navbar() {
     setToastData({
       show: true,
       type: "success",
-      message: "Successful logout , see you soon",
+      message: "Successful logout",
     });
-    localStorage.clear();  
+    localStorage.clear();
     navigate("/");
     window.location.reload();
   }
@@ -33,7 +33,9 @@ function Navbar() {
     <nav
       className={`nav-bar white mb-0 ${
         (location.pathname == "/singleproduct" ||
-          location.pathname == "/profile") &&
+          location.pathname == "/profile" ||
+          location.pathname == "/address" ||
+          location.pathname == "/checkout") &&
         "nav-border"
       }`}
     >
@@ -69,7 +71,7 @@ function Navbar() {
 
         <div className="flex-col-center">
           <NavLink className="nav-icon-clr" to="/" exact="true">
-            <i class="fa-solid fa-house-chimney f-size-icon"></i>
+            <i className="fa-solid fa-house-chimney f-size-icon"></i>
           </NavLink>
           <small>Home</small>
         </div>
@@ -109,9 +111,9 @@ function Navbar() {
             to={token ? "/cart" : "/login"}
             exact="true"
           >
-            <div class="badge-container">
+            <div className="badge-container">
               <i className="fa-solid fa-cart-shopping f-size-icon"></i>
-              <span class="badge notification-right-badge badge-lg">
+              <span className="badge notification-right-badge badge-lg">
                 {cartProducts?.length}
               </span>
             </div>

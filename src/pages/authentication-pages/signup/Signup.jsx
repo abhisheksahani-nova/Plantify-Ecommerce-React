@@ -39,7 +39,7 @@ function Signup() {
         setToastData({
           show: true,
           type: "success",
-          message: "Successful signup start shopping",
+          message: "Lets start shopping",
         });
         navigate("/");
       } catch (error) {
