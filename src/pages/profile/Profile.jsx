@@ -3,14 +3,40 @@ import { Navbar } from "../../components/index";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
 
+const userProfileLinks = ["Profile", "Address", "Orders"];
+
 function Profile() {
   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
   const navigate = useNavigate();
 
+  function handleTabClick(link) {
+    if (link == "Profile") {
+      navigate("/profile");
+    } else if (link == "Address") {
+      navigate("/address");
+    } else if (link == "Orders") {
+      navigate("/orders");
+    }
+  }
+
   return (
     <div>
       <Navbar />
+
+      <ul className="categories_navTabs_list mb-1 mt-1">
+        {userProfileLinks.map((link, index) => {
+          return (
+            <li
+              className="categories_navLink categories_navLink1 cursor-pointer"
+              key={index}
+              onClick={() => handleTabClick(link)}
+            >
+              {link}
+            </li>
+          );
+        })}
+      </ul>
 
       <section className="d-flex justify-cont-center">
         <div className="profile-page-container card-basic width-auto">

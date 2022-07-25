@@ -8,6 +8,7 @@ import SingleProduct from "./single-product/SingleProduct.jsx";
 import Profile from "./profile/Profile.jsx";
 import Address from "./address/Address.jsx";
 import CheckoutPage from "./CheckoutPage/CheckoutPage.jsx";
+import Orders from "./orders/Orders.jsx";
 
 export {
   LandingPage,
@@ -20,4 +21,5 @@ export {
   Profile,
   Address,
   CheckoutPage,
+  Orders,
 };

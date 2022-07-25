@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "../../components";
 import "./address.css";
 import { useTheme } from "../../context/theme-context";
 import { useNavigate } from "react-router-dom";
+
+const userProfileLinks = ["Profile", "Address", "Orders"];
 
 const addressInitialState = {
   country: "",
@@ -16,12 +18,35 @@ const addressInitialState = {
   state: "",
 };
 
+const addressDefaultState = {
+  country: "India",
+  name: "Abhishek Sahani",
+  mobileNo: "9000000000",
+  pincode: "567890",
+  address1: "Near Ramsen hotel, Mall Rd",
+  address2: "Siyal chowk, Manali, Himachal Pradesh",
+  landmark: "Old manali mall road",
+  city: "Manali",
+  state: "Himachal Pradesh",
+};
+
 function Address() {
-  const { addressInfo, setAddressInfo } = useTheme();
+  const { addressInfo, setAddressInfo, guestAddress } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [addressData, setAddressData] = useState(addressInitialState);
+  const [addressData, setAddressData] = useState({ ...addressInfo });
 
   const navigate = useNavigate();
+  const isGuest = localStorage.getItem("isGuest");
+
+  useEffect(() => {
+    if (isGuest == "abhi") {
+      guestAddress();
+    }
+  }, []);
+
+  useEffect(() => {
+    setAddressData({ ...addressInfo });
+  }, [addressInfo]);
 
   function handleSaveAddress() {
     const {
@@ -79,9 +104,33 @@ function Address() {
     setIsDisabled(true);
   }
 
+  function handleTabClick(link) {
+    if (link == "Profile") {
+      navigate("/profile");
+    } else if (link == "Address") {
+      navigate("/address");
+    } else if (link == "Orders") {
+      navigate("/orders");
+    }
+  }
+
   return (
     <div>
       <Navbar />
+
+      <ul className="categories_navTabs_list mb-1 mt-1">
+        {userProfileLinks.map((link, index) => {
+          return (
+            <li
+              className="categories_navLink categories_navLink1 cursor-pointer"
+              key={index}
+              onClick={() => handleTabClick(link)}
+            >
+              {link}
+            </li>
+          );
+        })}
+      </ul>
 
       <section className="d-flex justify-cont-center address-form-container">
         <div className="address-form-child-container">
