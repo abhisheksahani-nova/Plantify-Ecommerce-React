@@ -8,7 +8,8 @@ const userProfileLinks = ["Profile", "Address", "Orders"];
 function Profile() {
   const [openProfileEditModal, setProfileEditModal] = useState(false);
   const [profileImg, setProfileImg] = useState(
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+    localStorage.getItem("profilePic") ||
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
   );
 
   const username = localStorage.getItem("username");
@@ -66,7 +67,7 @@ function Profile() {
           <div className="d-flex justify-cont-center mb-2 mt-2 p-relative">
             <img
               className="avatar md object-fit-cover"
-              src={profilePic ? profilePic : profileImg}
+              src={profileImg}
               alt="user avatar"
             />
 
@@ -84,15 +85,35 @@ function Profile() {
               onChange={(e) => imageHandler(e)}
             />
           </div>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
-            Name : {username}
-          </label>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
-            Email : {email}
-          </label>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2 word-wrap">
-            Password : **************
-          </label>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
+              Name :
+            </label>
+
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
+              {username}
+            </label>
+          </div>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
+              Email :
+            </label>
+
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
+              {email}
+            </label>
+          </div>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2 word-wrap">
+              Password :
+            </label>
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2 word-wrap">
+              **************
+            </label>
+          </div>
 
           <button
             className="btn cta-btn btn-small"

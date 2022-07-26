@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import "./profileEditModal.css";
 
 function ProfileEditModal({ setProfileEditModal }) {
-  const [editUserData, setEditUserData] = useState({ name: "", email: "" });
+  const [editUserData, setEditUserData] = useState({
+    name: localStorage.getItem("username") || "",
+    email: localStorage.getItem("email") || "",
+  });
 
   function handleEditProfile() {
     localStorage.setItem("username", editUserData.name);
@@ -30,20 +33,22 @@ function ProfileEditModal({ setProfileEditModal }) {
             <label className="profile-edit-modal-inp-label">Name</label>
             <input
               type="text"
-              placeholder="Edit your name"
+              placeholder="Enter your name"
               className={`profile-edit-modal-inp`}
+              value={editUserData.name}
               onChange={(e) =>
                 setEditUserData({ ...editUserData, name: e.target.value })
               }
             ></input>
           </div>
 
-          <div className="d-flex f-direction-col playlist-li-item cursor-p gap-small mb-2">
+          <div className="d-flex f-direction-col playlist-li-item cursor-p gap-small mb-1">
             <label className="profile-edit-modal-inp-label">Email</label>
             <input
               type="text"
-              placeholder="Edit your email"
+              placeholder="Enter your email"
               className={`profile-edit-modal-inp`}
+              value={editUserData.email}
               onChange={(e) =>
                 setEditUserData({ ...editUserData, email: e.target.value })
               }
@@ -52,10 +57,11 @@ function ProfileEditModal({ setProfileEditModal }) {
 
           <div className="d-flex justify-cont-right">
             <button
-              className="btn btn-custom-sty"
+              className="btn cta-btn btn-small"
               onClick={() => handleEditProfile()}
             >
-              Edit
+              <i class="fa-solid fa-pen-to-square edit-pencil-icon"></i>
+              Update
             </button>
           </div>
         </div>

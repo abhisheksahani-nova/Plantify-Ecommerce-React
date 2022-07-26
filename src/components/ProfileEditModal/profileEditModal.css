@@ -111,3 +111,11 @@
 .break-word {
   word-break: break-word;
 }
+
+.justify-cont-right {
+  justify-content: right;
+}
+
+.edit-pencil-icon {
+  margin-right: 6px;
+}
