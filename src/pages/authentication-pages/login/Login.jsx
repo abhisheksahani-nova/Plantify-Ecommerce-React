@@ -57,7 +57,9 @@ function Login() {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
+        localStorage.setItem("username", "Abhishek Sahani");
         localStorage.setItem("isGuest", "abhi");
+        localStorage.setItem("isGuestLogin", 1);
 
         navigate("/");
         setToastData({

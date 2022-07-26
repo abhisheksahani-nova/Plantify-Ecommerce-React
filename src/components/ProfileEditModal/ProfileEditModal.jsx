@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./profileEditModal.css";
 
 function ProfileEditModal({ setProfileEditModal }) {
+  const [editUserData, setEditUserData] = useState({ name: "", email: "" });
+
+  function handleEditProfile() {
+    localStorage.setItem("username", editUserData.name);
+    localStorage.setItem("email", editUserData.email);
+    setProfileEditModal((prev) => !prev);
+  }
+
   return (
     <div>
       <div className="playlist-dropdown-container">
@@ -19,28 +27,36 @@ function ProfileEditModal({ setProfileEditModal }) {
           </div>
 
           <div className="d-flex f-direction-col playlist-li-item cursor-p gap-small mb-1">
-            <label className="profile-edit-modal-inp-label">Bio</label>
+            <label className="profile-edit-modal-inp-label">Name</label>
             <input
               type="text"
-              placeholder="Enter your bio"
+              placeholder="Edit your name"
               className={`profile-edit-modal-inp`}
               onChange={(e) =>
-                setEditUserData({ ...editUserData, bio: e.target.value })
+                setEditUserData({ ...editUserData, name: e.target.value })
               }
             ></input>
           </div>
 
           <div className="d-flex f-direction-col playlist-li-item cursor-p gap-small mb-2">
-            <label className="profile-edit-modal-inp-label">Portfolio</label>
+            <label className="profile-edit-modal-inp-label">Email</label>
             <input
               type="text"
-              placeholder="Enter your portfolio"
+              placeholder="Edit your email"
               className={`profile-edit-modal-inp`}
+              onChange={(e) =>
+                setEditUserData({ ...editUserData, email: e.target.value })
+              }
             ></input>
           </div>
 
           <div className="d-flex justify-cont-right">
-            <button className="btn btn-custom-sty">Save</button>
+            <button
+              className="btn btn-custom-sty"
+              onClick={() => handleEditProfile()}
+            >
+              Edit
+            </button>
           </div>
         </div>
       </div>
