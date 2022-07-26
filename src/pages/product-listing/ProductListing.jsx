@@ -34,9 +34,16 @@ function ProductListing() {
         <Filter dispatch={dispatch} state={state} />
 
         <div className="productlisting_products_container">
-          {newProducts.map((product) => {
-            return <VerticalCard key={product._id} product={product} />;
-          })}
+          <div className="d-flex gap-small">
+            <p className="product-count mb-2">{`${newProducts.length} products`}</p>
+            <i class="fa-solid fa-leaf leaf-icon"></i>
+          </div>
+
+          <div className="productlisting_products_inner_container">
+            {newProducts.map((product) => {
+              return <VerticalCard key={product._id} product={product} />;
+            })}
+          </div>
         </div>
       </section>
 
