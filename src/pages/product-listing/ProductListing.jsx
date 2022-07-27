@@ -24,7 +24,7 @@ function ProductListing() {
 
   return (
     <div className="homepage_main_container">
-      <Navbar />
+      <Navbar dispatch={dispatch} state={state} />
 
       {/* <!-- hero banner image--> */}
       <section className="productlisting_banner_container"></section>

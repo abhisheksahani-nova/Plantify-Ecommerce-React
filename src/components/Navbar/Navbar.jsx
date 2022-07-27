@@ -4,8 +4,9 @@ import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { useTheme } from "../../context/theme-context";
 import { useToast } from "../../context/toast-context";
+import { useState } from "react";
 
-function Navbar() {
+function Navbar({ dispatch, state }) {
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
   const { theme, setTheme } = useTheme();
@@ -28,6 +29,21 @@ function Navbar() {
     setTheme((theme) => (theme == "light" ? "dark" : "light"));
   }
 
+  function debounceSearchQuery(func, delay) {
+    let timer;
+
+    return (e) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(e);
+      }, delay);
+    };
+  }
+
+  function dispatchSearchQuery(e) {
+    dispatch({ type: "SEARCH_BY_QUERY", payload: e.target.value });
+  }
+
   return (
     <nav
       className={`nav-bar white mb-0 ${
@@ -48,7 +64,14 @@ function Navbar() {
       </div>
 
       <div className="nav-innerContainer nav-searchbar-cont font-clr width-auto j-content-start">
-        <input className="nav_searchBar nav-searchbar-input" type="text" />
+        <input
+          className="nav_searchBar nav-searchbar-input"
+          type="text"
+          onChange={(e) => {
+            const debounce = debounceSearchQuery(dispatchSearchQuery, 1000);
+            debounce(e);
+          }}
+        />
         <span className="searchBar_icon">
           <i className="fa-solid fa-magnifying-glass f-size-icon"></i>
         </span>
