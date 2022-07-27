@@ -54,6 +54,23 @@
   margin-bottom: 10px;
 }
 
+.dark-theme-clr-combo {
+  border: 1px solid var(--plant-pri-clr);
+  color: var(--light-clr);
+  background-color: var(--background);
+}
+
+.pri-outline-btn {
+  background-color: var(--light-clr);
+  color: var(--plant-pri-clr);
+  border: 1px solid var(--plant-pri-clr);
+}
+
+.pri-outline-btn:hover {
+  background-color: var(--plant-pri-clr);
+  color: var(--light-clr);
+}
+
 @media screen and (max-width: 500px) {
   .ecommerce-login-inp::placeholder {
     font-size: 1.3rem;

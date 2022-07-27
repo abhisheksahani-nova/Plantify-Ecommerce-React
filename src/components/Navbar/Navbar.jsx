@@ -23,7 +23,11 @@ function Navbar({ dispatch, state }) {
       type: "success",
       message: "Successful logout",
     });
-    localStorage.clear();
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("isGuest");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isGuestLogin");
     window.location.href = "/";
   }
 

@@ -72,7 +72,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo "
               }`}
               id="inp-email"
               placeholder="Enter your first name"
@@ -92,7 +92,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo "
               }`}
               id="inp-email"
               placeholder="Enter your last name"
@@ -112,7 +112,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-email"
               placeholder="Enter your email address"
@@ -137,7 +137,7 @@ function Signup() {
             <input
               type={passwordInputType}
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-password"
               placeholder="Enter password"
@@ -177,7 +177,7 @@ function Signup() {
             <input
               type={confirmPasswordInputType}
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-email"
               placeholder="Enter your password again"
@@ -204,11 +204,7 @@ function Signup() {
 
           <div className="inp-container mb-1">
             <div className="d-flex login_checkbox_inp_container">
-              <input
-                type="checkbox"
-                id="checkbox-termsPolicy"
-                className={`${theme == "dark" && "cart_card_outline_btn"}`}
-              />
+              <input type="checkbox" id="checkbox-termsPolicy" />
               <label className="inp-label inp-label-required login-checkbox-label-size inherit-clr">
                 I accept all Terms & Conditions
               </label>
