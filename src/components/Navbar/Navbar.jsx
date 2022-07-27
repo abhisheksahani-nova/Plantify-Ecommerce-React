@@ -4,9 +4,11 @@ import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { useTheme } from "../../context/theme-context";
 import { useToast } from "../../context/toast-context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navbar({ dispatch, state }) {
+  const [searchText, setSearchText] = useState("");
+
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
   const { theme, setTheme } = useTheme();
@@ -32,17 +34,23 @@ function Navbar({ dispatch, state }) {
   function debounceSearchQuery(func, delay) {
     let timer;
 
-    return (e) => {
+    return () => {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        func(e);
+        func();
       }, delay);
     };
   }
 
-  function dispatchSearchQuery(e) {
-    dispatch({ type: "SEARCH_BY_QUERY", payload: e.target.value });
+  function dispatchSearchQuery() {
+    dispatch({ type: "SEARCH_BY_QUERY", payload: searchText });
   }
+
+  const debounce = debounceSearchQuery(dispatchSearchQuery, 1000);
+
+  useEffect(() => {
+    debounce();
+  }, [searchText]);
 
   return (
     <nav
@@ -67,10 +75,7 @@ function Navbar({ dispatch, state }) {
         <input
           className="nav_searchBar nav-searchbar-input"
           type="text"
-          onChange={(e) => {
-            const debounce = debounceSearchQuery(dispatchSearchQuery, 1000);
-            debounce(e);
-          }}
+          onChange={(e) => setSearchText(e.target.value)}
         />
         <span className="searchBar_icon">
           <i className="fa-solid fa-magnifying-glass f-size-icon"></i>
