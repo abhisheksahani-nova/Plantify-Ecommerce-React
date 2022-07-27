@@ -29,21 +29,24 @@ function ProductListing() {
       {/* <!-- hero banner image--> */}
       <section className="productlisting_banner_container"></section>
 
-      <section className="productlisting_main_content_container d-flex">
+      <section className="productlisting_main_content_container d-flex p-relative">
         {/* <!-- filter sidebar --> */}
         <Filter dispatch={dispatch} state={state} />
 
         <div className="productlisting_products_container">
-          <div className="d-flex gap-small">
-            <p className="product-count mb-2">{`${newProducts.length} products`}</p>
-            <i class="fa-solid fa-leaf leaf-icon"></i>
-          </div>
+          <p className="product-count mb-2">{`${newProducts.length} products`}</p>
 
-          <div className="productlisting_products_inner_container">
-            {newProducts.map((product) => {
-              return <VerticalCard key={product._id} product={product} />;
-            })}
-          </div>
+          {newProducts?.length > 0 ? (
+            <div className="productlisting_products_inner_container">
+              {newProducts.map((product) => {
+                return <VerticalCard key={product._id} product={product} />;
+              })}
+            </div>
+          ) : (
+            <div className="empty-shooping-cart-icon-container h-100percent">
+              <i className="fa-solid fa-basket-shopping empty-shooping-cart-icon transform-center"></i>
+            </div>
+          )}
         </div>
       </section>
 
