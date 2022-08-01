@@ -9,6 +9,7 @@ let initialFilterState = {
   twoRatingPlus: 0,
   threeRatingPlus: 0,
   fourRatingPlus: 0,
+  searchQuery: "",
 };
 
 function filterReducer(state, action) {
@@ -29,6 +30,9 @@ function filterReducer(state, action) {
 
     case "SORT_BY_PRICE":
       return { ...state, priceRange: action.payload };
+
+    case "SEARCH_BY_QUERY":
+      return { ...state, searchQuery: action.payload };
 
     case "FILTER_BY_CATEGORY":
       return state.category.includes(action.payload)
@@ -101,6 +105,11 @@ function applyFilters(state, products) {
   } else if (state.fourRatingPlus) {
     filterProducts = filterProducts.filter(
       ({ rating }) => rating >= state.fourRatingPlus
+    );
+  }
+
+  if (state.searchQuery !== "") {
+    filterProducts = filterProducts.filter(({ title }) => title.includes(state.searchQuery)
     );
   }
 

@@ -24,10 +24,24 @@ function VerticalCard({ product }) {
     }
   }
 
+  function handleProductClick(e) {
+    if (e.target.id == "remove-from-wishlist") {
+      removeProductFromWishlist(_id, token);
+    } else if (e.target.id == "move-to-wishlist") {
+      moveProductToWishlist(product, token);
+    } else if (e.target.id == "btn-add-to-cart") {
+      handleAddToCart(product, _id, token);
+    } else if (e.target.id == "btn-go-to-cart") {
+      navigate("/cart");
+    } else {
+      navigate(`/singleProduct/${_id}`);
+    }
+  }
+
   return (
     <div
       className="card-basic card_custom_width app"
-      // onClick={() => navigate(`/singleProduct/${_id}`)}
+      onClick={(e) => handleProductClick(e)}
     >
       <div className="badge-container">
         <img className="card-img" src={img} alt={title} />
@@ -36,12 +50,12 @@ function VerticalCard({ product }) {
         {wishlistProducts.find((item) => item._id == _id) ? (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-select-clr"
-            onClick={() => removeProductFromWishlist(_id, token)}
+            id="remove-from-wishlist"
           ></i>
         ) : (
           <i
             className="fa-solid fa-heart dismiss-card f-size-large verticalcard-wishlist-icon-clr"
-            onClick={() => moveProductToWishlist(product, token)}
+            id="move-to-wishlist"
           ></i>
         )}
 
@@ -64,17 +78,14 @@ function VerticalCard({ product }) {
 
       <div className="card-footer">
         {!addToCart ? (
-          <button
-            className="btn custom_btn"
-            onClick={() => handleAddToCart(product, _id, token)}
-          >
+          <button className="btn custom_btn" id="btn-add-to-cart">
             <span className="icon">
               <i className="fa fa-shopping-cart"></i>
             </span>
             Add to Cart
           </button>
         ) : (
-          <button className="btn custom_btn" onClick={() => navigate("/cart")}>
+          <button className="btn custom_btn" id="btn-go-to-cart">
             <span className="icon">
               <i className="fa-solid fa-arrow-right"></i>
             </span>

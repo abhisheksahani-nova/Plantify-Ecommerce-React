@@ -4,8 +4,11 @@ import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { useTheme } from "../../context/theme-context";
 import { useToast } from "../../context/toast-context";
+import { useEffect, useState } from "react";
 
-function Navbar() {
+function Navbar({ dispatch, state }) {
+  const [searchText, setSearchText] = useState("");
+
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
   const { theme, setTheme } = useTheme();
@@ -20,13 +23,38 @@ function Navbar() {
       type: "success",
       message: "Successful logout",
     });
-    localStorage.clear();
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("isGuest");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isGuestLogin");
     window.location.href = "/";
   }
 
   function handleThemeChange() {
     setTheme((theme) => (theme == "light" ? "dark" : "light"));
   }
+
+  function debounceSearchQuery(func, delay) {
+    let timer;
+
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func();
+      }, delay);
+    };
+  }
+
+  function dispatchSearchQuery() {
+    dispatch({ type: "SEARCH_BY_QUERY", payload: searchText });
+  }
+
+  const debounce = debounceSearchQuery(dispatchSearchQuery, 1000);
+
+  useEffect(() => {
+    debounce();
+  }, [searchText]);
 
   return (
     <nav
@@ -48,7 +76,11 @@ function Navbar() {
       </div>
 
       <div className="nav-innerContainer nav-searchbar-cont font-clr width-auto j-content-start">
-        <input className="nav_searchBar nav-searchbar-input" type="text" />
+        <input
+          className="nav_searchBar nav-searchbar-input"
+          type="text"
+          onChange={(e) => setSearchText(e.target.value)}
+        />
         <span className="searchBar_icon">
           <i className="fa-solid fa-magnifying-glass f-size-icon"></i>
         </span>

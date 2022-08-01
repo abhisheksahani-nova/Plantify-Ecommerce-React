@@ -57,7 +57,9 @@ function Login() {
         const response = await axios.post("/api/auth/login", userLoginData);
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("email", userLoginData.email);
+        localStorage.setItem("username", "Abhishek Sahani");
         localStorage.setItem("isGuest", "abhi");
+        localStorage.setItem("isGuestLogin", 1);
 
         navigate("/");
         setToastData({
@@ -81,7 +83,7 @@ function Login() {
           </label>
           <input
             className={`inp login_inp_resize ecommerce-login-inp ${
-              theme == "dark" && "cart_card_outline_btn"
+              theme == "dark" && "dark-theme-clr-combo "
             }`}
             id="inp-email"
             placeholder="Enter your email"
@@ -106,7 +108,7 @@ function Login() {
           <input
             type={passwordInputType}
             className={`inp login_inp_resize ecommerce-login-inp ${
-              theme == "dark" && "cart_card_outline_btn"
+              theme == "dark" && "dark-theme-clr-combo "
             }`}
             id="inp-password"
             placeholder="Enter your password"
@@ -158,7 +160,9 @@ function Login() {
 
         <div className="inp-container ml-1 mb-1">
           <button
-            className="btn cta-btn cart_card_outline_btn guest-btn"
+            className={`btn cta-btn guest-btn ${
+              theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
+            }`}
             type="button"
             onClick={() => handleGuestLogin()}
           >
