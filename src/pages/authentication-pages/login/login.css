@@ -6,6 +6,7 @@
 
 .login_form {
   width: 27rem;
+  min-height: fit-content;
   padding-left: 2.3rem;
 }
 
@@ -73,7 +74,19 @@
 
 @media screen and (max-width: 500px) {
   .ecommerce-login-inp::placeholder {
-    font-size: 1.3rem;
+    font-size: 1rem;
+  }
+
+  .guest-btn {
+    padding: 0.9rem 0;
+  }
+
+  .login_custom_btn {
+    padding: 0.9rem 9.1rem;
+  }
+
+  .login_inp_resize {
+    padding: 0.8rem;
   }
 }
 
