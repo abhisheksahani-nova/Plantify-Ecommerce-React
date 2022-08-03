@@ -36,6 +36,10 @@
   width: 28rem;
 }
 
+.nav-width-authpage {
+  width: 15rem;
+}
+
 @media screen and (max-width: 1200px) {
   .nav-searchbar-cont {
     width: 25rem;

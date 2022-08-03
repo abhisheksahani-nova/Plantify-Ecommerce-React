@@ -63,7 +63,9 @@ function Navbar({ dispatch, state }) {
           location.pathname == "/profile" ||
           location.pathname == "/address" ||
           location.pathname == "/checkout" ||
-          location.pathname == "/orders") &&
+          location.pathname == "/orders" ||
+          location.pathname == "/login" ||
+          location.pathname == "/signup") &&
         "nav-border"
       }`}
     >
@@ -88,7 +90,13 @@ function Navbar({ dispatch, state }) {
         </div>
       )}
 
-      <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
+      <div
+        className={`nav-innerContainer nav-icon-container inherit-clr mr-1 align-items-center ${
+          location.pathname == "/login" || location.pathname == "/signup"
+            ? "nav-width-authpage"
+            : "nav-width-reset"
+        }`}
+      >
         <div className="flex-col-center">
           <div className="flex-col-center cursor-p">
             <i
@@ -118,58 +126,66 @@ function Navbar({ dispatch, state }) {
           <small>Products</small>
         </div>
 
-        <div className="flex-col-center">
-          <NavLink
-            className="nav-icon-clr"
-            to={token ? "/profile" : "/login"}
-            exact="true"
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <div className="flex-col-center">
+            <NavLink
+              className="nav-icon-clr"
+              to={token ? "/profile" : "/login"}
+              exact="true"
+            >
+              <i className="fa-solid fa-user f-size-icon"></i>
+            </NavLink>
+
+            <small>Profile</small>
+          </div>
+        )}
+
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <div className="flex-col-center">
+            <NavLink
+              className="nav-icon-clr"
+              to={token ? "/wishlist" : "/login"}
+              exact="true"
+            >
+              <div className="badge-container">
+                <i className="fa-solid fa-heart f-size-icon"></i>
+                <span className="badge notification-right-badge badge-lg">
+                  {wishlistProducts?.length}
+                </span>
+              </div>
+            </NavLink>
+
+            <small>Wishlist</small>
+          </div>
+        )}
+
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <div className="flex-col-center">
+            <NavLink
+              className="nav-icon-clr nav-icon"
+              to={token ? "/cart" : "/login"}
+              exact="true"
+            >
+              <div className="badge-container">
+                <i className="fa-solid fa-cart-shopping f-size-icon"></i>
+                <span className="badge notification-right-badge badge-lg">
+                  {cartProducts?.length}
+                </span>
+              </div>
+            </NavLink>
+
+            <small>Cart</small>
+          </div>
+        )}
+
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <button
+            className="btn nav-auth-btn-style"
+            onClick={() => (token ? handleLogout() : navigate("/login"))}
           >
-            <i className="fa-solid fa-user f-size-icon"></i>
-          </NavLink>
-
-          <small>Profile</small>
-        </div>
-
-        <div className="flex-col-center">
-          <NavLink
-            className="nav-icon-clr"
-            to={token ? "/wishlist" : "/login"}
-            exact="true"
-          >
-            <div className="badge-container">
-              <i className="fa-solid fa-heart f-size-icon"></i>
-              <span className="badge notification-right-badge badge-lg">
-                {wishlistProducts?.length}
-              </span>
-            </div>
-          </NavLink>
-
-          <small>Wishlist</small>
-        </div>
-
-        <div className="flex-col-center">
-          <NavLink
-            className="nav-icon-clr nav-icon"
-            to={token ? "/cart" : "/login"}
-            exact="true"
-          >
-            <div className="badge-container">
-              <i className="fa-solid fa-cart-shopping f-size-icon"></i>
-              <span className="badge notification-right-badge badge-lg">
-                {cartProducts?.length}
-              </span>
-            </div>
-          </NavLink>
-
-          <small>Cart</small>
-        </div>
-
-        <button
-          className="btn nav-auth-btn-style"
-          onClick={() => (token ? handleLogout() : navigate("/login"))}
-        >
-          {token ? "Logout" : "Login"}
-        </button>
+            {token ? "Logout" : "Login"}
+          </button>
+        )}
       </div>
     </nav>
   );
