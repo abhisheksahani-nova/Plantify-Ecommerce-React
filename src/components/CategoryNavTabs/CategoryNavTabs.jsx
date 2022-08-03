@@ -8,9 +8,9 @@ function CategoryNavTab() {
         <li>
           <NavLink
             to="/products"
-            className="categories_navLink categories_navLink1"
+            className="categories_navLink categories_navLink1 t-decoration-underline cursor-p"
           >
-            All Products
+            Browse products
           </NavLink>
         </li>
       </ul>

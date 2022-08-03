@@ -25,22 +25,26 @@ function VerticalCard({ product }) {
   }
 
   function handleProductClick(e) {
-    if (e.target.id == "remove-from-wishlist") {
-      removeProductFromWishlist(_id, token);
-    } else if (e.target.id == "move-to-wishlist") {
-      moveProductToWishlist(product, token);
-    } else if (e.target.id == "btn-add-to-cart") {
-      handleAddToCart(product, _id, token);
-    } else if (e.target.id == "btn-go-to-cart") {
-      navigate("/cart");
+    if (token) {
+      if (e.target.id == "remove-from-wishlist") {
+        removeProductFromWishlist(_id, token);
+      } else if (e.target.id == "move-to-wishlist") {
+        moveProductToWishlist(product, token);
+      } else if (e.target.id == "btn-add-to-cart") {
+        handleAddToCart(product, _id, token);
+      } else if (e.target.id == "btn-go-to-cart") {
+        navigate("/cart");
+      } else {
+        navigate(`/singleProduct/${_id}`);
+      }
     } else {
-      navigate(`/singleProduct/${_id}`);
+      navigate("/login");
     }
   }
 
   return (
     <div
-      className="card-basic card_custom_width app"
+      className="card-basic card_custom_width app cursor-p"
       onClick={(e) => handleProductClick(e)}
     >
       <div className="badge-container">

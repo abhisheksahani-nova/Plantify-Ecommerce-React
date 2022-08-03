@@ -2,6 +2,8 @@ import "./footer.css";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
+  const token = localStorage.getItem("token");
+
   return (
     <footer>
       <ul className="footer_list_items">
@@ -16,12 +18,18 @@ function Footer() {
           </NavLink>
         </li>
         <li>
-          <NavLink className="mr-1 ml-1 inherit-clr" to="/cart">
+          <NavLink
+            className="mr-1 ml-1 inherit-clr"
+            to={token ? "/cart" : "/login"}
+          >
             Cart
           </NavLink>
         </li>
         <li>
-          <NavLink className="mr-1 ml-1 inherit-clr" to="/wishlist">
+          <NavLink
+            className="mr-1 ml-1 inherit-clr"
+            to={token ? "/wishlist" : "/login"}
+          >
             Wishlist
           </NavLink>
         </li>

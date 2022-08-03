@@ -73,7 +73,7 @@ function Profile() {
 
             {isGuestLogin && (
               <label htmlFor="input-img">
-                <i className="fa-solid fa-camera select-img-icon"></i>
+                <i className="fa-solid fa-camera select-img-icon cursor-p"></i>
               </label>
             )}
 

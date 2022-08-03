@@ -31,7 +31,7 @@ function App() {
     localStorage.removeItem("token");
     localStorage.removeItem("isGuestLogin");
 
-    // navigate("/");
+    navigate("/");
   }, []);
 
   useEffect(() => {

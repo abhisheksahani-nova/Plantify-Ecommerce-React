@@ -15,12 +15,14 @@ function Filter({ state, dispatch }) {
 
       <div className="mb-2">
         <h4 className="products_sidebar_title">Category</h4>
-        <div className="products_sidebar_inputbox">
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() =>
+            dispatch({ type: "FILTER_BY_CATEGORY", payload: "Indoor Plant" })
+          }
+        >
           <input
             type="checkbox"
-            onClick={() =>
-              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Indoor Plant" })
-            }
             checked={state.category.includes("Indoor Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
@@ -28,12 +30,14 @@ function Filter({ state, dispatch }) {
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() =>
+            dispatch({ type: "FILTER_BY_CATEGORY", payload: "Outdoor Plant" })
+          }
+        >
           <input
             type="checkbox"
-            onClick={() =>
-              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Outdoor Plant" })
-            }
             checked={state.category.includes("Outdoor Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
@@ -41,12 +45,14 @@ function Filter({ state, dispatch }) {
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() =>
+            dispatch({ type: "FILTER_BY_CATEGORY", payload: "Office Plant" })
+          }
+        >
           <input
             type="checkbox"
-            onClick={() =>
-              dispatch({ type: "FILTER_BY_CATEGORY", payload: "Office Plant" })
-            }
             checked={state.category.includes("Office Plant")}
           />
           <label className="ml-1 products_filter_labelsize">
@@ -71,23 +77,21 @@ function Filter({ state, dispatch }) {
           />
         </div>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
-            checked={state.priceHighToLow}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
+        >
+          <input type="checkbox" checked={state.priceHighToLow} />
           <label className="ml-1 products_filter_labelsize">
             Price - high to low
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
-            checked={state.priceLowToHigh}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
+        >
+          <input type="checkbox" checked={state.priceLowToHigh} />
           <label className="ml-1 products_filter_labelsize">
             Price - low to high
           </label>
@@ -97,12 +101,11 @@ function Filter({ state, dispatch }) {
       <div>
         <h4 className="products_sidebar_title">Rating</h4>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "FOUR_RATING_PLUS" })}
-            checked={state.fourRatingPlus}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "FOUR_RATING_PLUS" })}
+        >
+          <input type="checkbox" checked={state.fourRatingPlus} />
           <label className="ml-1 products_filter_labelsize">
             4{" "}
             <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
@@ -110,12 +113,11 @@ function Filter({ state, dispatch }) {
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "THREE_RATING_PLUS" })}
-            checked={state.threeRatingPlus}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "THREE_RATING_PLUS" })}
+        >
+          <input type="checkbox" checked={state.threeRatingPlus} />
           <label className="ml-1 products_filter_labelsize">
             3{" "}
             <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
@@ -123,12 +125,11 @@ function Filter({ state, dispatch }) {
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "TWO_RATING_PLUS" })}
-            checked={state.twoRatingPlus}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "TWO_RATING_PLUS" })}
+        >
+          <input type="checkbox" checked={state.twoRatingPlus} />
           <label className="ml-1 products_filter_labelsize">
             2{" "}
             <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}
@@ -136,12 +137,11 @@ function Filter({ state, dispatch }) {
           </label>
         </div>
 
-        <div className="products_sidebar_inputbox">
-          <input
-            type="checkbox"
-            onClick={() => dispatch({ type: "ONE_RATING_PLUS" })}
-            checked={state.oneRatingPlus}
-          />
+        <div
+          className="products_sidebar_inputbox"
+          onClick={() => dispatch({ type: "ONE_RATING_PLUS" })}
+        >
+          <input type="checkbox" checked={state.oneRatingPlus} />
           <label className="ml-1 products_filter_labelsize">
             1{" "}
             <i className="fa-solid fa-star products_filter_staricon_style"></i>{" "}

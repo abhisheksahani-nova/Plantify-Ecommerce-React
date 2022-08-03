@@ -20,7 +20,7 @@ function ProductCategory() {
   return (
     <section className="homepage_categories">
       <div
-        className="categories_img_container"
+        className="categories_img_container cursor-p"
         onClick={() => handleIndoorPlantCategory()}
       >
         <img
@@ -34,7 +34,7 @@ function ProductCategory() {
         </div>
       </div>
       <div
-        className="categories_img_container"
+        className="categories_img_container cursor-p"
         onClick={() => handleOutdoorPlantCategory()}
       >
         <img

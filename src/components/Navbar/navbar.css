@@ -3,7 +3,7 @@
 }
 
 .nav-width-reset {
-  width: 23rem;
+  width: 26rem;
 }
 
 .nav-auth-btn-style {
@@ -30,6 +30,10 @@
 .nav-border {
   border-bottom: 1px solid var(--custom-pri-clr);
   box-shadow: 0px 1px 10px 2px rgb(0 0 0 / 3%);
+}
+
+.nav-searchbar-input {
+  width: 28rem;
 }
 
 @media screen and (max-width: 1200px) {

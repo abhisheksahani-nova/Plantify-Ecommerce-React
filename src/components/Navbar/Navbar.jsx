@@ -75,24 +75,26 @@ function Navbar({ dispatch, state }) {
         </NavLink>
       </div>
 
-      <div className="nav-innerContainer nav-searchbar-cont font-clr width-auto j-content-start">
-        <input
-          className="nav_searchBar nav-searchbar-input"
-          type="text"
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <span className="searchBar_icon">
-          <i className="fa-solid fa-magnifying-glass f-size-icon"></i>
-        </span>
-      </div>
+      {location.pathname == "/products" && (
+        <div className="nav-innerContainer nav-searchbar-cont font-clr width-auto j-content-start">
+          <input
+            className="nav_searchBar nav-searchbar-input"
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <span className="searchBar_icon">
+            <i className="fa-solid fa-magnifying-glass f-size-icon"></i>
+          </span>
+        </div>
+      )}
 
       <div className="nav-innerContainer nav-icon-container nav-width-reset inherit-clr mr-1 align-items-center">
         <div className="flex-col-center">
-          <div className="flex-col-center">
+          <div className="flex-col-center cursor-p">
             <i
               className={
                 theme == "light"
-                  ? "fa-solid fa-moon f-size-icon"
+                  ? "fa-solid fa-moon f-size-icon nav-icon-clr"
                   : "fa-solid fa-sun nav-icon-clr f-size-icon"
               }
               onClick={handleThemeChange}
@@ -106,6 +108,14 @@ function Navbar({ dispatch, state }) {
             <i className="fa-solid fa-house-chimney f-size-icon"></i>
           </NavLink>
           <small>Home</small>
+        </div>
+
+        <div className="flex-col-center">
+          <NavLink className="nav-icon-clr" to={"/products"} exact="true">
+            <i class="fa-solid fa-basket-shopping  f-size-icon"></i>
+          </NavLink>
+
+          <small>Products</small>
         </div>
 
         <div className="flex-col-center">
