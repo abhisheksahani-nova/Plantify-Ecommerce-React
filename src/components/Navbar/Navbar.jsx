@@ -120,7 +120,7 @@ function Navbar({ dispatch, state }) {
 
         <div className="flex-col-center">
           <NavLink className="nav-icon-clr" to={"/products"} exact="true">
-            <i class="fa-solid fa-basket-shopping  f-size-icon"></i>
+            <i className="fa-solid fa-basket-shopping  f-size-icon"></i>
           </NavLink>
 
           <small>Products</small>

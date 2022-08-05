@@ -60,7 +60,7 @@ function ProfileEditModal({ setProfileEditModal }) {
               className="btn cta-btn btn-small"
               onClick={() => handleEditProfile()}
             >
-              <i class="fa-solid fa-pen-to-square edit-pencil-icon"></i>
+              <i className="fa-solid fa-pen-to-square edit-pencil-icon"></i>
               Update
             </button>
           </div>

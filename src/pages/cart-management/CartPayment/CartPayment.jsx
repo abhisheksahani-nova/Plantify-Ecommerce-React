@@ -6,7 +6,7 @@ import { useProducts } from "../../../context/products-context";
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../../../backend/utils/authUtils";
 
-function CartPayment() {
+function CartPayment({ isCouponValid }) {
   const { cartProducts, removeProductFromCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,7 +17,12 @@ function CartPayment() {
     (acc, product) => acc + product.price * product.qty,
     0
   );
-  const discount = cartPrice - cartPrice / 2 - 50;
+  let discount = cartPrice - cartPrice / 2 - 50;
+
+  if (isCouponValid) {
+    discount = discount + discount / 10;
+  }
+
   const paymentPrice = cartPrice - discount;
   const savedPrice = cartPrice - paymentPrice;
 
@@ -105,7 +110,7 @@ function CartPayment() {
 
       setOrders([...orders, orderData]);
 
-      localStorage.setItem("isPlaceOrder", false);
+      localStorage.removeItem("isPlaceOrder");
     } else {
       navigate("/address");
       localStorage.setItem("isPlaceOrder", true);
@@ -125,11 +130,6 @@ function CartPayment() {
       <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex">
         <p>Discount</p>
         <p> ₹{discount ? discount : 0} </p>
-      </div>
-
-      <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex">
-        <p>Coupons for you</p>
-        <p> ₹0</p>
       </div>
 
       <div className="cart_pricedetails_section cart_pricedetails_section_gap d-flex b-bottom1">

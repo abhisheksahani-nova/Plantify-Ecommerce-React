@@ -37,6 +37,7 @@ function Address() {
 
   const navigate = useNavigate();
   const isGuest = localStorage.getItem("isGuest");
+  const isPlaceOrder = localStorage.getItem("isPlaceOrder");
 
   useEffect(() => {
     if (isGuest == "abhi") {
@@ -60,8 +61,6 @@ function Address() {
       city,
       state,
     } = addressData;
-
-    const isPlaceOrder = localStorage.getItem("isPlaceOrder");
 
     if (
       country &&

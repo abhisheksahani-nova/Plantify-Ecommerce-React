@@ -10,6 +10,7 @@ import Filter from "./Filter/Filter";
 import Order from "./Order/Order";
 import OrderProductBox from "./OrderProductBox/OrderProductBox";
 import ProfileEditModal from "./ProfileEditModal/ProfileEditModal";
+import CouponModal from "./CouponModal/CouponModal";
 
 export {
   Navbar,
@@ -24,4 +25,5 @@ export {
   Order,
   OrderProductBox,
   ProfileEditModal,
+  CouponModal,
 };

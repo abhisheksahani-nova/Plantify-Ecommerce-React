@@ -1,0 +1,24 @@
+.modal-width-resize {
+  width: 15rem;
+}
+
+.coupon-modal-body {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+  background-color: var(--plant-pri-light-clr);
+  color: var(--background);
+}
+
+.coupon-modal-header {
+  font-size: 2.4rem;
+}
+
+.coupon-modal-footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+.coupon-modal-close-icon {
+  color: var(--background);
+  font-size: 1.2rem;
+}
