@@ -1,6 +1,22 @@
-.homepage_banner_container {
-  height: 34rem;
+.banner-bg-img1 {
   background: url(https://cdn.shopify.com/s/files/1/1485/6894/files/home5_bg1.jpg?v=1514625150);
+  height: 34rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0rem 1.5rem 1rem;
+}
+
+.banner-bg-img2 {
+  background: url(https://cdn.shopify.com/s/files/1/1485/6894/files/home5_bg2.jpg?v=1514625158);
+  height: 34rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0rem 1.5rem 1rem;
+}
+
+.banner-bg-img3 {
+  background: url(https://cdn.shopify.com/s/files/1/1485/6894/files/home5_bg3.jpg?v=1514625166);
+  height: 34rem;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0rem 1.5rem 1rem;
