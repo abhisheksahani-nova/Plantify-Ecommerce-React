@@ -174,7 +174,7 @@ function Login() {
             </button>
 
             <button
-              className="btn cta-btn login_custom_btn"
+              className="btn cta-btn guest-btn"
               type="button"
               onClick={() => handleUserLogin()}
             >

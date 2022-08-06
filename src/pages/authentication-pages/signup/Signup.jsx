@@ -30,26 +30,41 @@ function Signup() {
 
     (async () => {
       try {
-        const response = await axios.post("/api/auth/signup", userData);
-        localStorage.setItem("token", response.data.encodedToken);
-        localStorage.setItem(
-          "username",
-          `${userSignupData.firstName} ${userSignupData.lastName}`
-        );
-        localStorage.setItem("email", userSignupData.email);
+        if (
+          userSignupData.firstName &&
+          userSignupData.lastName &&
+          userSignupData.email &&
+          userSignupData.password &&
+          userSignupData.confirmPassword &&
+          userSignupData.password == userSignupData.confirmPassword
+        ) {
+          const response = await axios.post("/api/auth/signup", userData);
+          localStorage.setItem("token", response.data.encodedToken);
+          localStorage.setItem(
+            "username",
+            `${userSignupData.firstName} ${userSignupData.lastName}`
+          );
+          localStorage.setItem("email", userSignupData.email);
 
-        if (userSignupData.email == "abhishekSahani@gmail.com") {
-          localStorage.setItem("isGuest", "abhi");
+          if (userSignupData.email == "abhishekSahani@gmail.com") {
+            localStorage.setItem("isGuest", "abhi");
+          } else {
+            localStorage.setItem("isGuest", "unknown");
+          }
+
+          setToastData({
+            show: true,
+            type: "success",
+            message: "Lets start shopping",
+          });
+          navigate("/");
         } else {
-          localStorage.setItem("isGuest", "unknown");
+          setToastData({
+            show: true,
+            type: "error",
+            message: "Fill required filed",
+          });
         }
-
-        setToastData({
-          show: true,
-          type: "success",
-          message: "Lets start shopping",
-        });
-        navigate("/");
       } catch (error) {
         console.log(error);
         setToastData({
@@ -59,6 +74,16 @@ function Signup() {
         });
       }
     })();
+  }
+
+  function signupWithDummyData() {
+    setUserSignupData({
+      firstName: "Arun",
+      lastName: "Sharma",
+      email: "arunsharma@234",
+      password: "arunsharma9807",
+      confirmPassword: "arunsharma9807",
+    });
   }
 
   return (
@@ -208,7 +233,7 @@ function Signup() {
           <div className="inp-container mb-1">
             <div className="d-flex login_checkbox_inp_container">
               <input type="checkbox" id="checkbox-termsPolicy" />
-              <label className="inp-label inp-label-required login-checkbox-label-size inherit-clr">
+              <label className="inp-label login-checkbox-label-size inherit-clr">
                 I accept all Terms & Conditions
               </label>
             </div>
@@ -223,7 +248,17 @@ function Signup() {
 
           <div className="inp-container ml-1 mb-1">
             <button
-              className="btn cta-btn login_custom_btn"
+              className={`btn cta-btn guest-btn ${
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
+              }`}
+              type="button"
+              onClick={() => signupWithDummyData()}
+            >
+              Fill dummy data
+            </button>
+
+            <button
+              className="btn cta-btn guest-btn"
               type="button"
               onClick={() => handleSignup()}
             >
