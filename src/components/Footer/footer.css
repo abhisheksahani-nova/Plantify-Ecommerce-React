@@ -1,9 +1,26 @@
+.footer-container {
+  background-color: var(--plant-pri-clr);
+  color: var(--light-clr);
+}
+
 .footer_list_items {
   display: flex;
   align-items: center;
   justify-content: center;
   list-style-type: none;
-  padding: 4rem 0;
-  background-color: var(--plant-pri-clr);
-  color: var(--light-clr);
+  padding: 4rem 0 2rem;
+}
+
+.footer-icon-cont {
+  width: 10rem;
+  padding: 1rem;
+}
+
+.footer-copyright-cont {
+  width: 20rem;
+  padding: 1rem;
+}
+
+.footer-icon {
+  font-size: 1.5rem;
 }

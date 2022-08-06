@@ -5,7 +5,7 @@ function Footer() {
   const token = localStorage.getItem("token");
 
   return (
-    <footer>
+    <footer className="footer-container">
       <ul className="footer_list_items">
         <li>
           <NavLink className="mr-1 inherit-clr" to="/">
@@ -34,6 +34,20 @@ function Footer() {
           </NavLink>
         </li>
       </ul>
+
+      <div className="d-flex justify-cont-center">
+        <div className="d-flex j-space-between footer-icon-cont">
+          <i className="fa-brands fa-linkedin footer-icon"></i>
+          <i className="fa-brands fa-github footer-icon"></i>
+          <i className="fa-brands fa-hashnode footer-icon"></i>
+        </div>
+      </div>
+
+      <div className="d-flex justify-cont-center">
+        <div className="d-flex j-space-between footer-copyright-cont">
+          <small> © | 2022 | abhishekSahani | Made with love❤️</small>
+        </div>
+      </div>
     </footer>
   );
 }
