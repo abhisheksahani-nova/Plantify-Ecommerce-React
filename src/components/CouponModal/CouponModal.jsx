@@ -13,7 +13,7 @@ function CouponModal({ setOpenCouponModal }) {
             <h3>Your Purchase</h3>
 
             <i
-              className="fa-solid fa-square-xmark dismiss-card coupon-modal-close-icon"
+              className="fa-solid fa-square-xmark dismiss-card coupon-modal-close-icon cursor-p"
               onClick={() => setOpenCouponModal((prev) => !prev)}
             ></i>
           </div>

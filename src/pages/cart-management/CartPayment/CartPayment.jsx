@@ -56,7 +56,7 @@ function CartPayment({ isCouponValid }) {
     const options = {
       key: "rzp_test_0RjEvAbIKnq7cU",
       currency: "INR",
-      amount: paymentPrice * 100,
+      amount: parseInt(paymentPrice * 100),
       name: "Plantify",
       description: "Thanks for purchasing",
 
