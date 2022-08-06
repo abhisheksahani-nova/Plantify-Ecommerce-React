@@ -38,26 +38,34 @@ function Signup() {
           userSignupData.confirmPassword &&
           userSignupData.password == userSignupData.confirmPassword
         ) {
-          const response = await axios.post("/api/auth/signup", userData);
-          localStorage.setItem("token", response.data.encodedToken);
-          localStorage.setItem(
-            "username",
-            `${userSignupData.firstName} ${userSignupData.lastName}`
-          );
-          localStorage.setItem("email", userSignupData.email);
+          if (/\S+@\S+\.\S+/.test(userSignupData.email)) {
+            const response = await axios.post("/api/auth/signup", userData);
+            localStorage.setItem("token", response.data.encodedToken);
+            localStorage.setItem(
+              "username",
+              `${userSignupData.firstName.trim()} ${userSignupData.lastName.trim()}`
+            );
+            localStorage.setItem("email", userSignupData.email);
 
-          if (userSignupData.email == "abhishekSahani@gmail.com") {
-            localStorage.setItem("isGuest", "abhi");
+            if (userSignupData.email == "abhishekSahani@gmail.com") {
+              localStorage.setItem("isGuest", "abhi");
+            } else {
+              localStorage.setItem("isGuest", "unknown");
+            }
+
+            setToastData({
+              show: true,
+              type: "success",
+              message: "Lets start shopping",
+            });
+            navigate("/");
           } else {
-            localStorage.setItem("isGuest", "unknown");
+            setToastData({
+              show: true,
+              type: "error",
+              message: "Invalid email",
+            });
           }
-
-          setToastData({
-            show: true,
-            type: "success",
-            message: "Lets start shopping",
-          });
-          navigate("/");
         } else {
           setToastData({
             show: true,
@@ -80,7 +88,7 @@ function Signup() {
     setUserSignupData({
       firstName: "Arun",
       lastName: "Sharma",
-      email: "arunsharma@234",
+      email: "arunsharma@gmail.com",
       password: "arunsharma9807",
       confirmPassword: "arunsharma9807",
     });

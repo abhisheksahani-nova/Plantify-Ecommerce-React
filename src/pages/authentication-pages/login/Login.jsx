@@ -20,22 +20,30 @@ function Login() {
   function handleUserLogin() {
     (async () => {
       try {
-        const response = await axios.post("/api/auth/login", userLoginData);
-        localStorage.setItem("token", response.data.encodedToken);
-        localStorage.setItem("email", userLoginData.email);
+        if (userLoginData.email && userLoginData.password) {
+          const response = await axios.post("/api/auth/login", userLoginData);
+          localStorage.setItem("token", response.data.encodedToken);
+          localStorage.setItem("email", userLoginData.email);
 
-        if (userLoginData.email == "abhishekSahani@gmail.com") {
-          localStorage.setItem("isGuest", "abhi");
+          if (userLoginData.email == "abhishekSahani@gmail.com") {
+            localStorage.setItem("isGuest", "abhi");
+          } else {
+            localStorage.setItem("isGuest", "unknown");
+          }
+
+          setToastData({
+            show: true,
+            type: "success",
+            message: "Lets start shopping",
+          });
+          navigate("/");
         } else {
-          localStorage.setItem("isGuest", "unknown");
+          setToastData({
+            show: true,
+            type: "error",
+            message: "Fill required field",
+          });
         }
-
-        setToastData({
-          show: true,
-          type: "success",
-          message: "Lets start shopping",
-        });
-        navigate("/");
       } catch (error) {
         console.log(error);
         setToastData({
