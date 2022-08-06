@@ -37,9 +37,15 @@ function Footer() {
 
       <div className="d-flex justify-cont-center">
         <div className="d-flex j-space-between footer-icon-cont">
-          <i className="fa-brands fa-linkedin footer-icon"></i>
-          <i className="fa-brands fa-github footer-icon"></i>
-          <i className="fa-brands fa-hashnode footer-icon"></i>
+          <a href="https://www.linkedin.com/in/abhishek-sahani-698b12135/">
+            <i className="fa-brands fa-linkedin footer-icon"></i>
+          </a>
+          <a href="https://github.com/abhisheksahani-nova">
+            <i className="fa-brands fa-github footer-icon"></i>
+          </a>
+          <a href="https://abhisheksahani.hashnode.dev/">
+            <i className="fa-brands fa-hashnode footer-icon"></i>
+          </a>
         </div>
       </div>
 
