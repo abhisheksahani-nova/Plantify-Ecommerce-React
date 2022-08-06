@@ -64,3 +64,11 @@
 .address-input-enabled {
   background-color: var(--light-clr);
 }
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+.pri-clr-border {
+  border: 1px solid var(--plant-pri-clr);
+}

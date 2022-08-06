@@ -303,12 +303,22 @@ function Address() {
             </div>
           </div>
 
-          <button
-            className="btn cta-btn mb-2"
-            onClick={() => handleSaveAddress()}
-          >
-            Use this address
-          </button>
+          <div className="d-flex align-items-center gap-1 mb-4">
+            <button
+              className="btn cta-btn pri-clr-border"
+              onClick={() => handleSaveAddress()}
+            >
+              Use this address
+            </button>
+
+            <button
+              className="btn cta-btn pri-outline-btn"
+              type="button"
+              onClick={() => guestAddress()}
+            >
+              Add dummy data
+            </button>
+          </div>
         </div>
       </section>
     </div>

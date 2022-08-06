@@ -174,7 +174,7 @@ function Login() {
             </button>
 
             <button
-              className="btn cta-btn guest-btn"
+              className="btn cta-btn guest-btn pri-clr-border"
               type="button"
               onClick={() => handleUserLogin()}
             >
