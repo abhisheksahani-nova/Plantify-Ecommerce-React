@@ -65,6 +65,7 @@ function Navbar({ dispatch, state }) {
           location.pathname == "/checkout" ||
           location.pathname == "/orders" ||
           location.pathname == "/login" ||
+          location.pathname == "/products" ||
           location.pathname == "/signup") &&
         "nav-border"
       }`}

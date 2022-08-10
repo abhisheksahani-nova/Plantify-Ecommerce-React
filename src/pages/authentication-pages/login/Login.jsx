@@ -150,27 +150,7 @@ function Login() {
             </div>
           </div>
 
-          <div className="inp-container mb-1">
-            <div className="d-flex login_checkbox_inp_container">
-              <input
-                type="checkbox"
-                id="checkbox-termsPolicy"
-                className={`${theme == "dark" && "cart_card_outline_btn"}`}
-              />
-              <label className="inp-label login-checkbox-label-size inherit-clr">
-                Remember Me
-              </label>
-            </div>
-
-            <div className="err-msg-container d-none">
-              <span>
-                <i className="fa fa-exclamation-circle err-icon"></i>Accept our
-                terms & policy before going forward!
-              </span>
-            </div>
-          </div>
-
-          <div className="inp-container ml-1 mb-1">
+          <div className="inp-container mt-2 ml-1 mb-1">
             <button
               className={`btn cta-btn guest-btn ${
                 theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"

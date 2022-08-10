@@ -26,9 +26,6 @@ function ProductListing() {
     <div className="homepage_main_container">
       <Navbar dispatch={dispatch} state={state} />
 
-      {/* <!-- hero banner image--> */}
-      <section className="productlisting_banner_container"></section>
-
       <section className="productlisting_main_content_container d-flex p-relative">
         {/* <!-- filter sidebar --> */}
         <Filter dispatch={dispatch} state={state} />

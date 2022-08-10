@@ -48,10 +48,12 @@ function HorizontalCard({ product }) {
               className={`btn cart_card_outlinebtn customstyle_btn ${
                 theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
               }`}
-              onClick={() => productQtyIncrement(_id, token)}
+              disabled={qty <= 1 ? true : false}
+              onClick={() => handleProductQtyDecrement(_id, token)}
             >
-              +
+              -
             </button>
+
             <input
               className={`cart_card_quantity_inp ${
                 theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
@@ -59,14 +61,14 @@ function HorizontalCard({ product }) {
               type="text"
               value={qty}
             />
+
             <button
               className={`btn cart_card_outlinebtn customstyle_btn ${
                 theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
               }`}
-              disabled={qty <= 1 ? true : false}
-              onClick={() => handleProductQtyDecrement(_id, token)}
+              onClick={() => productQtyIncrement(_id, token)}
             >
-              -
+              +
             </button>
           </div>
 

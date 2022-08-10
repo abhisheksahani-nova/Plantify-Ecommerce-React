@@ -6,37 +6,8 @@ function Footer() {
 
   return (
     <footer className="footer-container">
-      <ul className="footer_list_items">
-        <li>
-          <NavLink className="mr-1 inherit-clr" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="mr-1 ml-1 inherit-clr" to="/products">
-            Products
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className="mr-1 ml-1 inherit-clr"
-            to={token ? "/cart" : "/login"}
-          >
-            Cart
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className="mr-1 ml-1 inherit-clr"
-            to={token ? "/wishlist" : "/login"}
-          >
-            Wishlist
-          </NavLink>
-        </li>
-      </ul>
-
       <div className="d-flex justify-cont-center">
-        <div className="d-flex j-space-between footer-icon-cont">
+        <div className="d-flex j-space-between footer-icon-cont mt-2">
           <a href="https://www.linkedin.com/in/abhishek-sahani-698b12135/">
             <i className="fa-brands fa-linkedin footer-icon"></i>
           </a>
