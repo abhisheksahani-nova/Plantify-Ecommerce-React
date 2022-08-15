@@ -26,7 +26,7 @@ function HeroBanner() {
   return (
     <section
       onClick={() => navigate("/products")}
-      className={`cursor-p ${bannerImages[bannerImg]} `}
+      className={`cursor-p ${bannerImages[bannerImg]}`}
     >
       <div className="banner_content_container"></div>
     </section>

@@ -28,19 +28,54 @@
 }
 
 @media screen and (max-width: 900px) {
-  .homepage_banner_container {
-    height: 28rem;
+  .banner-bg-img1 {
+    height: 25rem;
+  }
+
+  .banner-bg-img2 {
+    height: 25rem;
+  }
+
+  .banner-bg-img3 {
+    height: 25rem;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .homepage_banner_container {
-    height: 23rem;
+  .banner-bg-img1 {
+    height: 19rem;
+  }
+
+  .banner-bg-img2 {
+    height: 19rem;
+  }
+  .banner-bg-img3 {
+    height: 19rem;
   }
 }
 
-@media screen and (max-width: 300px) {
-  .homepage_banner_container {
+@media screen and (max-width: 500px) {
+  .banner-bg-img1 {
     height: 16rem;
+  }
+
+  .banner-bg-img2 {
+    height: 16rem;
+  }
+  .banner-bg-img3 {
+    height: 16rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .banner-bg-img1 {
+    height: 12rem;
+  }
+
+  .banner-bg-img2 {
+    height: 12rem;
+  }
+  .banner-bg-img3 {
+    height: 12rem;
   }
 }
