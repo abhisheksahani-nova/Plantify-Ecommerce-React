@@ -33,3 +33,7 @@
 .word-wrap {
   word-wrap: break-word;
 }
+
+.pt-3 {
+  padding-top: 3rem;
+}

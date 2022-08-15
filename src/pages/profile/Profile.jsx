@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Navbar, ProfileEditModal } from "../../components/index";
+import { Navbar, ProfileEditModal, Sidebar } from "../../components/index";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
 
 const userProfileLinks = ["Profile", "Address", "Orders"];
 
 function Profile() {
+  const [openSidebar, setOpenSidebar] = useState(false);
   const [openProfileEditModal, setProfileEditModal] = useState(false);
   const [profileImg, setProfileImg] = useState(
     localStorage.getItem("profilePic") ||
@@ -41,14 +42,15 @@ function Profile() {
 
   return (
     <div>
-      <Navbar />
-      {console.log(isGuestLogin)}
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
       {openProfileEditModal && (
         <ProfileEditModal setProfileEditModal={setProfileEditModal} />
       )}
 
-      <ul className="categories_navTabs_list mb-1 mt-1">
+      <ul className="categories_navTabs_list mb-1 pt-3 p-relative">
+        {openSidebar && <Sidebar />}
+
         {userProfileLinks.map((link, index) => {
           return (
             <li

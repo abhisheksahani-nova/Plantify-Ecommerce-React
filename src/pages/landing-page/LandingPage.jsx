@@ -19,7 +19,7 @@ function LandingPage() {
     <div className="homepage_main_container">
       <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <div>
+      <div className="p-relative">
         {openSidebar && <Sidebar />}
         <HeroBanner />
       </div>

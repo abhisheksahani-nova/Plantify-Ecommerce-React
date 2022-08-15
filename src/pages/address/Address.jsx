@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import "./address.css";
 import { useTheme } from "../../context/theme-context";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +31,8 @@ const addressDefaultState = {
 };
 
 function Address() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { addressInfo, setAddressInfo, guestAddress } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
   const [addressData, setAddressData] = useState({ ...addressInfo });
@@ -115,9 +117,11 @@ function Address() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <ul className="categories_navTabs_list mb-1 mt-1">
+      <ul className="categories_navTabs_list p-relative mb-1 pt-3">
+        {openSidebar && <Sidebar />}
+
         {userProfileLinks.map((link, index) => {
           return (
             <li

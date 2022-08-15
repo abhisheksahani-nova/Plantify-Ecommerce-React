@@ -1,5 +1,5 @@
 import React from "react";
-import { OrderProductBox } from "../../components/index";
+import { OrderProductBox, Sidebar } from "../../components/index";
 
 function Order({ orderData }) {
   const { createdAt, payment_amount, email, username, products } = orderData;

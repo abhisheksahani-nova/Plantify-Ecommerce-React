@@ -2,11 +2,13 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/theme-context";
 import { useToast } from "../../../context/toast-context";
-import { Navbar } from "../../../components/index";
+import { Navbar, Sidebar } from "../../../components/index";
 import axios from "axios";
 import "./login.css";
 
 function Login() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const [userLoginData, setUserLoginData] = useState({
     email: "",
     password: "",
@@ -84,9 +86,11 @@ function Login() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <section className="login_form_container d-flex">
+      <section className="login_form_container d-flex p-relative">
+        {openSidebar && <Sidebar />}
+
         <div className="card-basic login_form app">
           <h2 className="t-align-center mt-2 mb-2">Login</h2>
           <div className="inp-container mb-1">

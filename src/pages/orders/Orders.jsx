@@ -1,12 +1,15 @@
 import React from "react";
 import "./orders.css";
-import { Navbar, Order, Footer } from "../../components/index";
+import { Navbar, Order, Footer, Sidebar } from "../../components/index";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../context/products-context";
+import { useState } from "react";
 
 const userProfileLinks = ["Profile", "Address", "Orders"];
 
 function Orders() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { orders, setOrders } = useProducts();
   const navigate = useNavigate();
 
@@ -22,9 +25,11 @@ function Orders() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <ul className="categories_navTabs_list mb-1 mt-1">
+      <ul className="categories_navTabs_list mb-1 pt-3 p-relative">
+        {openSidebar && <Sidebar />}
+
         {userProfileLinks.map((link, index) => {
           return (
             <li

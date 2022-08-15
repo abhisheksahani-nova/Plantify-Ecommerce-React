@@ -2,10 +2,12 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/theme-context";
 import { useToast } from "../../../context/toast-context";
-import { Navbar } from "../../../components/index";
+import { Navbar, Sidebar } from "../../../components/index";
 import axios from "axios";
 
 function Signup() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const [userSignupData, setUserSignupData] = useState({
     firstName: "",
     lastName: "",
@@ -96,9 +98,11 @@ function Signup() {
 
   return (
     <>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <section className="login_form_container d-flex">
+      <section className="login_form_container d-flex p-relative">
+        {openSidebar && <Sidebar />}
+
         <div className="card-basic login_form app">
           <h2 className="t-align-center mt-2 mb-2">Signup</h2>
 
