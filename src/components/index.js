@@ -11,6 +11,7 @@ import Order from "./Order/Order";
 import OrderProductBox from "./OrderProductBox/OrderProductBox";
 import ProfileEditModal from "./ProfileEditModal/ProfileEditModal";
 import CouponModal from "./CouponModal/CouponModal";
+import Sidebar from "./Sidebar/Sidebar";
 
 export {
   Navbar,
@@ -26,4 +27,5 @@ export {
   OrderProductBox,
   ProfileEditModal,
   CouponModal,
+  Sidebar,
 };

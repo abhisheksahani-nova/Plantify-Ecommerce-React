@@ -40,6 +40,14 @@
   width: 15rem;
 }
 
+.hamburger-icon {
+  font-size: 1.2rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
 @media screen and (max-width: 1200px) {
   .nav-searchbar-cont {
     width: 25rem;
@@ -60,12 +68,24 @@
   justify-content: flex-start;
 }
 
+@media screen and (max-width: 800px) {
+  .nav-brand-title {
+    font-size: 1.5rem;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .nav-searchbar-input {
     width: 14rem;
   }
+}
 
+@media screen and (max-width: 500px) {
   .nav-brand-title {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
+  }
+
+  .nav-brand-container {
+    width: 8rem;
   }
 }

@@ -5,17 +5,26 @@ import {
   HeroBanner,
   PromotionBanner,
   CategoryNavTab,
+  Sidebar,
 } from "../../components/index";
 import ProductCategory from "./ProductCategory/ProductCategory";
 import { useProducts } from "../../context/products-context";
+import { useState } from "react";
 
 function LandingPage() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { products } = useProducts();
 
   return (
     <div className="homepage_main_container">
-      <Navbar />
-      <HeroBanner />
+      <Navbar setOpenSidebar={setOpenSidebar} />
+
+      <div>
+        {openSidebar && <Sidebar />}
+        <HeroBanner />
+      </div>
+
       <ProductCategory />
       <CategoryNavTab />
 

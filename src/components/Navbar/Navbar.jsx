@@ -6,8 +6,9 @@ import { useTheme } from "../../context/theme-context";
 import { useToast } from "../../context/toast-context";
 import { useEffect, useState } from "react";
 
-function Navbar({ dispatch, state }) {
+function Navbar({ dispatch, state, setOpenSidebar }) {
   const [searchText, setSearchText] = useState("");
+  const [windowWidth, setWindowWidth] = useState();
 
   const { cartProducts } = useCart();
   const { wishlistProducts } = useWishlist();
@@ -16,6 +17,18 @@ function Navbar({ dispatch, state }) {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   function handleLogout() {
     setToastData({
@@ -91,103 +104,112 @@ function Navbar({ dispatch, state }) {
         </div>
       )}
 
-      <div
-        className={`nav-innerContainer nav-icon-container inherit-clr mr-1 align-items-center ${
-          location.pathname == "/login" || location.pathname == "/signup"
-            ? "nav-width-authpage"
-            : "nav-width-reset"
-        }`}
-      >
-        <div className="flex-col-center">
-          <div className="flex-col-center cursor-p">
-            <i
-              className={
-                theme == "light"
-                  ? "fa-solid fa-moon f-size-icon nav-icon-clr"
-                  : "fa-solid fa-sun nav-icon-clr f-size-icon"
-              }
-              onClick={handleThemeChange}
-            ></i>
-            <small>{theme == "light" ? "dark" : "light"}</small>
-          </div>
-        </div>
-
-        <div className="flex-col-center">
-          <NavLink className="nav-icon-clr" to="/" exact="true">
-            <i className="fa-solid fa-house-chimney f-size-icon"></i>
-          </NavLink>
-          <small>Home</small>
-        </div>
-
-        <div className="flex-col-center">
-          <NavLink className="nav-icon-clr" to={"/products"} exact="true">
-            <i className="fa-solid fa-basket-shopping  f-size-icon"></i>
-          </NavLink>
-
-          <small>Products</small>
-        </div>
-
-        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+      {windowWidth > 500 ? (
+        <div
+          className={`nav-innerContainer nav-icon-container inherit-clr mr-1 align-items-center ${
+            location.pathname == "/login" || location.pathname == "/signup"
+              ? "nav-width-authpage"
+              : "nav-width-reset"
+          }`}
+        >
           <div className="flex-col-center">
-            <NavLink
-              className="nav-icon-clr"
-              to={token ? "/profile" : "/login"}
-              exact="true"
-            >
-              <i className="fa-solid fa-user f-size-icon"></i>
+            <div className="flex-col-center cursor-p">
+              <i
+                className={
+                  theme == "light"
+                    ? "fa-solid fa-moon f-size-icon nav-icon-clr"
+                    : "fa-solid fa-sun nav-icon-clr f-size-icon"
+                }
+                onClick={handleThemeChange}
+              ></i>
+              <small>{theme == "light" ? "dark" : "light"}</small>
+            </div>
+          </div>
+
+          <div className="flex-col-center">
+            <NavLink className="nav-icon-clr" to="/" exact="true">
+              <i className="fa-solid fa-house-chimney f-size-icon"></i>
+            </NavLink>
+            <small>Home</small>
+          </div>
+
+          <div className="flex-col-center">
+            <NavLink className="nav-icon-clr" to={"/products"} exact="true">
+              <i className="fa-solid fa-basket-shopping  f-size-icon"></i>
             </NavLink>
 
-            <small>Profile</small>
+            <small>Products</small>
           </div>
-        )}
 
-        {location.pathname !== "/login" && location.pathname !== "/signup" && (
-          <div className="flex-col-center">
-            <NavLink
-              className="nav-icon-clr"
-              to={token ? "/wishlist" : "/login"}
-              exact="true"
+          {location.pathname !== "/login" && location.pathname !== "/signup" && (
+            <div className="flex-col-center">
+              <NavLink
+                className="nav-icon-clr"
+                to={token ? "/profile" : "/login"}
+                exact="true"
+              >
+                <i className="fa-solid fa-user f-size-icon"></i>
+              </NavLink>
+
+              <small>Profile</small>
+            </div>
+          )}
+
+          {location.pathname !== "/login" && location.pathname !== "/signup" && (
+            <div className="flex-col-center">
+              <NavLink
+                className="nav-icon-clr"
+                to={token ? "/wishlist" : "/login"}
+                exact="true"
+              >
+                <div className="badge-container">
+                  <i className="fa-solid fa-heart f-size-icon"></i>
+                  <span className="badge notification-right-badge badge-lg">
+                    {wishlistProducts?.length}
+                  </span>
+                </div>
+              </NavLink>
+
+              <small>Wishlist</small>
+            </div>
+          )}
+
+          {location.pathname !== "/login" && location.pathname !== "/signup" && (
+            <div className="flex-col-center">
+              <NavLink
+                className="nav-icon-clr nav-icon"
+                to={token ? "/cart" : "/login"}
+                exact="true"
+              >
+                <div className="badge-container">
+                  <i className="fa-solid fa-cart-shopping f-size-icon"></i>
+                  <span className="badge notification-right-badge badge-lg">
+                    {cartProducts?.length}
+                  </span>
+                </div>
+              </NavLink>
+
+              <small>Cart</small>
+            </div>
+          )}
+
+          {location.pathname !== "/login" && location.pathname !== "/signup" && (
+            <button
+              className="btn nav-auth-btn-style"
+              onClick={() => (token ? handleLogout() : navigate("/login"))}
             >
-              <div className="badge-container">
-                <i className="fa-solid fa-heart f-size-icon"></i>
-                <span className="badge notification-right-badge badge-lg">
-                  {wishlistProducts?.length}
-                </span>
-              </div>
-            </NavLink>
-
-            <small>Wishlist</small>
-          </div>
-        )}
-
-        {location.pathname !== "/login" && location.pathname !== "/signup" && (
-          <div className="flex-col-center">
-            <NavLink
-              className="nav-icon-clr nav-icon"
-              to={token ? "/cart" : "/login"}
-              exact="true"
-            >
-              <div className="badge-container">
-                <i className="fa-solid fa-cart-shopping f-size-icon"></i>
-                <span className="badge notification-right-badge badge-lg">
-                  {cartProducts?.length}
-                </span>
-              </div>
-            </NavLink>
-
-            <small>Cart</small>
-          </div>
-        )}
-
-        {location.pathname !== "/login" && location.pathname !== "/signup" && (
-          <button
-            className="btn nav-auth-btn-style"
-            onClick={() => (token ? handleLogout() : navigate("/login"))}
-          >
-            {token ? "Logout" : "Login"}
-          </button>
-        )}
-      </div>
+              {token ? "Logout" : "Login"}
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="p-1">
+          <i
+            className="fa-solid fa-bars hamburger-icon"
+            onClick={() => setOpenSidebar((prev) => !prev)}
+          ></i>
+        </div>
+      )}
     </nav>
   );
 }
