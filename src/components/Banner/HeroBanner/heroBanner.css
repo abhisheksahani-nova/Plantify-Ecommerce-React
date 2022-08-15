@@ -44,13 +44,16 @@
 @media screen and (max-width: 600px) {
   .banner-bg-img1 {
     height: 19rem;
+    margin: 0rem 0.5rem 1rem;
   }
 
   .banner-bg-img2 {
     height: 19rem;
+    margin: 0rem 0.5rem 1rem;
   }
   .banner-bg-img3 {
     height: 19rem;
+    margin: 0rem 0.5rem 1rem;
   }
 }
 
