@@ -3,7 +3,6 @@ import {
   Footer,
   VerticalCard,
   HeroBanner,
-  PromotionBanner,
   CategoryNavTab,
   Sidebar,
 } from "../../components/index";

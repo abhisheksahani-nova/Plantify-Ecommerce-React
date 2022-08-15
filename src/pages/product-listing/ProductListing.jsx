@@ -1,12 +1,20 @@
-import { Navbar, Footer, Filter, VerticalCard } from "../../components/index";
+import {
+  Navbar,
+  Footer,
+  Filter,
+  VerticalCard,
+  Sidebar,
+} from "../../components/index";
 import "../landing-page/landingPage.css";
 import "./productListing.css";
 import { useProducts } from "../../context/products-context";
 import { useCategory } from "../../context/category-context";
 import { useFilter, applyFilters } from "../../reducer/filterReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function ProductListing() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { products } = useProducts();
   const { category } = useCategory();
 
@@ -24,9 +32,15 @@ function ProductListing() {
 
   return (
     <div className="homepage_main_container">
-      <Navbar dispatch={dispatch} state={state} />
+      <Navbar
+        dispatch={dispatch}
+        state={state}
+        setOpenSidebar={setOpenSidebar}
+      />
 
       <section className="productlisting_main_content_container d-flex p-relative">
+        {openSidebar && <Sidebar />}
+
         {/* <!-- filter sidebar --> */}
         <Filter dispatch={dispatch} state={state} />
 
