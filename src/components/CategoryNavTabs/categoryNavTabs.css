@@ -11,7 +11,6 @@
 }
 
 .categories_navLink {
-  text-decoration: none;
   color: var(--ecommerce-btn-clr);
   font-weight: 500;
 }
@@ -23,4 +22,22 @@
 
 .categories_navLink2 {
   margin: 0rem 2rem;
+}
+
+.t-decoration-underline {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 480px) {
+  .categories_navTabs_list {
+    padding: 1rem 0;
+  }
+
+  .categories_navLink {
+    font-size: 0.85rem;
+  }
+
+  .categories_navTab_container {
+    margin: 1rem 1.5rem 2rem;
+  }
 }

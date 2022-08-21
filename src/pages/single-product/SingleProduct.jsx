@@ -1,12 +1,15 @@
 import "./singleproduct.css";
-import { Navbar, Footer } from "../../components/index";
+import { Navbar, Footer, Sidebar } from "../../components/index";
 import { useCart } from "../../context/cart-context";
 import { useTheme } from "../../context/theme-context";
 import { useProducts } from "../../context/products-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 function SingleProduct() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { theme } = useTheme();
   const { products } = useProducts();
   let { id } = useParams();
@@ -39,8 +42,10 @@ function SingleProduct() {
 
   return (
     <div>
-      <Navbar />
-      <section className="d-flex singleproductpage-container">
+      <Navbar setOpenSidebar={setOpenSidebar} />
+      <section className="d-flex singleproductpage-container p-relative">
+        {openSidebar && <Sidebar />}
+
         <div className="singleproductpage-img-container">
           <img src={img} className="singleProduct-img" alt={title} />
         </div>
@@ -49,11 +54,11 @@ function SingleProduct() {
           <p className="card-description text-bold para-price">₹ {price}</p>
 
           <div className="d-flex card-heading">
-            <small className="sec_clr">PlantType :-  {plantType} </small>
+            <small className="sec_clr">PlantType :- {plantType} </small>
           </div>
 
           <div className="d-flex card-heading">
-            <small className="sec_clr">Category :-  {categoryName} </small>
+            <small className="sec_clr">Category :- {categoryName} </small>
           </div>
 
           <p className="card-description pri_clr">{description}</p>
@@ -79,6 +84,8 @@ function SingleProduct() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

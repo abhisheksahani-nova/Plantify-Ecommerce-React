@@ -46,8 +46,38 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .categories_img_title {
     font-size: 1.2rem;
+  }
+
+  .categories_img_subtitle_plant {
+    margin: 0.625rem 0;
+    font-size: 0.85rem;
+  }
+
+  .homepage_categories {
+    gap: 0.5rem;
+    margin: 3rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .categories_img_title {
+    font-size: 1rem;
+  }
+
+  .categories_img_subtitle_plant {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .categories_img_title {
+    font-size: 0.8rem;
+  }
+
+  .categories_img_subtitle_plant {
+    font-size: 0.4rem;
   }
 }

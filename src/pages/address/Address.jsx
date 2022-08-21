@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 import "./address.css";
 import { useTheme } from "../../context/theme-context";
 import { useNavigate } from "react-router-dom";
@@ -31,12 +31,15 @@ const addressDefaultState = {
 };
 
 function Address() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { addressInfo, setAddressInfo, guestAddress } = useTheme();
   const [isDisabled, setIsDisabled] = useState(true);
   const [addressData, setAddressData] = useState({ ...addressInfo });
 
   const navigate = useNavigate();
   const isGuest = localStorage.getItem("isGuest");
+  const isPlaceOrder = localStorage.getItem("isPlaceOrder");
 
   useEffect(() => {
     if (isGuest == "abhi") {
@@ -60,8 +63,6 @@ function Address() {
       city,
       state,
     } = addressData;
-
-    const isPlaceOrder = localStorage.getItem("isPlaceOrder");
 
     if (
       country &&
@@ -116,9 +117,11 @@ function Address() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <ul className="categories_navTabs_list mb-1 mt-1">
+      <ul className="categories_navTabs_list p-relative mb-1 pt-3">
+        {openSidebar && <Sidebar />}
+
         {userProfileLinks.map((link, index) => {
           return (
             <li
@@ -304,12 +307,22 @@ function Address() {
             </div>
           </div>
 
-          <button
-            className="btn cta-btn mb-2"
-            onClick={() => handleSaveAddress()}
-          >
-            Use this address
-          </button>
+          <div className="d-flex align-items-center gap-1 mb-4">
+            <button
+              className="btn cta-btn pri-clr-border"
+              onClick={() => handleSaveAddress()}
+            >
+              Use this address
+            </button>
+
+            <button
+              className="btn cta-btn pri-outline-btn"
+              type="button"
+              onClick={() => guestAddress()}
+            >
+              Add dummy data
+            </button>
+          </div>
         </div>
       </section>
     </div>

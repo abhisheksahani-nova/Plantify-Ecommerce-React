@@ -46,27 +46,29 @@ function HorizontalCard({ product }) {
             <small className="sec_clr">Quantity :</small>
             <button
               className={`btn cart_card_outlinebtn customstyle_btn ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
-              }`}
-              onClick={() => productQtyIncrement(_id, token)}
-            >
-              +
-            </button>
-            <input
-              className={`cart_card_quantity_inp ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
-              }`}
-              type="text"
-              value={qty}
-            />
-            <button
-              className={`btn cart_card_outlinebtn customstyle_btn ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
               }`}
               disabled={qty <= 1 ? true : false}
               onClick={() => handleProductQtyDecrement(_id, token)}
             >
               -
+            </button>
+
+            <input
+              className={`cart_card_quantity_inp ${
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
+              }`}
+              type="text"
+              value={qty}
+            />
+
+            <button
+              className={`btn cart_card_outlinebtn customstyle_btn ${
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
+              }`}
+              onClick={() => productQtyIncrement(_id, token)}
+            >
+              +
             </button>
           </div>
 
@@ -79,7 +81,7 @@ function HorizontalCard({ product }) {
             </button>
             <button
               className={`btn btn-text-icon cart_card_outlinebtn ${
-                theme == "dark" ? "cart_card_outline_btn" : ""
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
               }`}
               onClick={() => handleMoveProductToWishlist(product, token)}
             >

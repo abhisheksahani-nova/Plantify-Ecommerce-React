@@ -1,16 +1,22 @@
-import { Navbar, VerticalCard, Footer } from "../../components/index";
+import { Navbar, VerticalCard, Footer, Sidebar } from "../../components/index";
 import { useWishlist } from "../../context/wishlist-context";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Wishlist() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { wishlistProducts } = useWishlist();
   const navigate = useNavigate();
 
   return (
     <div className="homepage_main_container">
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <section className="productlisting_banner_container"></section>
+      <div className="p-relative">
+        <section className="productlisting_banner_container"></section>
+        {openSidebar && <Sidebar />}
+      </div>
 
       <h2 className="cart_page_title">
         My Wishlist ({wishlistProducts.length})

@@ -1,13 +1,22 @@
-import React from "react";
-import { Navbar } from "../../components/index";
+import React, { useState } from "react";
+import { Navbar, ProfileEditModal, Sidebar } from "../../components/index";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
 
 const userProfileLinks = ["Profile", "Address", "Orders"];
 
 function Profile() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+  const [openProfileEditModal, setProfileEditModal] = useState(false);
+  const [profileImg, setProfileImg] = useState(
+    localStorage.getItem("profilePic") ||
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+  );
+
   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
+  const isGuestLogin = localStorage.getItem("isGuestLogin");
+  const profilePic = localStorage.getItem("profilePic");
   const navigate = useNavigate();
 
   function handleTabClick(link) {
@@ -20,11 +29,28 @@ function Profile() {
     }
   }
 
+  const imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setProfileImg(reader.result);
+        const profilePic = localStorage.setItem("profilePic", reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
     <div>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
-      <ul className="categories_navTabs_list mb-1 mt-1">
+      {openProfileEditModal && (
+        <ProfileEditModal setProfileEditModal={setProfileEditModal} />
+      )}
+
+      <ul className="categories_navTabs_list mb-1 pt-3 p-relative">
+        {openSidebar && <Sidebar />}
+
         {userProfileLinks.map((link, index) => {
           return (
             <li
@@ -39,29 +65,63 @@ function Profile() {
       </ul>
 
       <section className="d-flex justify-cont-center">
-        <div className="profile-page-container card-basic width-auto">
-          <div className="d-flex justify-cont-center mb-2 mt-2">
+        <div className="profile-page-container card-basic">
+          <div className="d-flex justify-cont-center mb-2 mt-2 p-relative">
             <img
-              className="avatar md"
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+              className="avatar md object-fit-cover"
+              src={profileImg}
               alt="user avatar"
             />
+
+            {isGuestLogin && (
+              <label htmlFor="input-img">
+                <i className="fa-solid fa-camera select-img-icon cursor-p"></i>
+              </label>
+            )}
+
+            <input
+              className="d-none"
+              type="file"
+              accept="image/*"
+              id="input-img"
+              onChange={(e) => imageHandler(e)}
+            />
           </div>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
-            Name : {username ? username : "Abhishek Sahani"}
-          </label>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
-            Email : {email}
-          </label>
-          <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2">
-            Password : *******************
-          </label>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
+              Name :
+            </label>
+
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
+              {username}
+            </label>
+          </div>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1">
+              Email :
+            </label>
+
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-1 word-wrap">
+              {email}
+            </label>
+          </div>
+
+          <div className="d-flex gap-small">
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2 word-wrap">
+              Password :
+            </label>
+            <label className="inp-label d-block login_inp_label_resize inherit-clr mb-2 word-wrap">
+              **************
+            </label>
+          </div>
 
           <button
             className="btn cta-btn btn-small"
-            onClick={() => navigate("/address")}
+            onClick={() => setProfileEditModal((prev) => !prev)}
           >
-            Add address
+            Edit profile
           </button>
         </div>
       </section>

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/theme-context";
 import { useToast } from "../../../context/toast-context";
+import { Navbar, Sidebar } from "../../../components/index";
 import axios from "axios";
 
 function Signup() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const [userSignupData, setUserSignupData] = useState({
     firstName: "",
     lastName: "",
@@ -29,26 +32,49 @@ function Signup() {
 
     (async () => {
       try {
-        const response = await axios.post("/api/auth/signup", userData);
-        localStorage.setItem("token", response.data.encodedToken);
-        localStorage.setItem(
-          "username",
-          `${userSignupData.firstName} ${userSignupData.lastName}`
-        );
-        localStorage.setItem("email", userSignupData.email);
+        if (
+          userSignupData.firstName &&
+          userSignupData.lastName &&
+          userSignupData.email &&
+          userSignupData.password &&
+          userSignupData.confirmPassword &&
+          userSignupData.password == userSignupData.confirmPassword
+        ) {
+          if (/\S+@\S+\.\S+/.test(userSignupData.email)) {
+            const response = await axios.post("/api/auth/signup", userData);
+            localStorage.setItem("token", response.data.encodedToken);
+            localStorage.setItem(
+              "username",
+              `${userSignupData.firstName.trim()} ${userSignupData.lastName.trim()}`
+            );
+            localStorage.setItem("email", userSignupData.email);
 
-        if (userSignupData.email == "abhishekSahani@gmail.com") {
-          localStorage.setItem("isGuest", "abhi");
+            if (userSignupData.email == "abhishekSahani@gmail.com") {
+              localStorage.setItem("isGuest", "abhi");
+            } else {
+              localStorage.setItem("isGuest", "unknown");
+            }
+
+            setToastData({
+              show: true,
+              type: "success",
+              message: "Lets start shopping",
+            });
+            navigate("/");
+          } else {
+            setToastData({
+              show: true,
+              type: "error",
+              message: "Invalid email",
+            });
+          }
         } else {
-          localStorage.setItem("isGuest", "unknown");
+          setToastData({
+            show: true,
+            type: "error",
+            message: "Fill required filed",
+          });
         }
-
-        setToastData({
-          show: true,
-          type: "success",
-          message: "Lets start shopping",
-        });
-        navigate("/");
       } catch (error) {
         console.log(error);
         setToastData({
@@ -60,9 +86,23 @@ function Signup() {
     })();
   }
 
+  function signupWithDummyData() {
+    setUserSignupData({
+      firstName: "Arun",
+      lastName: "Sharma",
+      email: "arunsharma@gmail.com",
+      password: "arunsharma9807",
+      confirmPassword: "arunsharma9807",
+    });
+  }
+
   return (
     <>
-      <section className="login_form_container d-flex">
+      <Navbar setOpenSidebar={setOpenSidebar} />
+
+      <section className="login_form_container d-flex p-relative">
+        {openSidebar && <Sidebar />}
+
         <div className="card-basic login_form app">
           <h2 className="t-align-center mt-2 mb-2">Signup</h2>
 
@@ -72,7 +112,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo "
               }`}
               id="inp-email"
               placeholder="Enter your first name"
@@ -92,7 +132,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo "
               }`}
               id="inp-email"
               placeholder="Enter your last name"
@@ -112,7 +152,7 @@ function Signup() {
             </label>
             <input
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-email"
               placeholder="Enter your email address"
@@ -137,7 +177,7 @@ function Signup() {
             <input
               type={passwordInputType}
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-password"
               placeholder="Enter password"
@@ -177,7 +217,7 @@ function Signup() {
             <input
               type={confirmPasswordInputType}
               className={`inp login_inp_resize ecommerce-login-inp ${
-                theme == "dark" && "cart_card_outline_btn"
+                theme == "dark" && "dark-theme-clr-combo"
               }`}
               id="inp-email"
               placeholder="Enter your password again"
@@ -204,12 +244,8 @@ function Signup() {
 
           <div className="inp-container mb-1">
             <div className="d-flex login_checkbox_inp_container">
-              <input
-                type="checkbox"
-                id="checkbox-termsPolicy"
-                className={`${theme == "dark" && "cart_card_outline_btn"}`}
-              />
-              <label className="inp-label inp-label-required login-checkbox-label-size inherit-clr">
+              <input type="checkbox" id="checkbox-termsPolicy" />
+              <label className="inp-label login-checkbox-label-size inherit-clr">
                 I accept all Terms & Conditions
               </label>
             </div>
@@ -224,7 +260,17 @@ function Signup() {
 
           <div className="inp-container ml-1 mb-1">
             <button
-              className="btn cta-btn login_custom_btn"
+              className={`btn cta-btn guest-btn ${
+                theme == "dark" ? "cart_card_outline_btn" : "pri-outline-btn"
+              }`}
+              type="button"
+              onClick={() => signupWithDummyData()}
+            >
+              Fill dummy data
+            </button>
+
+            <button
+              className="btn cta-btn guest-btn pri-clr-border"
               type="button"
               onClick={() => handleSignup()}
             >

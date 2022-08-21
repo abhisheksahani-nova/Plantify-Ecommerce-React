@@ -1,21 +1,33 @@
-import { Navbar, Footer, HorizontalCard } from "../../components/index";
+import {
+  Navbar,
+  Footer,
+  HorizontalCard,
+  Sidebar,
+} from "../../components/index";
 import CartPayment from "./CartPayment/CartPayment";
 import "./cartManagement.css";
 import "../landing-page/landingPage.css";
 import "../product-listing/productListing.css";
 import { useCart } from "../../context/cart-context";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function CartManagement() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const { cartProducts } = useCart();
   const navigate = useNavigate();
 
   return (
     <div className="homepage_main_container">
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
 
       {/* <!-- hero banner image--> */}
-      <section className="productlisting_banner_container"></section>
+      <div className="p-relative">
+        <section className="productlisting_banner_container"></section>
+
+        {openSidebar && <Sidebar />}
+      </div>
 
       <h2 className="cart_page_title">My Cart ({cartProducts.length})</h2>
 

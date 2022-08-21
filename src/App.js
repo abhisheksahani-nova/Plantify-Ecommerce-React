@@ -25,8 +25,13 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.clear();
-    // navigate("/");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("isGuest");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isGuestLogin");
+
+    navigate("/");
   }, []);
 
   useEffect(() => {

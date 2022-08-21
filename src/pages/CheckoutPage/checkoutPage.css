@@ -7,7 +7,7 @@
 }
 
 .light-border {
-  border: 1px solid var(--gray-shade5);
+  border: 1px solid var(--custom-sec-clr);
 }
 
 .lightest-border {
@@ -23,7 +23,7 @@
 }
 
 .coupon-code-input {
-  padding: 6px;
+  padding: 8px;
   border-radius: 3px;
   width: 10rem;
 }
@@ -34,4 +34,9 @@
 
 .bg-pri-clr {
   background-color: var(--plant-pri-clr);
+}
+
+.small-btn-size {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
 }
